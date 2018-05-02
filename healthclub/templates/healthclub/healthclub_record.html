@@ -1,0 +1,29 @@
+{% extends "base.html"  %}
+{% load staticfiles %}
+
+{% block title  %}
+HealthyCash
+{% endblock title %}
+
+{% block content  %}
+
+<table>
+    <thead>
+      <tr>
+          <th>이름</th>
+          <th>지점</th>
+          <th>출석일</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+        {% for r in record reversed%}
+      <tr>
+        <td>{{r.user.username}}</td>
+        <td>{{r.healthclub.name}}</td>
+        <td>{{r.timestamp}}</td>
+      </tr>
+         {% endfor %}
+    </tbody>
+</table>
+{% endblock content  %}

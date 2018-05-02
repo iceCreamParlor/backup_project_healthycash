@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{% block title %}{% endblock %}</title>
+  
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <!-- Materialize Icon -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="white" role="navigation" >
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="/" class="brand-logo"> <small>Logo</small><i class="large material-icons">chat_bubble</i></a>
+      
+
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/">About Us</a></li>
+        <li><a href="/healthclub/register">헬스장 등록/변경</a></li>
+        <li><a href="/healthclub/qrcode_check">출석체트</a></li>
+        <li><a href="/mypage">마이페이지</a></li>
+      </ul>
+      
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="/">About Us <i class="material-icons">folder_open</i></a></li>
+        <li><a href="/healthclub/register">헬스장 등록/변경<i class="material-icons">face</i></a></li>
+        <li><a href="/healthclub/qrcode_check">출석체크<i class="material-icons">audiotrack</i></a></li>
+        <li><a href="/mypage">마이페이지<i class="material-icons">create</i></a></li>
+      </ul>
+      
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+    {% block content %}{% endblock %}
+    
+      <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static 'js/materialize.js' %}"></script>
+  <script src="{% static 'js/init.js' %}"></script>
+</body>
+</html>
+
+
