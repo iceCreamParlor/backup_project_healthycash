@@ -17,14 +17,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
-from django.contrib.auth.views import LoginView, PasswordResetView
+from django.contrib.auth.views import LoginView, PasswordResetView, LogoutView
 
+from profiles.views import RegisterViewNormal, RegisterViewMaster
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
-    url(r'^login/', LoginView.as_view(template_name='login.html'), name='login'),
+    url(r'^login/', LoginView.as_view(), name='login'),
+    url(r'^logout/', LogoutView.as_view(), name='logout'),
+
     url(r'^password_reset/', PasswordResetView.as_view(template_name='password_reset.html'), name='password_reset'),    
     url(r'^healthclub/', include('healthclub.urls', namespace='healthclub')),
-
+    url(r'^register_normal/', RegisterViewNormal.as_view(), name='register_normal'),
+    url(r'^register_master/', RegisterViewMaster.as_view(), name='register_master'),
 ]

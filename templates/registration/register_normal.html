@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="container">
+    <h2>회원가입(일반)</h2>
+    <p><a href="{%url 'login'%}">로그인</a>을 하실건가요?</p>
+    <form method="post" action="{% url 'register_normal' %}">
+        {% csrf_token %}
+        <!--{{form.as_p}}-->
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>이메일</td>
+                <td>{{ form.email }}</td>
+            </tr>
+            <tr>
+                <td>성별</td>
+                <td>
+                    <p>
+                      <input name="sex" type="radio" id="test1" value = "female" />
+                      <label for="test1">여성</label>
+                    </p>
+                    <p>
+                      <input name="sex" type="radio" id="test2" value = "male"/>
+                      <label for="test2">남성</label>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>이름</td>
+                <td>{{ form.real_name }}</td>
+            </tr>
+            <tr>
+                <td>비밀 번호</td>
+                <td>{{ form.password1 }}</td>
+            </tr>
+            <tr>
+                <td>비밀 번호 확인</td>
+                <td>{{ form.password2 }}</td>
+            </tr>
+        </table>
+        <button class="btn waves-effect waves-light" type="submit" >Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+</div>
+
+
+<!-- <p><a href="{% url 'password_reset'%}">Lost password?</a></p> -->
+{% endblock %}
