@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
+
 from django import forms
 from django.contrib.auth import get_user_model
 from .models import Profile
 from healthclub.models import HealthClub
+from django.core.urlresolvers import reverse
 
 User = get_user_model()
 mail = []
@@ -27,7 +30,7 @@ class RegisterNormalForm(forms.ModelForm):
         qs = User.objects.filter(email__iexact=email)
 
         if qs.exists():
-            raise forms.ValidationError("Email Already Exists")
+            raise forms.ValidationError("해당 이메일은 이미 회원가입 되어있습니다")
         else:
             mail.append(email)
 
@@ -75,11 +78,10 @@ class RegisterMasterForm(forms.ModelForm):
     def clean_email(self):
         global mail
         email = self.cleaned_data["email"]
-        qs = User.objects.filter(email__iexact=email)
-        print(email)
-            
+        qs = Profile.objects.filter(email__iexact=email)
+        
         if qs.exists():
-            raise forms.ValidationError("Email Already Exists")
+            raise forms.ValidationError("해당 이메일은 이미 회원가입 되어있습니다.")
         else:
             mail.append(email)
 
@@ -114,10 +116,5 @@ class RegisterMasterForm(forms.ModelForm):
             member    = 0,
         )
         healthclub.save()
-
-        print("html")
-        print(self.cleaned_data["healthclub_address"])
         mail = []
-       
-
         return user

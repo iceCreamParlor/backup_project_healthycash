@@ -1,7 +1,27 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
-
+{%if form.username.errors%}
+<script>
+    alert("아이디가 중복되었습니다.")
+</script>
+{%elif form.email.errors%}
+<script>
+    alert("해당 메일은 이미 회원가입 되어있습니다.")
+</script>
+{%elif form.password2.errors%}
+<script>
+    alert("비밀번호가 일치하지 않습니다.")
+</script>
+{%endif%}
+<nav>
+<div class="nav-wrapper">
+  <div class="col s12">
+    <a href="#!" class="breadcrumb">계정 유형</a>
+    <a href="#!" class="breadcrumb">정보 입력</a>
+  </div>
+</div>
+</nav>
 <div class="container">
     <h2>회원가입(헬스장 점주)</h2>
     <p><a href="{%url 'login'%}">로그인</a>을 하실건가요?</p>

@@ -29,6 +29,7 @@ urlpatterns = [
 
     url(r'^password_reset/', PasswordResetView.as_view(template_name='password_reset.html'), name='password_reset'),    
     url(r'^healthclub/', include('healthclub.urls', namespace='healthclub')),
+    url(r'^register/', TemplateView.as_view(template_name='registration/register.html'), name='register'),
     url(r'^register_normal/', RegisterViewNormal.as_view(), name='register_normal'),
     url(r'^register_master/', RegisterViewMaster.as_view(), name='register_master'),
 ]
