@@ -6,6 +6,7 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from healthclub.models import HealthClub
 
 User = settings.AUTH_USER_MODEL
 
@@ -19,6 +20,7 @@ class Profile(models.Model):
     following        = models.ManyToManyField(User, related_name='following', blank=True)
     timestamp        = models.DateTimeField(auto_now_add=True)
     updated          = models.DateTimeField(auto_now=True)
+    healthclub       = models.ForeignKey(HealthClub, null=True)
     is_health_master = models.BooleanField(default = False)
 
     def __unicode__(self):

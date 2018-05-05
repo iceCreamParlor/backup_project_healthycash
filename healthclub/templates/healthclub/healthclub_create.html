@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="container">
+    <h2>헬스장 등록</h2>
+    <form method="POST" action="{% url 'healthclub:create_confirm' %}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>가격</td>
+                <td>
+                    <div class="input-field col s6">
+                      <input  name = "price" type="text" class="validate">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>상세설명</td>
+                <td>
+                    <div class="input-field col s12">
+                      <textarea  name = "detail" class="materialize-textarea"></textarea>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <button class="btn waves-effect waves-light" type="submit" >Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+</div>
+{% endblock %}

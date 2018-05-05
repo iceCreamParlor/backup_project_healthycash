@@ -1,0 +1,27 @@
+{% extends "base.html"  %}
+{% load staticfiles %}
+
+{% block title  %}
+HealthyCash
+{% endblock title %}
+
+{%block content%}
+<div class="container">
+    <div class="col s12 m12">
+      <div class="card">
+        <div class="card-image">
+          <img src="images/sample-1.jpg">
+            </div>
+            <div class="card-content">
+              <p>헬스장 : {{object.name}}</p>
+              <p>주소 : {{object.address}}</p>
+              <p>점주명 : {{object.master.profile.real_name}}</p>
+              <p>상세 내용 : {{object.detail}}</p>
+            </div>
+            <div class="card-action">
+          <a href="{% url 'healthclub:payment' pk=object.id %}">결제하기</a>
+        </div>
+      </div>
+    </div>
+</div>
+{%endblock content%}

@@ -1,0 +1,35 @@
+{% extends "base.html"  %}
+{% load staticfiles %}
+
+{% block title  %}
+HealthyCash
+{% endblock title %}
+
+{%block content%}
+
+
+<div class="container">
+    <div class="col s12 m4">
+        <div class="row">
+            {% for obj in object_list %}
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image">
+                  <img src="images/sample-1.jpg">
+                    </div>
+                    <div class="card-content">
+                      <p>헬스장 : {{obj.namee}}</p>
+                      <p>주소 : {{obj.address}}</p>
+                    </div>
+                    <div class="card-action">
+                  <a href="{% url 'healthclub:detail' pk=obj.id %}">상세내역</a>
+                </div>
+              </div>
+            </div>
+             {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{%endblock content%}

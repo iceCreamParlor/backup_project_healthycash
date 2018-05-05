@@ -6,12 +6,17 @@ from django.conf import settings
 from django.conf import settings
 User = settings.AUTH_USER_MODEL
 
-# Create your models here.
+# Create your models here
 class HealthClub(models.Model):
     name     = models.CharField(max_length = 120)
     address  = models.CharField(max_length = 200)
     master   = models.ForeignKey(User)
     member   = models.IntegerField(default = 0)
+    price    = models.IntegerField(default = 0, blank = True)
+    detail   = models.CharField(max_length = 1000, blank = True)
+    timestamp = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(auto_now_add=True)
+    
     def __unicode__(self):
         return self.name
 
