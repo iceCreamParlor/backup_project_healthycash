@@ -1,0 +1,88 @@
+{% extends "base.html"  %}
+{% load staticfiles %}
+
+{% block title  %}
+HealthyCash
+{% endblock title %}
+{% block head %}
+<style type="text/css">
+    body, input {font-size:14pt}
+    input, label {vertical-align:middle}
+    .qrcode-text {padding-right:1.7em; margin-right:0}
+    .qrcode-text-btn {margin-top:20px; display:inline-block; background:url(//dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg) 50% 50% no-repeat; height:50px; width:50px; margin-left:-1.7em; cursor:pointer}
+    .qrcode-text-btn > input[type=file] {position:absolute; overflow:hidden; width:1px; height:1px; opacity:0}
+</style>
+{% endblock head %}
+{%block content%}
+<div class="container">
+    <!--<div class="hide-on-large-only">-->
+    <!--    <div class="row">-->
+    <!--        <div class="col m12 s8">-->
+    <!--            <p>QR코드로 출석체크 하기</p>-->
+    <!--        </div>-->
+    <!--        <div class="col m12 s4">-->
+    <!--            <label class="qrcode-text-btn"><input type="file" accept="image/*" capture="environment" onclick="return showQRIntro();" onchange="openQRCamera(this);" tabindex="-1"></label>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</div>-->
+    <div class="row">
+        
+        <ul class="collection">
+            <li class="collection-item avatar">
+              <center>
+                <i class="large material-icons">account_circle</i>
+                <p>{{username}} 님 안녕하세요!</p>
+              </center>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle">folder</i>
+              <span class="title">등록된 헬스장</span>
+              <p>{{profile.healthclub}} <br>
+                 {{profile.healthclub.address}}
+              </p>
+              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle green">insert_chart</i>
+              <span class="title">적립금 내역</span>
+              <p>{{profile.cash}} 원</p>
+              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle red">play_arrow</i>
+              <span class="title">Title</span>
+              <p>First Line <br>
+                 Second Line
+              </p>
+              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+        </ul>
+          
+    </div>
+</div>
+<script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
+
+<script>
+    /* global qrcode */
+    function openQRCamera(node) {
+      var reader = new FileReader();
+      reader.onload = function() {
+        node.value = "";
+        qrcode.callback = function(res) {
+          if(res instanceof Error) {
+            alert("QR코드가 발견되지 않았습니다. 다시 한번 QR코드를 입력해 주세요.");
+          } else {
+            window.location.replace(res);  // 링크로 REDIRECT
+            node.parentNode.previousElementSibling.value = res;
+          }
+        };
+        qrcode.decode(reader.result);
+      };
+      reader.readAsDataURL(node.files[0]);
+     }
+    
+    function showQRIntro() {
+      return confirm("QR코드를 인식하기 위해 카메라를 사용합니다.");
+    }
+</script>
+{% endblock content %}

@@ -4,7 +4,8 @@
 {% block title  %}
 HealthyCash
 {% endblock title %}
-
+{% block head %}
+{%endblock head%}
 {% block content  %}
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
@@ -23,7 +24,7 @@ HealthyCash
     buyer_tel : '010-1234-5678',
     buyer_addr : '서울특별시',
     buyer_postcode : '123-456',
-    //m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+    m_redirect_url : 'https://healthycash-heejae-kim.c9users.io/healthclub/payment/confirm/{{healthclub_id}}'
     }, function(rsp) {
         if ( rsp.success ) {
             var msg = '결제가 완료되었습니다.';
@@ -31,7 +32,7 @@ HealthyCash
             msg += '상점 거래ID : ' + rsp.merchant_uid;
             msg += '결제 금액 : ' + rsp.paid_amount;
             msg += '카드 승인번호 : ' + rsp.apply_num;
-            window.location.replace('/healthclub/payment/confirm/{{healthclub_id}}');
+            window.location.replace('/healthclub/payment/confirm/{{healthclub_id}}/{{healthclub_price}}');
         } else {
             var msg = '결제에 실패하였습니다.';
             msg += '에러내용 : ' + rsp.error_msg;

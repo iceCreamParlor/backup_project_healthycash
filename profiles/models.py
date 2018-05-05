@@ -22,6 +22,8 @@ class Profile(models.Model):
     updated          = models.DateTimeField(auto_now=True)
     healthclub       = models.ForeignKey(HealthClub, null=True)
     is_health_master = models.BooleanField(default = False)
+    cash             = models.IntegerField(default = 0)
+    healthclub_price = models.IntegerField(default = 0)
 
     def __unicode__(self):
         return self.user.username

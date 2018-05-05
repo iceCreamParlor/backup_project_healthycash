@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% block head %}
+{%endblock head%}
 {% block content %}
 
 <div class="container">
@@ -8,10 +10,42 @@
         {% csrf_token %}
         <table>
             <tr>
-                <td>가격</td>
+                <td>가격(1개월)</td>
                 <td>
                     <div class="input-field col s6">
-                      <input  name = "price" type="text" class="validate">
+                      <input  name = "price1" type="text" class="validate">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>가격(2개월)</td>
+                <td>
+                    <div class="input-field col s6">
+                      <input  name = "price2" type="text" class="validate">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>가격(3개월)</td>
+                <td>
+                    <div class="input-field col s6">
+                      <input  name = "price3" type="text" class="validate">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>가격(6개월)</td>
+                <td>
+                    <div class="input-field col s6">
+                      <input  name = "price6" type="text" class="validate">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>가격(12개월)</td>
+                <td>
+                    <div class="input-field col s6">
+                      <input  name = "price12" type="text" class="validate">
                     </div>
                 </td>
             </tr>

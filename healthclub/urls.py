@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^register/$', healthclub_register),
     url(r'^list/$', HealthClubListView.as_view(), name='list'),
     url(r'^detail/(?P<pk>\d+)/$', HealthClubDetailView.as_view(), name='detail'),
-    url(r'^payment/(?P<pk>\d+)/$', healthclub_payment, name = 'payment'),
-    url(r'^payment/confirm/(?P<pk>\d+)/$', healthclub_payment_confirm, name = 'payment_confirm'),
+    url(r'^payment/$', healthclub_payment, name = 'payment'),
+    url(r'^payment/confirm/(?P<pk>\d+)/(?P<healthclub_price>\d+)/', healthclub_payment_confirm, name = 'payment_confirm'),
 
 ]
