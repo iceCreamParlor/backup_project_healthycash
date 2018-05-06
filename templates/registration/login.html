@@ -29,8 +29,11 @@
             </tr>
         </table>
         
-        <input type="submit" value="login" />
+        <!--<input type="submit" value="login" />-->
         <input type="hidden" name="next" value="{{ next }}" />
+        <button class="btn waves-effect waves-light" value = "login" type="submit" >로그인
+            <i class="material-icons right">send</i>
+        </button>
     </form>
     
     {# Assumes you setup the password_reset view in your URLconf #}
