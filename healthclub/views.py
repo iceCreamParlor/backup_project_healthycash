@@ -60,7 +60,7 @@ def healthclub_payment(request):
         expire_date = request.user.profile.expire_date
         if expire_date==None or expire_date<datetime.now():
             return render(request, 'healthclub/expire_date_check.html', context)
-        context = {"message" : "사용 가능한 이용권이 남아있습니다. 그래도 결제를 진행하시겠습니까?"}
+        context["message"] = "사용 가능한 이용권이 남아있습니다. 그래도 결제를 진행하시겠습니까?"
     return render(request, 'healthclub/payment.html', context)
 
 class HealthClubDetailView(DetailView):
