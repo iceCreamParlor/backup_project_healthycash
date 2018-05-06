@@ -15,16 +15,6 @@ HealthyCash
 {% endblock head %}
 {%block content%}
 <div class="container">
-    <!--<div class="hide-on-large-only">-->
-    <!--    <div class="row">-->
-    <!--        <div class="col m12 s8">-->
-    <!--            <p>QR코드로 출석체크 하기</p>-->
-    <!--        </div>-->
-    <!--        <div class="col m12 s4">-->
-    <!--            <label class="qrcode-text-btn"><input type="file" accept="image/*" capture="environment" onclick="return showQRIntro();" onchange="openQRCamera(this);" tabindex="-1"></label>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</div>-->
     <div class="row">
         
         <ul class="collection">
@@ -50,39 +40,15 @@ HealthyCash
             </li>
             <li class="collection-item avatar">
               <i class="material-icons circle red">play_arrow</i>
-              <span class="title">Title</span>
-              <p>First Line <br>
-                 Second Line
+              <span class="title">이용권 정보</span>
+              <p> 등록일 : {{profile.start_date|date:"Y M d D"}} 
+              <br>
+                  만료일 : {{profile.expire_date|date:"Y M d D"}}
               </p>
               <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
             </li>
         </ul>
-          
     </div>
 </div>
-<script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
 
-<script>
-    /* global qrcode */
-    function openQRCamera(node) {
-      var reader = new FileReader();
-      reader.onload = function() {
-        node.value = "";
-        qrcode.callback = function(res) {
-          if(res instanceof Error) {
-            alert("QR코드가 발견되지 않았습니다. 다시 한번 QR코드를 입력해 주세요.");
-          } else {
-            window.location.replace(res);  // 링크로 REDIRECT
-            node.parentNode.previousElementSibling.value = res;
-          }
-        };
-        qrcode.decode(reader.result);
-      };
-      reader.readAsDataURL(node.files[0]);
-     }
-    
-    function showQRIntro() {
-      return confirm("QR코드를 인식하기 위해 카메라를 사용합니다.");
-    }
-</script>
 {% endblock content %}

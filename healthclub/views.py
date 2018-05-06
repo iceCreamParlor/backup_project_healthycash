@@ -5,8 +5,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 from django.views.generic import DetailView, View, CreateView, UpdateView, ListView
 from django.urls import reverse
+
 
 from .models import(
     HealthClub,
@@ -16,12 +18,18 @@ from profiles.models import Profile
 
 from .forms import HealthclubCreateForm
 
+
+
 @login_required(login_url = "/login")
-def healthclub_payment_confirm(request, pk=None, healthclub_price=None):
+def healthclub_payment_confirm(request, pk=None, healthclub_price=None, month=None):
     healthclub = HealthClub.objects.all().get(id=pk)
-    request.user.profile.healthclub = healthclub
-    request.user.profile.healthclub_price = healthclub_price
-    request.user.profile.save()
+    user = request.user.profile
+    user.healthclub = healthclub
+    user.healthclub_price = healthclub_price
+    user.start_date = datetime.now()
+    user.expire_date = datetime.now()+relativedelta(months=int(month))
+    user.save()
+    print(user.expire_date)
     return HttpResponseRedirect(reverse('profiles:mypage'))
     
     
@@ -31,10 +39,15 @@ def healthclub_payment(request):
     context = {}
     if request.method == 'POST':
         health_id = request.POST.get("health_id")
-        price = request.POST.get("price")
+        price = int(request.POST.get("price"))
+        month = price%100
+        price = int((price - month)/100)
+        print(month)
+        print(price)
         if price == None:
             return HttpResponseRedirect("/healthclub/detail/{}".format(health_id))
         healthclub = HealthClub.objects.all().get(id=health_id)
+
         context = { 
             'healthclub_id' : healthclub.id,
             'user_name' : request.user.profile.real_name,
@@ -43,12 +56,14 @@ def healthclub_payment(request):
             'master' : healthclub.master, 
             'healthclub_price' : price, 
             'address' : healthclub.address,
+            'month' : month,
         }
 
     return render(request, 'healthclub/payment.html', context)
 
 class HealthClubDetailView(DetailView):
     model = HealthClub
+    
 
 class HealthClubListView(ListView):
     

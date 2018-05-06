@@ -24,6 +24,8 @@ class Profile(models.Model):
     is_health_master = models.BooleanField(default = False)
     cash             = models.IntegerField(default = 0)
     healthclub_price = models.IntegerField(default = 0)
+    start_date       = models.DateTimeField(null=True)
+    expire_date      = models.DateTimeField(null=True)
 
     def __unicode__(self):
         return self.user.username

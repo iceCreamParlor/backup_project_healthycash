@@ -1,6 +1,6 @@
 {% extends "base.html"  %}
 {% load staticfiles %}
-
+{% load healthclub_detail %}
 {% block title  %}
 HealthyCash
 {% endblock title %}
@@ -27,16 +27,16 @@ HealthyCash
             <form action="{% url 'healthclub:payment'%}" method="POST">
               {%csrf_token%}
               <div class="card-action">
-              <input name="price" id="test1" type="radio"  value = "{{object.price1}}" />
-              <label for="test1">1 개월 : {{object.price1}} 원</label>
-              <input name="price" id="test2" type="radio"  value = "{{object.price2}}"/>
-              <label for="test2">2 개월 : {{object.price2}} 원</label>
-              <input name="price" id="test3" type="radio" value = "{{object.price3}}"/>
-              <label for="test3">3 개월 : {{object.price3}} 원</label>
-              <input name="price" id="test6" type="radio"  value = "{{object.price6}}"/>
-              <label for="test6">6 개월 : {{object.price6}} 원</label>
-              <input name="price" id="test12" type="radio" id="test2" value = "{{object.price12}}"/>
-              <label for="test12">1 년 : {{object.price12}} 원</label>
+              <input name="price" id="test1" type="radio"  value = "{{object.price1|multiply:100|add:'1'}}" />
+              <label for="test1">1 개월 : {{object.price1|multiply:100|add:'1'}} 원</label>
+              <input name="price" id="test2" type="radio"  value = "{{object.price2|multiply:100|add:'2'}}"/>
+              <label for="test2">2 개월 : {{object.price2|multiply:100|add:'2'}} 원</label>
+              <input name="price" id="test3" type="radio" value = "{{object.price3|multiply:100|add:'3'}}"/>
+              <label for="test3">3 개월 : {{object.price3|multiply:100|add:'3'}} 원</label>
+              <input name="price" id="test6" type="radio"  value = "{{object.price6|multiply:100|add:'6'}}"/>
+              <label for="test6">6 개월 : {{object.price6|multiply:100|add:'6'}} 원</label>
+              <input name="price" id="test12" type="radio" value = "{{object.price12|multiply:100|add:'12'}}"/>
+              <label for="test12">1 년 : {{object.price12|multiply:100|add:'12'}} 원</label>
               <input type="hidden" name="health_id" value={{object.id}} />
               <br><br>
               <button class="btn waves-effect waves-light">결제하기</button>
