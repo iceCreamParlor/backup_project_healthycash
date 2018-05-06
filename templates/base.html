@@ -25,15 +25,16 @@
         {% if request.user.is_anonymous %}
         <li><a href="/login">로그인</a></li>
         <li><a href="/register">회원 가입</a></li>
+        <li><a href="/healthclub/list">헬스장 정보</a></li>
         <li><a href="/">About Us</a></li>
         {% elif request.user.profile.is_health_master %}
         <li><a href="/">고객 현황</a></li>
         <li><a href="/healthclub/create">헬스장 등록 / 정보 변경</a></li>
         <li><a href="/logout">로그아웃</a></li>
         {% else %}
-        <li><a href="/healthclub/list">헬스장 등록/변경</a></li>
         <!--<li><a href="/healthclub/qrcode_check">출석체크</a></li>-->
         <li><a href="/profiles/mypage">마이페이지</a></li>
+        <li><a href="/healthclub/list">헬스장 정보</a></li>
         <li><a href="/">About Us</a></li>
         <li><a href="/logout">로그아웃</a></li>
         {% endif %}
@@ -44,6 +45,7 @@
         {% if request.user.is_anonymous %}
         <li><a href="/login">로그인<i class="material-icons">account_box</i></a></li>
         <li><a href="/register">회원 가입<i class="material-icons">border_color</i></a></li>
+        <li><a href="/healthclub/list">헬스장 정보<i class="material-icons">face</i></a></li>
         <li><a href="/">About Us <i class="material-icons">folder_open</i></a></li>
         {% elif request.user.profile.is_health_master %}
         <li><a>{{request.user.username}} 님 안녕하세요!</a></li>
@@ -52,7 +54,7 @@
         <li><a href="/logout">로그아웃</a></li>
         {% else %}
         <li><a>{{request.user.username}} 님 안녕하세요!</a></li>
-        <li><a href="/healthclub/list">헬스장 신청<i class="material-icons">face</i></a></li>
+        <li><a href="/healthclub/list">헬스장 정보<i class="material-icons">face</i></a></li>
         <li><a href="/healthclub/qrcode_check">출석체크<i class="material-icons">check</i></a></li>
         <li><a href="/profiles/mypage">마이페이지<i class="material-icons">create</i></a></li>
         <li><a href="/logout">로그아웃<i class="material-icons">launch</i></a></li>

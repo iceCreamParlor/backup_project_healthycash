@@ -25,12 +25,12 @@ HealthyCash
                   {%else%}
                   <img src="{% static 'images/default_image.jpg' %}" style="height:300px">
                   {% endif %}
-                    </div>
-                    <div class="card-content"> 
-                      <p>헬스장 : {{obj.name}}</p>
-                      <p>주소 : {{obj.address}}</p>
-                    </div>
-                    <div class="card-action">
+                </div>
+                <div class="card-content"> 
+                  <p>헬스장 : {{obj.name}}</p>
+                  <p class="truncate">주소 : {{obj.address}}</p>
+                </div>
+                <div class="card-action">
                   <a href="{% url 'healthclub:detail' pk=obj.id %}">상세내역</a>
                 </div>
               </div>

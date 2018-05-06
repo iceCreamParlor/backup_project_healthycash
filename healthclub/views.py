@@ -19,7 +19,6 @@ from profiles.models import Profile
 from .forms import HealthclubCreateForm
 
 
-
 @login_required(login_url = "/login")
 def healthclub_payment_confirm(request, pk=None, healthclub_price=None, month=None):
     healthclub = HealthClub.objects.all().get(id=pk)
@@ -106,24 +105,28 @@ def qrcode_check_save(request):
     user = request.user
     healthclub = HealthClub.objects.get(id = healthclub_id)
     timestamp = datetime.now()
-
-    print('hello')
-    obj = HealthDiary.objects.create(
-        user = user,
-        healthclub = healthclub,
-        timestamp = timestamp,
-    )
-    obj.save()
-    record = HealthDiary.objects.filter(user=user)
-    context = {'record' : record}
-    return render(request, 'healthclub/healthclub_record.html', context)
-
+    
+    healthclub_check = user.profile.healthclub
+    if healthclub == healthclub_check:
+        print('hello')
+        obj = HealthDiary.objects.create(
+            user = user,
+            healthclub = healthclub,
+            timestamp = timestamp,
+        )
+        obj.save()
+        unit_cash = int(user.profile.healthclub_price/30)
+        user.profile.cash += unit_cash
+        user.profile.save()
+        record = HealthDiary.objects.filter(user=user)
+        context = {'record' : record}
+        return render(request, 'healthclub/healthclub_record.html', context)
+    else:
+        context = {'message' : '이 헬스장은 회원님의 계정과 연동되지 않았습니다.'}
+        return render(request, 'healthclub/healthclub_record.html', context)
 
 @login_required(login_url = "/login")
 def qrcode_check(request):
     context = {}
     return render(request, 'healthclub/qrcode_check.html', context)
     
-def healthclub_register(request):
-    context={}
-    return render(request, 'healthclub/healthclub_register.html', context)
