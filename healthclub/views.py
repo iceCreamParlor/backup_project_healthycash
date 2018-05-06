@@ -39,13 +39,15 @@ def healthclub_payment(request):
     context = {}
     if request.method == 'POST':
         health_id = request.POST.get("health_id")
-        price = int(request.POST.get("price"))
+        price = request.POST.get("price")
+        if price == None:  # Did not Select Radio Button
+            return HttpResponseRedirect("/healthclub/detail/{}".format(health_id))
+        price = int(price)
         month = price%100
         price = int((price - month)/100)
         print(month)
         print(price)
-        if price == None:  # Did not Select Radio Button
-            return HttpResponseRedirect("/healthclub/detail/{}".format(health_id))
+        
         healthclub = HealthClub.objects.all().get(id=health_id)
         context = { 
             'healthclub_id' : healthclub.id,

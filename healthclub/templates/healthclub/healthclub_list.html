@@ -18,12 +18,12 @@ HealthyCash
         <div class="row">
             {% for obj in object_list %}
             <div class="col s12 m4">
-              <div class="card">
+              <div class="card" >
                 <div class="card-image">
                   {% if obj.photo %}
-                  <img src="{{obj.photo.url}}">
+                  <img src="{{obj.photo.url}}" style="height:300px">
                   {%else%}
-                  <img src="{% static 'images/default_image.jpg' %}">
+                  <img src="{% static 'images/default_image.jpg' %}" style="height:300px">
                   {% endif %}
                     </div>
                     <div class="card-content"> 
