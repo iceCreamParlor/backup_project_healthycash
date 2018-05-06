@@ -8,10 +8,11 @@ User = settings.AUTH_USER_MODEL
 
 # Create your models here
 class HealthClub(models.Model):
-    name     = models.CharField(max_length = 120)
-    address  = models.CharField(max_length = 200)
-    master   = models.ForeignKey(User)
-    member   = models.IntegerField(default = 0)
+    name      = models.CharField(max_length = 120)
+    address   = models.CharField(max_length = 200)
+    master    = models.ForeignKey(User)
+    photo     = models.ImageField(blank=True)
+    member    = models.IntegerField(default = 0)
     price1    = models.IntegerField(default = 0, blank = True)
     price2    = models.IntegerField(default = 0, blank = True)
     price3    = models.IntegerField(default = 0, blank = True)

@@ -58,7 +58,7 @@ class HealthClubListView(ListView):
 @login_required(login_url = "/login")
 def healthclub_create(request):
     if (request.method=="POST"):
-        form = HealthclubCreateForm(request.POST)
+        form = HealthclubCreateForm(request.POST, request.FILES)
         if form.is_valid():
             user  = request.user
             price1 = form.cleaned_data.get("price1")
@@ -66,20 +66,21 @@ def healthclub_create(request):
             price3 = form.cleaned_data.get("price3")
             price6 = form.cleaned_data.get("price6")
             price12 = form.cleaned_data.get("price12")
-
+            photo  = form.cleaned_data.get("photo")
             detail = form.cleaned_data.get("detail")
+            
             healthclub = HealthClub.objects.get(master = request.user)
             healthclub.price1 = price1
             healthclub.price2 = price2
             healthclub.price3 = price3
             healthclub.price6 = price6
             healthclub.price12 = price12
-
+            healthclub.photo = photo
             healthclub.detail = detail
             healthclub.save()
             
             return HttpResponseRedirect("/")
-    return HttpResponseRedirect("/health/create")
+    return HttpResponseRedirect("/healthclub/create")
 
 @login_required(login_url = "/login")
 def qrcode_check_save(request):

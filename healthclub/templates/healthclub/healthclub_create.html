@@ -6,7 +6,7 @@
 
 <div class="container">
     <h2>헬스장 등록</h2>
-    <form method="POST" action="{% url 'healthclub:create_confirm' %}">
+    <form method="POST" enctype="multipart/form-data" action="{% url 'healthclub:create_confirm' %}">
         {% csrf_token %}
         <table>
             <tr>
@@ -54,6 +54,20 @@
                 <td>
                     <div class="input-field col s12">
                       <textarea  name = "detail" class="materialize-textarea"></textarea>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>사진첨부</td>
+                <td>
+                    <div class="file-field input-field">
+                      <div class="btn">
+                        <span>File</span>
+                        <input type="file" name="photo" multiple>
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="사진을 업로드해 주세요!">
+                      </div>
                     </div>
                 </td>
             </tr>

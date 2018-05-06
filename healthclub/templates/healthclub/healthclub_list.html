@@ -20,9 +20,13 @@ HealthyCash
             <div class="col s12 m4">
               <div class="card">
                 <div class="card-image">
-                  <img src="{% static 'images/healthclub1.jpg' %}">
+                  {% if obj.photo %}
+                  <img src="{{obj.photo.url}}">
+                  {%else%}
+                  <img src="{% static 'images/default_image.jpg' %}">
+                  {% endif %}
                     </div>
-                    <div class="card-content">
+                    <div class="card-content"> 
                       <p>헬스장 : {{obj.name}}</p>
                       <p>주소 : {{obj.address}}</p>
                     </div>
