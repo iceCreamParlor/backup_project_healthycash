@@ -22,6 +22,9 @@ from .forms import HealthclubCreateForm
 @login_required(login_url = "/login")
 def healthclub_payment_confirm(request, pk=None, healthclub_price=None, month=None):
     healthclub = HealthClub.objects.all().get(id=pk)
+    healthclub.member += 1
+    healthclub.save()
+    print(HealthClub.objects.all().get(id=pk).member)
     user = request.user.profile
     user.healthclub = healthclub
     user.healthclub_price = healthclub_price
@@ -45,8 +48,6 @@ def healthclub_payment(request):
         price = int(price)
         month = price%100
         price = int((price - month)/100)
-        print(month)
-        print(price)
         
         healthclub = HealthClub.objects.all().get(id=health_id)
         context = { 
@@ -61,7 +62,7 @@ def healthclub_payment(request):
         }
         expire_date = request.user.profile.expire_date
         if expire_date==None or expire_date<datetime.now():
-            return render(request, 'healthclub/expire_date_check.html', context)
+            return render(request, 'healthclub/payment.html', context)
         context["message"] = "사용 가능한 이용권이 남아있습니다. 그래도 결제를 진행하시겠습니까?"
     return render(request, 'healthclub/payment.html', context)
 
