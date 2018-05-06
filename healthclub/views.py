@@ -27,6 +27,7 @@ def healthclub_payment_confirm(request, pk=None, healthclub_price=None, month=No
     user.healthclub_price = healthclub_price
     user.start_date = datetime.now()
     user.expire_date = datetime.now()+relativedelta(months=int(month))
+    user.unit_cash = int(int(healthclub_price) / (int(month)*30) * 0.09)
     user.save()
     print(user.expire_date)
     return HttpResponseRedirect(reverse('profiles:mypage'))
@@ -115,15 +116,14 @@ def qrcode_check_save(request):
             timestamp = timestamp,
         )
         obj.save()
-        unit_cash = int(user.profile.healthclub_price/30)
-        user.profile.cash += unit_cash
+        user.profile.cash += user.profile.unit_cash
         user.profile.save()
         record = HealthDiary.objects.filter(user=user)
         context = {'record' : record}
         return render(request, 'healthclub/healthclub_record.html', context)
     else:
         context = {'message' : '이 헬스장은 회원님의 계정과 연동되지 않았습니다.'}
-        return render(request, 'healthclub/healthclub_record.html', context)
+        return render(request, 'healthclub/qrcode_check.html', context)
 
 @login_required(login_url = "/login")
 def qrcode_check(request):

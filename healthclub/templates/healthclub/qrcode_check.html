@@ -14,6 +14,11 @@ HealthyCash
     .qrcode-text-btn {margin-top:20px; display:inline-block; background:url(//dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg) 50% 50% no-repeat; height:100px; width:100px; margin-left:-1.7em; cursor:pointer}
     .qrcode-text-btn > input[type=file] {position:absolute; overflow:hidden; width:1px; height:1px; opacity:0}
 </style>
+<script>
+{%if message%}
+  alert("{{message}}");
+{%endif%}
+</script>
 <div class="container">
   <div class="row">
     <div class="col s12 m6">
