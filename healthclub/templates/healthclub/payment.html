@@ -7,9 +7,14 @@ HealthyCash
 {% block head %}
 {%endblock head%}
 {% block content  %}
+
+{%if message%}
+<script>
+    confirm("{{message}}")
+</script>
+{%endif%}
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-
 <script type="text/javascript">
     var IMP = window.IMP; // 생략가능
     IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용

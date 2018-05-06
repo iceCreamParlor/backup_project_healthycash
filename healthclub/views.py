@@ -44,10 +44,9 @@ def healthclub_payment(request):
         price = int((price - month)/100)
         print(month)
         print(price)
-        if price == None:
+        if price == None:  # Did not Select Radio Button
             return HttpResponseRedirect("/healthclub/detail/{}".format(health_id))
         healthclub = HealthClub.objects.all().get(id=health_id)
-
         context = { 
             'healthclub_id' : healthclub.id,
             'user_name' : request.user.profile.real_name,
@@ -58,13 +57,15 @@ def healthclub_payment(request):
             'address' : healthclub.address,
             'month' : month,
         }
-
+        expire_date = request.user.profile.expire_date
+        if expire_date==None or expire_date<datetime.now():
+            return render(request, 'healthclub/expire_date_check.html', context)
+        context = {"message" : "사용 가능한 이용권이 남아있습니다. 그래도 결제를 진행하시겠습니까?"}
     return render(request, 'healthclub/payment.html', context)
 
 class HealthClubDetailView(DetailView):
     model = HealthClub
-    
-
+     
 class HealthClubListView(ListView):
     
     def get_queryset(self):
