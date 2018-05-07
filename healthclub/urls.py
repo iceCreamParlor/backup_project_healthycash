@@ -12,9 +12,11 @@ from .views import(
     HealthClubDetailView,
     healthclub_payment,
     healthclub_payment_confirm,
+    mypage,
 )
 
 urlpatterns = [
+    url(r'^mypage/$', mypage),
     url(r'^qrcode_check/$', qrcode_check),
     url(r'^qrcode_check_save/$', qrcode_check_save),
     url(r'^create/$', TemplateView.as_view(template_name='healthclub/healthclub_create.html')),

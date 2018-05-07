@@ -28,7 +28,7 @@
         <li><a href="/healthclub/list">헬스장 정보</a></li>
         <li><a href="/">About Us</a></li>
         {% elif request.user.profile.is_health_master %}
-        <li><a href="/">고객 현황</a></li>
+        <li><a href="/healthclub/mypage">지점 현황</a></li>
         <li><a href="/healthclub/list">헬스장 정보</a></li>
         <li><a href="/healthclub/create">헬스장 등록 / 정보 변경</a></li>
         <li><a href="/logout">로그아웃</a></li>
@@ -50,7 +50,7 @@
         <li><a href="/">About Us <i class="material-icons">folder_open</i></a></li>
         {% elif request.user.profile.is_health_master %}
         <li><a>{{request.user.username}} 님 안녕하세요!</a></li>
-        <li><a href="/">고객 현황</a></li>
+        <li><a href="/healthclub/mypage">지점 현황</a></li>
         <li><a href="/healthclub/list">헬스장 정보</a></li>
         <li><a href="/healthclub/create">헬스장 등록 / 정보 변경</a></li>
         <li><a href="/logout">로그아웃</a></li>

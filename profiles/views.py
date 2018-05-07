@@ -10,8 +10,8 @@ from .forms import RegisterNormalForm, RegisterMasterForm
 
 def mypage(request):
     user = request.user
-    profile = Profile.objects.all().get(user=user)
-    record = HealthDiary.objects.all().filter(user=request.user)
+    profile = Profile.objects.get(user=user)
+    record = HealthDiary.objects.filter(user=user)
     context = {'profile' : profile, 'username' : user.username, 'record' : record}
     return render(request, 'mypage.html', context)
 

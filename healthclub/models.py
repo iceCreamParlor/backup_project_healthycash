@@ -13,6 +13,7 @@ class HealthClub(models.Model):
     address   = models.CharField(max_length = 200)
     master    = models.ForeignKey(User)
     photo     = models.ImageField(blank=True)
+    qrcode    = models.ImageField(blank=True)
     member    = models.IntegerField(default = 0)
     price1    = models.IntegerField(default = 0, blank = True)
     price2    = models.IntegerField(default = 0, blank = True)

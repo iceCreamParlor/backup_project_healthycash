@@ -9,6 +9,8 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.views.generic import DetailView, View, CreateView, UpdateView, ListView
 from django.urls import reverse
+import pyqrcode
+import png
 
 
 from .models import(
@@ -100,6 +102,12 @@ def healthclub_create(request):
             healthclub.price12 = price12
             healthclub.photo = photo
             healthclub.detail = detail
+            
+            url = 'https://healthycash-heejae-kim.c9users.io/healthclub/qrcode_check_save?healthclub_id='+str(healthclub.id)
+            qrcode = pyqrcode.create(url)
+            qrcode_name = 'media/qrcode/healthclub_qrcode_'+str(healthclub.id) + '.png'
+            qrcode.png(qrcode_name, scale=6)
+            healthclub.qrcode = qrcode_name
             healthclub.save()
             
             return HttpResponseRedirect("/")
@@ -113,32 +121,60 @@ def qrcode_check_save(request):
     timestamp = datetime.now()
     
     healthclub_check = user.profile.healthclub
-    last_record = HealthDiary.objects.filter(user=request.user).order_by('-timestamp')[0].timestamp
-    last_record = str(last_record.year)+'/'+str(last_record.month)+'/'+str(last_record.day)
-    today = datetime.now()
-    today = str(today.year)+'/'+str(today.month)+'/'+str(today.day)
-
+    last_record = HealthDiary.objects.filter(user=request.user)
     
-    if last_record==today:
-        context = {'message' : '오늘 이미 출석체크를 하셨습니다. 욕심 ㄴㄴ'}
-        return render(request, 'healthclub/qrcode_check.html', context)
-    elif healthclub == healthclub_check:
-        obj = HealthDiary.objects.create(
-            user = user,
-            healthclub = healthclub,
-            timestamp = timestamp,
-        )
-        obj.save()
-        user.profile.cash += user.profile.unit_cash
-        user.profile.save()
+    if len(last_record) == 0:  # First Record
+        if healthclub == healthclub_check:
+            obj = HealthDiary.objects.create(
+                user = user,
+                healthclub = healthclub,
+                timestamp = timestamp,
+            )
+            obj.save()
+            user.profile.cash += user.profile.unit_cash
+            user.profile.save()
+            
+            return HttpResponseRedirect(reverse('profiles:mypage'))
+        else:
+            context = {'message' : '이 헬스장은 회원님의 계정과 연동되지 않았습니다.'}
+            return render(request, 'healthclub/qrcode_check.html', context)
+    else:   
+        last_record = last_record.order_by('-timestamp')[0].timestamp
+        last_record = str(last_record.year)+'/'+str(last_record.month)+'/'+str(last_record.day)
+        today = datetime.now()
+        today = str(today.year)+'/'+str(today.month)+'/'+str(today.day)
+    
         
-        return HttpResponseRedirect(reverse('profiles:mypage'))
-    else:
-        context = {'message' : '이 헬스장은 회원님의 계정과 연동되지 않았습니다.'}
-        return render(request, 'healthclub/qrcode_check.html', context)
+        if last_record==today:
+            context = {'message' : '오늘 이미 출석체크를 하셨습니다. 욕심 ㄴㄴ'}
+            return render(request, 'healthclub/qrcode_check.html', context)
+        elif healthclub == healthclub_check:
+            obj = HealthDiary.objects.create(
+                user = user,
+                healthclub = healthclub,
+                timestamp = timestamp,
+            )
+            obj.save()
+            user.profile.cash += user.profile.unit_cash
+            user.profile.save()
+            
+            return HttpResponseRedirect(reverse('profiles:mypage'))
+        else:
+            context = {'message' : '이 헬스장은 회원님의 계정과 연동되지 않았습니다.'}
+            return render(request, 'healthclub/qrcode_check.html', context)
 
 @login_required(login_url = "/login")
 def qrcode_check(request):
     context = {}
     return render(request, 'healthclub/qrcode_check.html', context)
     
+def mypage(request):
+    healthclub = HealthClub.objects.get(master = request.user)
+    healthdiary = HealthDiary.objects.filter(healthclub = healthclub)
+
+    context = {
+            'healthclub'  : healthclub,
+            'healthdiary' : healthdiary,
+            'qrcode_url'  : '/media/qrcode/healthclub_qrcode_'+str(healthclub.id)+'.png',
+    }
+    return render(request, 'healthclub/healthclub_mypage.html', context)

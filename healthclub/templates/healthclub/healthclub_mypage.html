@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+{%endblock head%}
+{% block content %}
+<div class="container">
+    {%if healthclub.qrcode%}
+    <img src="{{qrcode_url}}">
+    {%endif%}
+    
+    {%if healthdiary%}
+    <p>{{healthclub.name}}</p>
+    <p>고객 수 : {{healthclub.member}}  명</p>
+    <table>
+        <thead>
+          <tr>
+              <th>고객명</th>
+              <th>지점</th>
+              <th>출석일</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+            {% for r in healthdiary reversed%}
+          <tr>
+            <td>{{r.user.username}}</td>
+            <td>{{r.healthclub.name}}</td>
+            <td>{{r.timestamp}}</td>
+          </tr>
+             {% endfor %}
+        </tbody>
+    </table>
+    {%endif%}
+</div>
+{%endblock content%}
