@@ -1,0 +1,3 @@
+{
+    "python.pythonPath": "${workspaceFolder}/django111/bin/python"
+}
