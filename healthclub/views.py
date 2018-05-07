@@ -113,8 +113,16 @@ def qrcode_check_save(request):
     timestamp = datetime.now()
     
     healthclub_check = user.profile.healthclub
-    if healthclub == healthclub_check:
-        print('hello')
+    last_record = HealthDiary.objects.filter(user=request.user).order_by('-timestamp')[0].timestamp
+    last_record = str(last_record.year)+'/'+str(last_record.month)+'/'+str(last_record.day)
+    today = datetime.now()
+    today = str(today.year)+'/'+str(today.month)+'/'+str(today.day)
+
+    
+    if last_record==today:
+        context = {'message' : '오늘 이미 출석체크를 하셨습니다. 욕심 ㄴㄴ'}
+        return render(request, 'healthclub/qrcode_check.html', context)
+    elif healthclub == healthclub_check:
         obj = HealthDiary.objects.create(
             user = user,
             healthclub = healthclub,
@@ -123,9 +131,8 @@ def qrcode_check_save(request):
         obj.save()
         user.profile.cash += user.profile.unit_cash
         user.profile.save()
-        record = HealthDiary.objects.filter(user=user)
-        context = {'record' : record}
-        return render(request, 'healthclub/healthclub_record.html', context)
+        
+        return HttpResponseRedirect(reverse('profiles:mypage'))
     else:
         context = {'message' : '이 헬스장은 회원님의 계정과 연동되지 않았습니다.'}
         return render(request, 'healthclub/qrcode_check.html', context)

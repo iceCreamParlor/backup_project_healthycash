@@ -33,11 +33,3 @@ class HealthDiary(models.Model):
 
     def __unicode__(self):
         return "user : "+self.user.username+" | " + "healthclub :" + self.healthclub.name + " | " + "date : " +str(self.timestamp)
-
-class User_Healthclub(models.Model):
-    user         = models.ForeignKey(settings.AUTH_USER_MODEL)
-    healthclub   = models.ForeignKey(HealthClub)
-    registerdate = models.DateTimeField(auto_now=True)
-    
-    def __unicode__(self):
-        return "user : "+self.user.username+" | " + "healthclub :" + self.healthclub.name + " | " + "date : " +str(self.registerdate)
