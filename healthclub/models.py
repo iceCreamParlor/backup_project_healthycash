@@ -7,6 +7,7 @@ from django.conf import settings
 User = settings.AUTH_USER_MODEL
 
 # Create your models here
+        
 class HealthClub(models.Model):
     name      = models.CharField(max_length = 120)
     address   = models.CharField(max_length = 200)

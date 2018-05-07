@@ -14,6 +14,18 @@ HealthyCash
 </script>
 {%endif%}
 <div class="container">
+    <div class="row">
+      <form class="col s12 m6" method="GET" action=".">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="search" name = "search"  type="text">
+            <label for="search">검색</label>
+            <span class="helper-text" data-error="wrong" data-success="right">검색하실 헬스장 이름, 지역, 상세설명을 입력하세요</span>
+          </div>
+          <button type='submit' class="btn waves-effect waves-light">검색</button>
+        </div>
+      </form>
+    </div>
     <div class="col s12 m4">
         <div class="row">
             {% for obj in object_list %}

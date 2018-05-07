@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
+from django.db.models import Q 
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.views.generic import DetailView, View, CreateView, UpdateView, ListView
@@ -72,6 +73,9 @@ class HealthClubDetailView(DetailView):
 class HealthClubListView(ListView):
     
     def get_queryset(self):
+        search = self.request.GET.get('search')
+        if search:
+            return HealthClub.objects.filter(Q(name__icontains=search) | Q(address__icontains=search) | Q(detail__icontains=search)).order_by('updated')
         return HealthClub.objects.all().order_by('updated')
 
 @login_required(login_url = "/login")
