@@ -106,7 +106,7 @@ def healthclub_create(request):
             url = 'https://healthycash-heejae-kim.c9users.io/healthclub/qrcode_check_save?healthclub_id='+str(healthclub.id)
             qrcode = pyqrcode.create(url)
             qrcode_name = 'media/qrcode/healthclub_qrcode_'+str(healthclub.id) + '.png'
-            qrcode.png(qrcode_name, scale=6)
+            qrcode.png(qrcode_name, scale=4)
             healthclub.qrcode = qrcode_name
             healthclub.save()
             
