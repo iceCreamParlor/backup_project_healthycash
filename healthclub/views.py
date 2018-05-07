@@ -171,7 +171,8 @@ def qrcode_check(request):
 def mypage(request):
     healthclub = HealthClub.objects.get(master = request.user)
     healthdiary = HealthDiary.objects.filter(healthclub = healthclub)
-
+    
+    
     context = {
             'healthclub'  : healthclub,
             'healthdiary' : healthdiary,

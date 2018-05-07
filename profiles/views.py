@@ -3,13 +3,22 @@ from __future__ import unicode_literals
 from django.contrib.auth import get_user_model
 from django.views.generic import DetailView, View, CreateView
 from django.shortcuts import render, redirect
-
+from datetime import datetime
 from .models import Profile
 from healthclub.models import HealthClub, HealthDiary
 from .forms import RegisterNormalForm, RegisterMasterForm
 
 def mypage(request):
     user = request.user
+    profile = Profile.objects.get(user=user)
+    
+    expire_date = profile.expire_date  #When expire_date Expires
+    if expire_date < datetime.now():
+        profile.healthclub = None
+        profile.expire_date = None
+        profile.start_date = None
+        profile.save()
+    
     profile = Profile.objects.get(user=user)
     record = HealthDiary.objects.filter(user=user)
     context = {'profile' : profile, 'username' : user.username, 'record' : record}
