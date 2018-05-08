@@ -1,0 +1,19 @@
+{% extends "base.html"  %}
+{% load staticfiles %}
+
+{% block title  %}
+HealthyCash
+{% endblock title %}
+{% block head %}
+{%endblock head%}
+{%block content%}
+
+<div class="container">
+    <a href="/profiles/group/create/" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+    {% if groups %}
+    {% for group in groups %}
+    <p><a href="/profiles/group/detail/{{group.id}}">{{group.name}}</a></p>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock content %}

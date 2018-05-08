@@ -22,6 +22,7 @@ class Profile(models.Model):
     updated          = models.DateTimeField(auto_now=True)
     healthclub       = models.ForeignKey(HealthClub, null=True)
     is_health_master = models.BooleanField(default = False)
+    exercised        = models.IntegerField(default = 0)
     unit_cash        = models.IntegerField(default = 0)
     cash             = models.IntegerField(default = 0)
     healthclub_price = models.IntegerField(default = 0)
@@ -31,3 +32,9 @@ class Profile(models.Model):
     def __unicode__(self):
         return self.user.username
         
+class Group(models.Model):
+    name             = models.CharField(max_length = 120)
+    members          = models.ManyToManyField(User, related_name='is_group', blank = True)
+
+    def __str__(self):
+        return self.name

@@ -1,0 +1,30 @@
+{% extends "base.html"  %}
+{% load staticfiles %}
+
+{% block title  %}
+HealthyCash
+{% endblock title %}
+{% block head %}
+{%endblock head%}
+{%block content%}
+<div class="container">
+    <form action="/profiles/group/create/confirm/" method="POST" >
+        {%csrf_token%}
+        <div class="input-field col s6">
+            <input id="groupname" type="text" class="validate" name = "groupname">
+            <label for="groupname">그룹 이름 : </label>
+        </div>
+        {%for user in users%}
+        {%ifnotequal user.user.username request.user.username%}
+        <p>
+            <input type="checkbox" id="{{user.user.username}}" value="{{user.user.username}}" name="username" />
+            <label for="{{user.user.username}}">{{user.user.username}}</label>
+        </p>
+        {%endifnotequal%}
+        {%endfor%}
+        <button class = "waves-effect waves-light btn" type="submit">그룹 생성</button>
+    </form>
+</div>
+
+
+{%endblock content%}
