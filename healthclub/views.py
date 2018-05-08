@@ -157,6 +157,7 @@ def qrcode_check_save(request):
             )
             obj.save()
             user.profile.cash += user.profile.unit_cash
+            user.profile.exercised += 1
             user.profile.save()
             
             return HttpResponseRedirect(reverse('profiles:mypage'))

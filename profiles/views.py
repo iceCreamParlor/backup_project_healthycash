@@ -22,7 +22,7 @@ def group_detail(request, pk):
     group = Group.objects.get(id = pk)
     groupname = group.name
     groupid = group.id
-    members = group.members.all().order_by('profile__exercised')
+    members = group.members.all().order_by('-profile__exercised')
     context = {'groupname' : groupname, 'groupid' : groupid, 'members' : members}
     return render(request, 'group_detail.html', context)
 
