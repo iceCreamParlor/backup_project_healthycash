@@ -82,16 +82,16 @@ def group_create_confirm(request):
 def mypage(request):
     user = request.user
     profile = Profile.objects.get(user=user)
-    
+    last_diary = HealthDiary.objects.filter(user = user).last().timestamp
     expire_date = profile.expire_date  #When expire_date Expires
     if expire_date != None:
         if expire_date < datetime.now():
             profile.healthclub = None
             profile.expire_date = None
             profile.start_date = None
-            profile.exercised = 0
             profile.save()
-    
+        if last_diary.month < datetime.now().month:
+            profile.exercised = 0
     profile = Profile.objects.get(user=user)
     record = HealthDiary.objects.filter(user=user)
     context = {'profile' : profile, 'username' : user.username, 'record' : record}
