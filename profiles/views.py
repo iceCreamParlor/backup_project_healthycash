@@ -15,7 +15,12 @@ User = get_user_model()
 def group(request):
     user = request.user
     groups = user.is_group.all()
-    context = {'groups' : groups}
+    group_all = Group.objects.all()
+    notgroups = []
+    for group in group_all:
+        if user not in group.members.all():
+            notgroups.append(group)
+    context = {'groups' : groups, 'notgroups' : notgroups}
     return render(request, 'group.html', context)
 
 def group_detail(request, pk):
@@ -38,6 +43,12 @@ def group_update(request, pk):
             members.append(user)
     context = {'users' : users, 'groupname' : groupname, 'groupid' : groupid, 'members' : members}
     return render(request, 'group_update.html', context)
+
+def group_register(request, pk):
+    group = Group.objects.get(id = pk)
+    if request.user not in group.members.all():
+        group.members.add(request.user)
+    return HttpResponseRedirect('/profiles/group/detail/{}/'.format(pk))
 
 def group_update_confirm(request, pk):
     if request.method=='POST':

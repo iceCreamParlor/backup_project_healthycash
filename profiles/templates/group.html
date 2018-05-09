@@ -8,11 +8,27 @@ HealthyCash
 {%endblock head%}
 {%block content%}
 
-<div class="container">
+<div class="container" style="margin-top:30px">
     <a href="/profiles/group/create/" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
     {% if groups %}
+    <p>내가 속해 있는 그룹</p>
     {% for group in groups %}
     <p><a href="/profiles/group/detail/{{group.id}}">{{group.name}}</a></p>
+    {% endfor %}
+    {% endif %}
+    {% if notgroups %}
+    <br><br>
+    <p>내가 속해있지 않은 그룹</p>
+    {% for notgroup in notgroups %}
+    <p>
+        <!-- <a href="/profiles/group/detail/{{notgroup.id}}">{{notgroup.name}}</a> -->
+        {{notgroup.name}}
+        <a href="/profiles/group/register/{{notgroup.id}}" class="waves-effect waves-teal btn-flat">
+            <div class="chip">
+                입장하기
+            </div>
+        </a>
+    </p>
     {% endfor %}
     {% endif %}
 </div>

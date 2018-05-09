@@ -8,12 +8,17 @@ HealthyCash
 {%endblock head%}
 {%block content%}
 <div class="container">
+    {%if request.user in members%}
     <p>그룹 이름 : {{groupname}}</p>
     {%for member in members%}
     <p>{{member.username}}  || 운동하러 간 날 수 : {{member.profile.exercised}}</p>
     {%endfor%}
     <a href="/profiles/group/update/{{groupid}}" class="waves-effect waves-light btn">초대하기</a>
     <a href="/profiles/group/exit/{{groupid}}" class="waves-effect waves-light btn">나가기</a>
+
+    {% else %}
+    <a href="/profiles/group/register/{{groupid}}" class="waves-effect waves-light btn">입장하기</a>
+    {%endif%}
 </div>
 
 {%endblock content%}
