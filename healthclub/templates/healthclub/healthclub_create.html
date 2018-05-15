@@ -4,77 +4,73 @@
 {%endblock head%}
 {% block content %}
 
-<div class="container">
-    <h2>헬스장 등록</h2>
-    <form method="POST" enctype="multipart/form-data" action="{% url 'healthclub:create_confirm' %}">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>가격(1개월)</td>
-                <td>
-                    <div class="input-field col s6">
-                      <input  name = "price1" type="text" class="validate">
+<div class="container" style="margin-top:60px">
+    <div class="col s12 m6 l3">
+        <h4 class="header">헬스장 설정</h4>
+        <div class="card horizontal">
+          <div class="card-stacked">
+            <div class="card-content">
+                <form method="POST" enctype="multipart/form-data" action="{% url 'healthclub:create_confirm' %}">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td>상세설명</td>
+                            <td>
+                                <div class="input-field col s12">
+                                  <textarea  name = "detail" class="materialize-textarea"></textarea>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>사진첨부</td>
+                            <td>
+                                <div class="file-field input-field">
+                                  <div class="btn">
+                                    <span>File</span>
+                                    <input type="file" name="photo" multiple>
+                                  </div>
+                                  <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" placeholder="사진을 업로드해 주세요!">
+                                  </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="row" style="margin-top:50px">
+                        <div class="col s12 l2"></div>
+                        <div class="input-field col s12 l2">
+                          가격(1개월)
+                          <input  name = "price1" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s12 l2">
+                          가격(2개월)
+                          <input  name = "price2" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s12 l2">
+                          가격(3개월)
+                          <input  name = "price3" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s12 l2">
+                          가격(6개월)
+                          <input  name = "price6" type="text" class="validate">
+                        </div>
+                        <div class="input-field col s12 l2">
+                          가격(12개월)
+                          <input  name = "price12" type="text" class="validate">
+                        </div>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td>가격(2개월)</td>
-                <td>
-                    <div class="input-field col s6">
-                      <input  name = "price2" type="text" class="validate">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>가격(3개월)</td>
-                <td>
-                    <div class="input-field col s6">
-                      <input  name = "price3" type="text" class="validate">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>가격(6개월)</td>
-                <td>
-                    <div class="input-field col s6">
-                      <input  name = "price6" type="text" class="validate">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>가격(12개월)</td>
-                <td>
-                    <div class="input-field col s6">
-                      <input  name = "price12" type="text" class="validate">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>상세설명</td>
-                <td>
-                    <div class="input-field col s12">
-                      <textarea  name = "detail" class="materialize-textarea"></textarea>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>사진첨부</td>
-                <td>
-                    <div class="file-field input-field">
-                      <div class="btn">
-                        <span>File</span>
-                        <input type="file" name="photo" multiple>
-                      </div>
-                      <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="사진을 업로드해 주세요!">
-                      </div>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        <button class="btn waves-effect waves-light" type="submit" >Submit
-            <i class="material-icons right">send</i>
-        </button>
-    </form>
-</div>
+                    <center>
+                        <button class="btn waves-effect waves-light" type="submit">저장
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </center>
+                </form>
+            </div>
+            <div class="card-action">
+                <p><a href="{%url 'home'%}">메인 화면으로</a></p>
+            </div>
+          </div>
+        </div>
+     </div>
+</div> 
 {% endblock %}
