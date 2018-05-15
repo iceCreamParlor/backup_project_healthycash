@@ -110,19 +110,19 @@ def mypage(request):
             profile.exercised = 0
     profile = Profile.objects.get(user=user)
     record = HealthDiary.objects.filter(user=user)
-    context = {'profile' : profile, 'username' : user.username, 'record' : record}
+    context = {'profile' : profile, 'username' : user.username, 'record' : record, 'real_name' : user.profile.real_name}
     return render(request, 'mypage.html', context)
 
 # Create your views here.
 class RegisterViewNormal(CreateView):
     form_class = RegisterNormalForm
     template_name = 'registration/register_normal.html'
-    success_url = '/'
+    success_url = '/login/'
     
 class RegisterViewMaster(CreateView):
     form_class = RegisterMasterForm
     template_name = 'registration/register_master.html'
-    success_url = '/'
+    success_url = '/login/'
 
     # def dispatch(self, *args, **kwargs):
     #     if self.request.user.is_authenticated():
