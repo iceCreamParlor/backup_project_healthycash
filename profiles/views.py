@@ -27,9 +27,17 @@ def group_detail(request, pk):
     group = Group.objects.get(id = pk)
     groupname = group.name
     groupid = group.id
+    group_masters = group.group_masters.all()
     members = group.members.all().order_by('-profile__exercised')
-    context = {'groupname' : groupname, 'groupid' : groupid, 'members' : members}
+    context = {'groupname' : groupname, 'groupid' : groupid, 'members' : members, 'group_masters' : group_masters}
     return render(request, 'group_detail.html', context)
+
+def add_group_master(request, groupid, userid):
+    new_master = User.objects.get(id = userid)
+    group = Group.objects.get(id = groupid)
+    group.group_masters.add(new_master)
+    group.save()
+    return HttpResponseRedirect(reverse('profiles:group_detail', kwargs={'pk' : groupid}))
 
 def group_update(request, pk):
     users = Profile.objects.filter(is_health_master=False)
@@ -86,6 +94,7 @@ def group_create_confirm(request):
             new_user = User.objects.get(username = user)
             group.members.add(new_user)
         group.members.add(request.user)
+        group.group_masters.add(request.user)
         group.save()
 
     return HttpResponseRedirect(reverse('profiles:group'))

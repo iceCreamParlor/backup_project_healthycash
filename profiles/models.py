@@ -35,6 +35,6 @@ class Profile(models.Model):
 class Group(models.Model):
     name             = models.CharField(max_length = 120)
     members          = models.ManyToManyField(User, related_name='is_group', blank = True)
-
+    group_masters    = models.ManyToManyField(User, related_name='is_group_master', blank=True)
     def __str__(self):
         return self.name
