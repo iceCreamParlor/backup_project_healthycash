@@ -11,8 +11,6 @@ HealthyCash
     <div class="row">
         <div class = "col s12 m3 l3"></div>
         <div class = "col s12 m6 l6" style="margin-top : 60px">
-            
-       
           <div class="card">
             <div class="card-content">
                 <form action="{% url 'profiles:group_update_confirm' groupid %}" method = "POST">
@@ -39,34 +37,10 @@ HealthyCash
                         </p>
                         {%endfor%}
                     </div>
-                    
                     <button style="margin-top: 40px" class = "waves-effect waves-light btn" type="submit">수정</button>
                 </form>
             </div>
-      </div>
-  
-            
-            <!--<form action="{% url 'profiles:group_update_confirm' groupid %}" method = "POST">-->
-            <!--    {%csrf_token%}-->
-            <!--    <div class="row">-->
-            <!--        <div class="input-field col s6">-->
-            <!--        <input value="{{groupname}}" id="groupname" type="text" name= "groupname" class="validate">-->
-            <!--        <label class="active" for="groupname">그룹 이름</label>-->
-            <!--        </div>-->
-            <!--    </div>-->
-            <!--    <input name="public" type="radio" id="_public" value = "public" />-->
-            <!--    <label for="_public">공개</label>-->
-        
-            <!--    <input name="public" type="radio" id="_private" value = "private"/>-->
-            <!--    <label for="_private">비공개</label>-->
-            <!--    {%for member in members%}-->
-            <!--    <p>-->
-            <!--        <input type="checkbox" name = "username" id="{{member.user.username}}" value="{{member.user.username}}" />-->
-            <!--        <label for="{{member.user.username}}">{{member.user.username}}</label>-->
-            <!--    </p>-->
-            <!--    {%endfor%}-->
-            <!--    <button class = "waves-effect waves-light btn" type="submit">수정</button>-->
-            <!--</form>-->
+          </div>
         </div>
     </div>
 </div>

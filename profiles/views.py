@@ -21,7 +21,7 @@ def group(request):
     
     notgroups = []
     for group in group_all:
-        if user not in group.members.all():
+        if user not in group.members.all() and group.public:
             notgroups.append(group)
     context = {'groups' : groups, 'notgroups' : notgroups, 'groupinvites' : groupinvites}
     return render(request, 'group.html', context)
@@ -114,6 +114,8 @@ def group_exit(request, pk):
     group.members.set(group.members.all().exclude(id=user_id))
     group.group_masters.set(group.group_masters.all().exclude(id=user_id))
     group.save()
+    if len(group.members.all()) == 0:
+        group.delete()
     return HttpResponseRedirect('/profiles/group/')
 
 def group_create(request):
@@ -182,8 +184,3 @@ class RegisterViewMaster(CreateView):
     form_class = RegisterMasterForm
     template_name = 'registration/register_master.html'
     success_url = '/login/'
-
-    # def dispatch(self, *args, **kwargs):
-    #     if self.request.user.is_authenticated():
-    #         return redirect("/logout")
-    #     return super(RegisterView, self).dispatch(*args, **kwargs)

@@ -19,6 +19,7 @@ HealthyCash
   alert("{{message}}");
 {%endif%}
 </script>
+
 <div class="container">
   <div class="row">
     <div class="col s12 m6">
@@ -30,6 +31,9 @@ HealthyCash
       </div>
     </div>
   </div>
+  <center>
+    <a href="{% url 'home' %}"><button type = "button" class="btn waves-effect waves-light">메인으로</button></a>
+  </center>
 </div>
 
 <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>

@@ -39,9 +39,11 @@ HealthyCash
             </div>
             <div class="card-action">
                 {%if request.user in group_masters%}
-                <a href="/profiles/group/update/{{groupid}}" class="waves-effect waves-light btn">그룹 설정</a>
+                <a href="/profiles/group/update/{{groupid}}" style="margin-top:10px" class="waves-effect waves-light btn">그룹 설정</a>
                 {% endif %}
-                <a href="/profiles/group/exit/{{groupid}}" class="waves-effect waves-light btn">나가기</a>
+                <a href="{% url 'profiles:group' %}"><button style="margin-top:10px" type = "button" class="btn waves-effect waves-light">이전으로</button></a>
+                <a href="/profiles/group/exit/{{groupid}}" style="margin-top:10px" class="waves-effect waves-light btn">나가기</a>
+                
             </div>
           </div>
         </div>
