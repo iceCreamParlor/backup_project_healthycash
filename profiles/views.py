@@ -4,9 +4,10 @@ from django.contrib.auth import get_user_model
 from django.views.generic import DetailView, View, CreateView
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 from datetime import datetime
 from django.contrib.auth import get_user_model
-from .models import Profile, Group
+from .models import Profile, Group, GroupInvite
 from healthclub.models import HealthClub, HealthDiary
 from .forms import RegisterNormalForm, RegisterMasterForm
 
@@ -16,13 +17,32 @@ def group(request):
     user = request.user
     groups = user.is_group.all()
     group_all = Group.objects.all()
+    groupinvites = GroupInvite.objects.filter(Q(new_member = user) & Q(confirmed = False)).all()
+    
     notgroups = []
     for group in group_all:
         if user not in group.members.all():
             notgroups.append(group)
-    context = {'groups' : groups, 'notgroups' : notgroups}
+    context = {'groups' : groups, 'notgroups' : notgroups, 'groupinvites' : groupinvites}
     return render(request, 'group.html', context)
 
+def group_invite_accept(request, pk):
+    group_invite = GroupInvite.objects.get(id = pk)
+    group_invite.confirmed = True
+    group_invite.save()
+    group = group_invite.group
+    group.members.add(request.user)
+    group.save()
+    
+    return HttpResponseRedirect(reverse('profiles:group'))
+
+def group_invite_decline(request, pk):
+    group_invite = GroupInvite.objects.get(id = pk)
+    group_invite.confirmed = True
+    group_invite.save()
+    
+    return HttpResponseRedirect(reverse('profiles:group'))
+    
 def group_detail(request, pk):
     group = Group.objects.get(id = pk)
     groupname = group.name
@@ -63,11 +83,28 @@ def group_update_confirm(request, pk):
         group = Group.objects.get(id=pk)
         groupname = request.POST.get("groupname")
         username = request.POST.getlist("username")
+        public = str(request.POST.get("public"))
+        if public=="private":
+                group.public = False
+
         group.name = groupname
         for user in username:
             new_user = User.objects.get(username = user)
-            group.members.add(new_user)
-        group.members.add(request.user)
+            
+            check = GroupInvite.objects.filter(
+                inviter = request.user,
+                new_member = new_user,
+                group = group,
+                confirmed = False
+            )
+            if len(check) == 0:
+                group_invite = GroupInvite.objects.create(
+                    inviter = request.user,
+                    new_member = new_user,
+                    group = group,
+                    confirmed = False
+                )
+                group_invite.save()
         group.save()
         return HttpResponseRedirect('/profiles/group/detail/{}/'.format(pk))
 
@@ -75,6 +112,7 @@ def group_exit(request, pk):
     group = Group.objects.get(id=pk)
     user_id = request.user.id
     group.members.set(group.members.all().exclude(id=user_id))
+    group.group_masters.set(group.group_masters.all().exclude(id=user_id))
     group.save()
     return HttpResponseRedirect('/profiles/group/')
 
@@ -89,10 +127,22 @@ def group_create_confirm(request):
     if request.method=="POST":
         name = request.POST.get("groupname")
         username = request.POST.getlist("username")
+        public = request.POST.get("public")
         group = Group.objects.create(name = name)
+        if public == "private":
+                group.public = False
+                
         for user in username:
             new_user = User.objects.get(username = user)
-            group.members.add(new_user)
+            
+            groupinvite = GroupInvite.objects.create(
+                inviter = request.user,
+                new_member = new_user,
+                confirmed = False,
+                group = group
+            )
+            groupinvite.save()
+            #group.members.add(new_user)
         group.members.add(request.user)
         group.group_masters.add(request.user)
         group.save()

@@ -8,27 +8,89 @@ HealthyCash
 {%endblock head%}
 {%block content%}
 <div class="container">
-    {%if request.user in members%}
-    <p>그룹 이름 : {{groupname}}</p>
-    {%for member in members%}
-    <p>{{member.username}}  || 운동하러 간 날 수 : {{member.profile.exercised}} 
-    {% ifequal member request.user %}
-    {% else %}
-    {% if member in group_masters%}
-    {% else %}
-    <a href="{% url 'profiles:add_group_master' groupid member.id %}"><i class="material-icons">person_add</i></a>
-    {% endif %}
-    {% endifequal %}
-    </p>
-    {%endfor%}
-    {%if request.user in group_masters%}
-    <a href="/profiles/group/update/{{groupid}}" class="waves-effect waves-light btn">초대하기</a>
-    {% endif %}
-    <a href="/profiles/group/exit/{{groupid}}" class="waves-effect waves-light btn">나가기</a>
+    <div class="row">
+         <div class="col s12 m3"></div>
+         <div class="col s12 m6">
+         <h4 class="header">{{groupname}}</h4>
+         <div class="card horizontal">
+          <div class="card-stacked">
+            <div class="card-content">
+                {%if request.user in members%}
+                <table>
+                    <thead>
+                      <tr>
+                          <th>이름</th>
+                          <th>출석 일수</th>
+                          <th>적립금</th>
+                      </tr>
+                    </thead>
+            
+                    <tbody>
+                        {%for member in members%}
+                      <tr>
+                        <td>{{member.username}}</td>
+                        <td>{{member.profile.exercised}}</td>
+                        <td>{{member.profile.cash}}  원 </td>
+                      </tr>
+                      {%endfor%}
+                    </tbody>
+                  </table>
+                {% endif %}
+                
+                <!--{%if request.user in members%}-->
+                <!--<p>그룹 이름 : {{groupname}}</p>-->
+                <!--{%for member in members%}-->
+                <!--<p>{{member.username}}  || 운동하러 간 날 수 : {{member.profile.exercised}} -->
+                <!--{% ifequal member request.user %}-->
+                <!--{% else %}-->
+                <!--{% if member in group_masters%}-->
+                <!--(방장)-->
+                <!--{% else %}-->
+                <!--<a href="{% url 'profiles:add_group_master' groupid member.id %}"><i class="material-icons">person_add</i></a>-->
+                <!--{% endif %}-->
+                <!--{% endifequal %}-->
+                <!--</p>-->
+                <!--{%endfor%}-->
+            </div>
+            <div class="card-action">
+                {%if request.user in group_masters%}
+                <a href="/profiles/group/update/{{groupid}}" class="waves-effect waves-light btn">그룹 설정</a>
+                {% endif %}
+                <a href="/profiles/group/exit/{{groupid}}" class="waves-effect waves-light btn">나가기</a>
+            
+                <!--{% else %}-->
+                <!--<a href="/profiles/group/register/{{groupid}}" class="waves-effect waves-light btn">입장하기</a>-->
+                <!--{%endif%}-->
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+ </div>
+  
+  
+    <!--{%if request.user in members%}-->
+    <!--<p>그룹 이름 : {{groupname}}</p>-->
+    <!--{%for member in members%}-->
+    <!--<p>{{member.username}}  || 운동하러 간 날 수 : {{member.profile.exercised}} -->
+    <!--{% ifequal member request.user %}-->
+    <!--{% else %}-->
+    <!--{% if member in group_masters%}-->
+    <!--(방장)-->
+    <!--{% else %}-->
+    <!--<a href="{% url 'profiles:add_group_master' groupid member.id %}"><i class="material-icons">person_add</i></a>-->
+    <!--{% endif %}-->
+    <!--{% endifequal %}-->
+    <!--</p>-->
+    <!--{%endfor%}-->
+    <!--{%if request.user in group_masters%}-->
+    <!--<a href="/profiles/group/update/{{groupid}}" class="waves-effect waves-light btn">그룹 설정</a>-->
+    <!--{% endif %}-->
+    <!--<a href="/profiles/group/exit/{{groupid}}" class="waves-effect waves-light btn">나가기</a>-->
 
-    {% else %}
-    <a href="/profiles/group/register/{{groupid}}" class="waves-effect waves-light btn">입장하기</a>
-    {%endif%}
-</div>
+    <!--{% else %}-->
+    <!--<a href="/profiles/group/register/{{groupid}}" class="waves-effect waves-light btn">입장하기</a>-->
+    <!--{%endif%}-->
+<!--</div>-->
 
 {%endblock content%}

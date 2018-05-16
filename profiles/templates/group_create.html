@@ -22,9 +22,18 @@ HealthyCash
         </p>
         {%endifnotequal%}
         {%endfor%}
+        
+        <br>
+        <input name="public" type="radio" id="_public" value = "public" />
+        <label for="_public">공개</label>
+
+        <input name="public" type="radio" id="_private" value = "private"/>
+        <label for="_private">비공개</label>
+        <br>
+        <br>
         <button class = "waves-effect waves-light btn" type="submit">그룹 생성</button>
     </form>
 </div>
 
-
+</script>
 {%endblock content%}

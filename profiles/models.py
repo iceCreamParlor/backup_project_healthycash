@@ -30,11 +30,23 @@ class Profile(models.Model):
     expire_date      = models.DateTimeField(null=True)
 
     def __unicode__(self):
-        return self.user.username
+        return self.user.username.encode('utf-8')
         
 class Group(models.Model):
     name             = models.CharField(max_length = 120)
     members          = models.ManyToManyField(User, related_name='is_group', blank = True)
     group_masters    = models.ManyToManyField(User, related_name='is_group_master', blank=True)
+    public           = models.BooleanField(default = True)
+
     def __str__(self):
-        return self.name
+        return self.name.encode('utf-8')
+        
+class GroupInvite(models.Model):
+    inviter          = models.ForeignKey(User, related_name = 'inviter')
+    new_member       = models.ForeignKey(User, related_name = 'new_member')
+    group            = models.ForeignKey(Group, related_name = 'group', null=True)
+    confirmed        = models.BooleanField(default = False)
+    
+    def __str__(self):
+        return self.inviter.username.encode('utf-8') + self.new_member.username.encode('utf-8')
+        

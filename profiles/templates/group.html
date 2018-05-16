@@ -7,29 +7,65 @@ HealthyCash
 {% block head %}
 {%endblock head%}
 {%block content%}
-
-<div class="container" style="margin-top:30px">
-    <a href="/profiles/group/create/" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
-    {% if groups %}
-    <p>내가 속해 있는 그룹</p>
-    {% for group in groups %}
-    <p><a href="/profiles/group/detail/{{group.id}}">{{group.name}}</a></p>
-    {% endfor %}
-    {% endif %}
-    {% if notgroups %}
-    <br><br>
-    <p>내가 속해있지 않은 그룹</p>
-    {% for notgroup in notgroups %}
-    <p>
-        <!-- <a href="/profiles/group/detail/{{notgroup.id}}">{{notgroup.name}}</a> -->
-        {{notgroup.name}}
-        <a href="/profiles/group/register/{{notgroup.id}}" class="waves-effect waves-teal btn-flat">
-            <div class="chip">
-                입장하기
+<div class="container">
+    <div class="row" style="margin-top:30px">
+         <div class="col s12 m4">
+            <h4 class="header">그룹 초대       <a href="/profiles/group/create/" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a></h4>
+            <div class="card horizontal">
+              <div class="card-stacked">
+                <div class="card-content">
+                    {% if groupinvites %}
+                    {% for groupinvite in groupinvites %}
+                    <p>{{ groupinvite.inviter }} 님이 {{ groupinvite.group.name }} 그룹에 초대하셨습니다.
+                        <a href = "{% url 'profiles:group_invite_accept' groupinvite.id %}"><i class="material-icons">check</i></a> 
+                        <a href = "{% url 'profiles:group_invite_decline' groupinvite.id %}"><i class="material-icons">clear</i></a>
+                    </p>
+                    {% endfor %}
+                    {% else %}
+                    <p>그룹 초대 내역이 없습니다.</p>
+                    {% endif %}
+                </div>
+              </div>
             </div>
-        </a>
-    </p>
-    {% endfor %}
-    {% endif %}
+          </div>
+          <div class="col s12 m4">
+            <h4 class="header">내 그룹</h4>
+            <div class="card horizontal">
+              <div class="card-stacked">
+                <div class="card-content">
+                    {% if groups %}
+                    {% for group in groups %}
+                    <p><a href="/profiles/group/detail/{{group.id}}">{{group.name}}</a></p>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m4">
+            <h4 class="header">오픈 그룹</h4>
+            <div class="card horizontal">
+              <div class="card-stacked">
+                <div class="card-content">
+                    {% if notgroups %}
+                        {% for notgroup in notgroups %}
+                        {% if notgroup.public %}
+                        <p>
+                            <!-- <a href="/profiles/group/detail/{{notgroup.id}}">{{notgroup.name}}</a> -->
+                            {{notgroup.name}}
+                            <a href="/profiles/group/register/{{notgroup.id}}" class="waves-effect waves-teal btn-flat">
+                                <div class="chip">
+                                    입장하기
+                                </div>
+                            </a>
+                        </p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
 </div>
 {% endblock content %}

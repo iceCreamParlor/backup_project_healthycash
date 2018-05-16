@@ -16,6 +16,11 @@ HealthyCash
             <label class="active" for="groupname">그룹 이름</label>
             </div>
         </div>
+        <input name="public" type="radio" id="_public" value = "public" />
+        <label for="_public">공개</label>
+
+        <input name="public" type="radio" id="_private" value = "private"/>
+        <label for="_private">비공개</label>
         {%for member in members%}
         <p>
             <input type="checkbox" name = "username" id="{{member.user.username}}" value="{{member.user.username}}" />
