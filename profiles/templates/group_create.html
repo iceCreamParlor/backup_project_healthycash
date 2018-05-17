@@ -12,7 +12,7 @@ HealthyCash
         {%csrf_token%}
         <div class="input-field col s6">
             <input id="groupname" type="text" class="validate" name = "groupname">
-            <label for="groupname">그룹 이름 : </label>
+            <label for="groupname" style="color:black">그룹 이름 : </label>
         </div>
         {%for user in users%}
         {%ifnotequal user.user.username request.user.username%}
@@ -34,6 +34,6 @@ HealthyCash
         <button class = "waves-effect waves-light btn" type="submit">그룹 생성</button>
     </form>
 </div>
-
+<br><br>
 </script>
 {%endblock content%}
