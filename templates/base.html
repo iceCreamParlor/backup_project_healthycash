@@ -32,7 +32,6 @@
     <div class="nav-wrapper container">
       <a id="logo-container" href="/" class="brand-logo"> <small>Logo</small><i class="large material-icons">chat_bubble</i></a>
       
-
       <ul class="right hide-on-med-and-down">
         {% if request.user.is_anonymous %}
         <li><a href="/login">로그인</a></li>
@@ -41,14 +40,19 @@
         <li><a href="/aboutus/">About Us</a></li>
         {% elif request.user.profile.is_health_master %}
         <li><a href="/healthclub/mypage">지점 현황</a></li>
+        <li><a href="/healthclub/create">지점 정보 설정</a></li>
         <li><a href="/healthclub/list">헬스장 정보</a></li>
-        <li><a href="/healthclub/create">헬스장 등록 / 정보 변경</a></li>
         <li><a href="/logout">로그아웃</a></li>
         {% else %}
-        <!--<li><a href="/healthclub/qrcode_check">출석체크</a></li>-->
-        <li><a href="/profiles/mypage">마이페이지</a></li>
-        <li><a href="/profiles/group">그룹</a></li>
         <li><a href="/healthclub/list">헬스장 정보</a></li>
+        <li><a href="/profiles/mypage">마이페이지</a></li>
+        <li>
+          <a href="/profiles/group">그룹
+            {% if request.user.new_member.all  %}
+            <span class="badge">{{request.user.new_member.all|length}}</span>
+            {% endif  %}
+          </a>
+        </li>
         <li><a href="/aboutus/">About Us</a></li>
         <li><a href="/logout">로그아웃</a></li>
         {% endif %}
@@ -64,8 +68,8 @@
         {% elif request.user.profile.is_health_master %}
         <li><a>{{request.user.profile.real_name}} 님 안녕하세요!</a></li>
         <li><a href="/healthclub/mypage">지점 현황</a></li>
+        <li><a href="/healthclub/create">지점 정보 설정</a></li>
         <li><a href="/healthclub/list">헬스장 정보</a></li>
-        <li><a href="/healthclub/create">헬스장 등록 / 정보 변경</a></li>
         <li><a href="/logout">로그아웃</a></li>
         {% else %}
         <li><a>{{request.user.profile.real_name}} 님 안녕하세요!</a></li>
@@ -74,11 +78,13 @@
         <li><a href="/profiles/mypage">마이페이지<i class="material-icons">create</i></a></li>
         <li>
           <a href="/profiles/group">그룹<i class="material-icons">group</i>
+            {% if request.user.new_member.all  %}
             <span class="badge">{{request.user.new_member.all|length}}</span>
+            {% endif  %}
           </a>
         </li>
-        <li><a href="/logout">로그아웃<i class="material-icons">launch</i></a></li>
         <li><a href="/aboutus/">About Us <i class="material-icons">folder_open</i></a></li>
+        <li><a href="/logout">로그아웃<i class="material-icons">launch</i></a></li>
         {% endif %}
       </ul>
       
