@@ -30,6 +30,7 @@ def group_invite_accept(request, pk):
     group_invite = GroupInvite.objects.get(id = pk)
     group_invite.confirmed = True
     group_invite.save()
+    group_invite.delete()
     group = group_invite.group
     group.members.add(request.user)
     group.save()
@@ -40,6 +41,7 @@ def group_invite_decline(request, pk):
     group_invite = GroupInvite.objects.get(id = pk)
     group_invite.confirmed = True
     group_invite.save()
+    group_invite.delete()
     
     return HttpResponseRedirect(reverse('profiles:group'))
     
