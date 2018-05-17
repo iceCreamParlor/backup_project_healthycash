@@ -9,5 +9,40 @@ HealthyCash
 {%endblock head%}
 
 {% block content %}
+<div class="container" style="margin-top:150px">
+<div class="row">
+    <div class="col s12 m3 l3"></div>
+    <div class="col s12 m6 l6 ">
+      <form method="GET" action="/healthclub/list/">
+          {% csrf_token %}
+          <div class="row">
+            <div class="input-field col s9 m9 l9">
+              <input type="text" name="search" id="autocomplete-input" class="autocomplete">
+              <label for="autocomplete-input">헬스장 바로검색</label>
+            </div>
+            <div class="col s1 m1 l1">
+                <i style="font-size:40px" class="material-icons prefix">search</i>
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
 
+<script>
+    $(document).ready(function(){
+        $('input.autocomplete').autocomplete({
+        data: {
+          "Apple": null,
+          "Microsoft": null,
+          "Google": 'https://placehold.it/250x250'
+        },
+        limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+        onAutocomplete: function(val) {
+          // Callback function when value is autcompleted.
+        },
+        minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+      });
+    })
+</script>
 {% endblock content %}

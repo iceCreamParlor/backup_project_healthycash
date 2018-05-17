@@ -1,0 +1,32 @@
+{% extends "base.html"  %}
+{% load staticfiles %}
+
+{% block title  %}
+HealthyCash
+{% endblock  %}
+
+{% block head %}
+{%endblock head%}
+
+{% block content %}
+
+<div class="container" style="margin-top:60px">
+    <div class="row">
+        <div class="col s12 m3"></div>
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image">
+              <img src="{% static 'images/healthclub1.jpg' %}">
+            </div>
+            <div class="card-content">
+              <p>‘살은 빼고, 지갑은 채우고’<br>
+                Healthy Cash는 운동하는 사람들이 더욱 열심히 운동할 수 있도록 함께 하는 동반자입니다.</p>
+            </div>
+            <!--<div class="card-action">-->
+            <!--  <a href="#">This is a link</a>-->
+            <!--</div>-->
+          </div>
+        </div>
+  </div>
+</div>
+{% endblock content %}

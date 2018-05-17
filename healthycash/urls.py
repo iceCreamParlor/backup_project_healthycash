@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
     url(r'^login/', LoginView.as_view(), name='login'),
     url(r'^logout/', LogoutView.as_view(), name='logout'),
+    url(r'^aboutus/', TemplateView.as_view(template_name = 'aboutus.html'), name='aboutus'),
 
     url(r'^password_reset/', PasswordResetView.as_view(template_name='password_reset.html'), name='password_reset'),    
     url(r'^healthclub/', include('healthclub.urls', namespace='healthclub')),
