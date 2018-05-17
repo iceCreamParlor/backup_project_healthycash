@@ -15,14 +15,28 @@ HealthyCash
 {%endif%}
 <div class="container" style="margin-top:30px">
     <div class="row">
-      <form class="col s12 m6 l6" method="GET" action=".">
-        <p>헬스장 이름, 지역, 상세설명을 입력하세요</p>
-            <div class="input-field col s12">
-              <input id="search" name = "search"  type="text">
+      <!--<form class="col s12 m6 l6" method="GET" action=".">-->
+      <!--  <p>헬스장 이름, 지역, 상세설명을 입력하세요</p>-->
+      <!--      <div class="input-field col s12">-->
+      <!--        <input id="search" name = "search"  type="text">-->
               <!--<label for="search">검색</label>-->
               <!--<span class="helper-text" data-error="wrong" data-success="right">헬스장 이름, 지역, 상세설명을 입력하세요</span>-->
+      <!--      </div>-->
+      <!--    <button style="margin-top:10px; margin-right:30px; float:right" type='submit' class="btn waves-effect waves-light">검색</button>-->
+      <!--</form>-->
+      <form method="GET" action="/healthclub/list/" id="search">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col s1 m1 m1"></div>
+            <div class="input-field col s8 m8 l8">
+              <input type="text" name="search" id="autocomplete-input" class="autocomplete">
+              <label for="autocomplete-input">헬스장 바로검색</label>
             </div>
-          <button style="margin-top:10px; margin-right:30px; float:right" type='submit' class="btn waves-effect waves-light">검색</button>
+            <div class="col s1 m1 l1">
+                <i style="font-size:40px" class="material-icons prefix" onclick="submitFunc()">search</i>
+            </div>
+            <div class="col s2 m2 l2"></div>
+          </div>
       </form>
     </div>
     <div class="col s12 m4">
@@ -50,4 +64,23 @@ HealthyCash
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $('input.autocomplete').autocomplete({
+        data: {
+          "Apple": null,
+          "Microsoft": null,
+          "Google": 'https://placehold.it/250x250'
+        },
+        limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+        onAutocomplete: function(val) {
+          // Callback function when value is autcompleted.
+        },
+        minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+      });
+    })
+    function submitFunc(){
+        $( "#search" ).submit();
+    };
+</script>
 {%endblock content%}
