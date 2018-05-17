@@ -76,21 +76,27 @@ class HealthClubListView(ListView):
     
     def get_queryset(self):
         search = self.request.GET.get('search')
+        
         if search:
+            search = search.split("(")[0]
             return HealthClub.objects.filter(Q(name__icontains=search) | Q(address__icontains=search) | Q(detail__icontains=search)).order_by('updated')
         return HealthClub.objects.all().order_by('updated')
     
     def get_context_data(self, *args, **kwargs):
         context = super(HealthClubListView, self).get_context_data(**kwargs)
         healthclubs = HealthClub.objects.all()
+        hkeywords = set()
         keywords = set()
         for healthclub in healthclubs:
-            keywords.add(healthclub.name)
+            if len(healthclub.address) >= 12:
+                address_short = healthclub.address[0:12] + ".."
+            temp = healthclub.name + "(" + address_short + ")"
+            hkeywords.add(temp)
             addresses = healthclub.address.split(' ')
             for address in addresses:
                 keywords.add(address)
-        context['keywords'] = keywords
-        
+            context['keywords'] = keywords
+            context['healthclubs'] = hkeywords
         return context
 
 @login_required(login_url = "/login")

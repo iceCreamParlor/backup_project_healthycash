@@ -34,7 +34,11 @@ HealthyCash
         $('input.autocomplete').autocomplete({
         data: {
           {% for keyword in keywords %}
-          {{ keyword }} : null,
+          "{{ keyword }}" : null,
+          {% endfor %}
+          
+          {% for healthclub in healthclubs %}
+          "{{ healthclub }}"  : null,
           {% endfor %}
         },
         limit: 20, // The max amount of results that can be shown at once. Default: Infinity.

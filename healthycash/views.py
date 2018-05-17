@@ -8,11 +8,16 @@ from healthclub.models import HealthClub
 def home(request):
     healthclubs = HealthClub.objects.all()
     keywords = set()
+    hkeywords = set()
     for healthclub in healthclubs:
-        keywords.add(healthclub.name)
+        if len(healthclub.address) >= 12:
+            address_short = healthclub.address[0:12] + ".."
+        temp = healthclub.name + "(" + address_short + ")"
+        hkeywords.add(temp)
         addresses = healthclub.address.split(' ')
         for address in addresses:
             keywords.add(address)
-    context = {'keywords' : keywords}
+
+    context = {'keywords' : keywords, 'healthclubs' : hkeywords}
     
     return render(request, 'home.html', context)
