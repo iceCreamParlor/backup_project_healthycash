@@ -7,33 +7,90 @@ HealthyCash
 {% block head %}
 {%endblock head%}
 {%block content%}
-<div class="container">
-    <form action="/profiles/group/create/confirm/" method="POST" >
-        {%csrf_token%}
-        <div class="input-field col s6">
-            <input id="groupname" type="text" class="validate" name = "groupname">
-            <label for="groupname" style="color:black">그룹 이름 : </label>
-        </div>
-        {%for user in users%}
-        {%ifnotequal user.user.username request.user.username%}
-        <p>
-            <input type="checkbox" id="{{user.user.username}}" value="{{user.user.username}}" name="username" />
-            <label for="{{user.user.username}}">{{user.user.username}}</label>
-        </p>
-        {%endifnotequal%}
-        {%endfor%}
-        
-        <br>
-        <input name="public" type="radio" id="_public" value = "public" />
-        <label for="_public">공개</label>
 
-        <input name="public" type="radio" id="_private" value = "private"/>
-        <label for="_private">비공개</label>
-        <br>
-        <br>
-        <button class = "waves-effect waves-light btn" type="submit">그룹 생성</button>
-    </form>
+<div class="container">
+    <div class="row" style="margin-top:30px">
+        <div class="col s12 m3 l3"></div>
+        <div class="col s12 m6 l6">
+            <form action="/profiles/group/create/confirm/" method="POST" >
+                {%csrf_token%}
+                <div class="input-field">
+                    <input id="groupname" type="text" class="validate" name = "groupname">
+                    <label for="groupname" style="color:black">그룹 이름 : </label>
+                </div>
+                <div class="input-field" id="search">
+                    <input type="text"  id="autocomplete-input" class="autocomplete">
+                    <label for="autocomplete-input">아이디 검색</label>
+                </div>
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                          <div class="collapsible-header">
+                            회원 목록 (전체)
+                          </div>
+                          <div class="collapsible-body">
+                            {%for user in users%}
+                            {%ifnotequal user.user.username request.user.username%}
+                            <p>
+                                <input type="checkbox" id="{{user.user.username}}" value="{{user.user.username}}" name="username" />
+                                <label for="{{user.user.username}}">{{user.user.username}}</label>
+                            </p>
+                            {%endifnotequal%}
+                            {%endfor%}
+                          </div>
+                        </li>
+                    </ul>
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                          <div class="collapsible-header">
+                            회원 목록 ({{healthclub.name}})
+                          </div>
+                          <div class="collapsible-body">
+                            {%for user in same_healthclub_users%}
+                            {%ifnotequal user.user.username request.user.username%}
+                            <p>
+                                <input type="checkbox" id="{{user.user.username|add:'_same'}}" value="{{user.user.username}}" name="username" />
+                                <label for="{{user.user.username|add:'_same'}}">{{user.user.username}}</label>
+                            </p>
+                            {%endifnotequal%}
+                            {%endfor%}
+                          </div>
+                        </li>
+                    </ul>
+                <br>
+                <input name="public" type="radio" id="_public" value = "public" />
+                <label for="_public">공개</label>
+        
+                <input name="public" type="radio" id="_private" value = "private"/>
+                <label for="_private">비공개</label>
+                <br>
+                <br>
+                <button class = "waves-effect waves-light btn" type="submit">그룹 생성</button>
+            </form>
+        </div>    
+    </div>
 </div>
 <br><br>
+
+<script>
+    $(document).ready(function(){
+        $('input.autocomplete').autocomplete({
+        data: {
+          {% for user in users %}
+          "{{ user }}" : null,
+          {% endfor %}
+        },
+        limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+        onAutocomplete: function(val) {
+          // Callback function when value is autcompleted.
+          html = '<div class="chip">' + val + '<i class="close material-icons">close</i><div><input type="hidden" name="search_ids" value="' + val + '"></div></div>'
+          $('#search').after(html)
+        },
+        minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+      });
+    })
+    function submitFunc(){
+        $( "#search" ).submit();
+    };
 </script>
+
 {%endblock content%}

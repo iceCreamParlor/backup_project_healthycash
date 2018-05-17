@@ -122,7 +122,9 @@ def group_exit(request, pk):
 
 def group_create(request):
     users = Profile.objects.filter(is_health_master=False)
-    context = {'users' : users}
+    same_healthclub_users = users.filter(healthclub = request.user.profile.healthclub)
+    healthclub = request.user.profile.healthclub
+    context = {'users' : users, 'same_healthclub_users' : same_healthclub_users, 'healthclub' : healthclub}
     return render(request, 'group_create.html', context)
 
 def group_create_confirm(request):
@@ -131,11 +133,25 @@ def group_create_confirm(request):
     if request.method=="POST":
         name = request.POST.get("groupname")
         username = request.POST.getlist("username")
+        search_ids = request.POST.getlist("search_ids")
         public = request.POST.get("public")
         group = Group.objects.create(name = name)
+        
         if public == "private":
                 group.public = False
                 
+        for search_id in search_ids:
+            new_user = User.objects.get(username = search_id)
+            
+            groupinvite = GroupInvite.objects.create(
+                inviter = request.user,
+                new_member = new_user,
+                confirmed = False,
+                group = group
+            )
+            groupinvite.save()
+            #group.members.add(new_user)
+            
         for user in username:
             new_user = User.objects.get(username = user)
             
