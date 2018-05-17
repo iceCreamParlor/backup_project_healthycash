@@ -79,6 +79,19 @@ class HealthClubListView(ListView):
         if search:
             return HealthClub.objects.filter(Q(name__icontains=search) | Q(address__icontains=search) | Q(detail__icontains=search)).order_by('updated')
         return HealthClub.objects.all().order_by('updated')
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(HealthClubListView, self).get_context_data(**kwargs)
+        healthclubs = HealthClub.objects.all()
+        keywords = set()
+        for healthclub in healthclubs:
+            keywords.add(healthclub.name)
+            addresses = healthclub.address.split(' ')
+            for address in addresses:
+                keywords.add(address)
+        context['keywords'] = keywords
+        
+        return context
 
 @login_required(login_url = "/login")
 def healthclub_create(request):

@@ -21,11 +21,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, PasswordResetView, LogoutView
 
+from .views import home
 from profiles.views import RegisterViewNormal, RegisterViewMaster
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
+    url(r'^$', home, name='home'),
     url(r'^login/', LoginView.as_view(), name='login'),
     url(r'^logout/', LogoutView.as_view(), name='logout'),
     url(r'^aboutus/', TemplateView.as_view(template_name = 'aboutus.html'), name='aboutus'),

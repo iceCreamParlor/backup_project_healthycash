@@ -15,15 +15,6 @@ HealthyCash
 {%endif%}
 <div class="container" style="margin-top:30px">
     <div class="row">
-      <!--<form class="col s12 m6 l6" method="GET" action=".">-->
-      <!--  <p>헬스장 이름, 지역, 상세설명을 입력하세요</p>-->
-      <!--      <div class="input-field col s12">-->
-      <!--        <input id="search" name = "search"  type="text">-->
-              <!--<label for="search">검색</label>-->
-              <!--<span class="helper-text" data-error="wrong" data-success="right">헬스장 이름, 지역, 상세설명을 입력하세요</span>-->
-      <!--      </div>-->
-      <!--    <button style="margin-top:10px; margin-right:30px; float:right" type='submit' class="btn waves-effect waves-light">검색</button>-->
-      <!--</form>-->
       <form method="GET" action="/healthclub/list/" id="search">
           {% csrf_token %}
           <div class="row">
@@ -68,9 +59,9 @@ HealthyCash
     $(document).ready(function(){
         $('input.autocomplete').autocomplete({
         data: {
-          "Apple": null,
-          "Microsoft": null,
-          "Google": 'https://placehold.it/250x250'
+          {% for keyword in keywords %}
+          {{ keyword }} : null,
+          {% endfor %}
         },
         limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
         onAutocomplete: function(val) {

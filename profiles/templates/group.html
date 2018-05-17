@@ -10,6 +10,21 @@ HealthyCash
 <div class="container">
     <div class="row" style="margin-top:30px">
          <div class="col s12 m4">
+            <h4 class="header">내 그룹    <a style="float:right;margin-right:10px;" href="/profiles/group/create/" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a></h4>
+            <div class="card horizontal" style="margin-top:20px">
+              <div class="card-stacked">
+                <div class="card-content">
+                    {% if groups %}
+                    {% for group in groups %}
+                    <p><a href="/profiles/group/detail/{{group.id}}">{{group.name}}<i style="float:right" class="material-icons">near_me</i> </a></p>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+         
+         <div class="col s12 m4">
            <ul class="collapsible" data-collapsible="accordion">
             <li>
               <div class="collapsible-header">
@@ -58,19 +73,6 @@ HealthyCash
              <!--<span class="new badge" data-badge-caption="custom caption">4</span>-->
           </div>
           
-          <div class="col s12 m4">
-            <h4 class="header">내 그룹    <a style="float:right;margin-right:10px;" href="/profiles/group/create/" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a></h4>
-            <div class="card horizontal" style="margin-top:20px">
-              <div class="card-stacked">
-                <div class="card-content">
-                    {% if groups %}
-                    {% for group in groups %}
-                    <p><a href="/profiles/group/detail/{{group.id}}">{{group.name}}<i style="float:right" class="material-icons">near_me</i> </a></p>
-                    {% endfor %}
-                    {% endif %}
-                </div>
-              </div>
-            </div>
-          </div>
+          
 </div>
 {% endblock content %}
