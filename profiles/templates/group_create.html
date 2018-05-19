@@ -76,7 +76,7 @@ HealthyCash
         $('input.autocomplete').autocomplete({
         data: {
           {% for user in users %}
-          "{{ user }}" : null,
+          "{{ user.user.username }}" : null,
           {% endfor %}
         },
         limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
@@ -89,9 +89,9 @@ HealthyCash
         minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
       });
     })
-    function submitFunc(){
-        $( "#search" ).submit();
-    };
+    // function submitFunc(){
+    //     $( "#search" ).submit();
+    // };
 </script>
 
 {%endblock content%}

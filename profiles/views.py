@@ -121,10 +121,11 @@ def group_exit(request, pk):
     return HttpResponseRedirect('/profiles/group/')
 
 def group_create(request):
-    users = Profile.objects.filter(is_health_master=False)
+    users = Profile.objects.filter(is_health_master=False).all()
     same_healthclub_users = users.filter(healthclub = request.user.profile.healthclub)
     healthclub = request.user.profile.healthclub
     context = {'users' : users, 'same_healthclub_users' : same_healthclub_users, 'healthclub' : healthclub}
+
     return render(request, 'group_create.html', context)
 
 def group_create_confirm(request):
