@@ -84,6 +84,7 @@ HealthyCash
           // Callback function when value is autcompleted.
           html = '<div class="chip">' + val + '<i class="close material-icons">close</i><div><input type="hidden" name="search_ids" value="' + val + '"></div></div>'
           $('#search').after(html)
+          $('#autocomplete-input').val('')
         },
         minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
       });
