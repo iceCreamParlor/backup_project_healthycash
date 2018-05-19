@@ -39,8 +39,10 @@ HealthyCash
                         <td>{{member.profile.cash}}  원 </td>
                         {% if member in group_masters %}
                         <td>방장</td>
-                        {% else %}
+                        {% elif member.id != request.user.id %}
+                            {% if request.user in group_masters %}
                         <td><a href="{% url 'profiles:add_group_master' groupid member.id %}"><i class="small material-icons">add</i></a></td>
+                            {% endif %}
                         {% endif %}
                       </tr>
                       {%endfor%}

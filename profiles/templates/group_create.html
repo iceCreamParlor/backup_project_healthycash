@@ -12,7 +12,7 @@ HealthyCash
     <div class="row" style="margin-top:30px">
         <div class="col s12 m3 l3"></div>
         <div class="col s12 m6 l6">
-            <form action="/profiles/group/create/confirm/" method="POST" >
+            <form action="/profiles/group/create/confirm/" method="POST" id="group_create" >
                 {%csrf_token%}
                 <div class="input-field">
                     <input id="groupname" type="text" class="validate" name = "groupname">
@@ -39,6 +39,7 @@ HealthyCash
                           </div>
                         </li>
                     </ul>
+                    {% if healthclub %}
                     <ul class="collapsible" data-collapsible="accordion">
                         <li>
                           <div class="collapsible-header">
@@ -56,6 +57,7 @@ HealthyCash
                           </div>
                         </li>
                     </ul>
+                    {% endif %}
                 <br>
                 <input name="public" type="radio" id="_public" value = "public" />
                 <label for="_public">공개</label>
@@ -64,7 +66,7 @@ HealthyCash
                 <label for="_private">비공개</label>
                 <br>
                 <br>
-                <button class = "waves-effect waves-light btn" type="submit">그룹 생성</button>
+                <button onclick="submitFunc()" class = "waves-effect waves-light btn" type="button">그룹 생성</button>
             </form>
         </div>    
     </div>
@@ -89,9 +91,9 @@ HealthyCash
         minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
       });
     })
-    // function submitFunc(){
-    //     $( "#search" ).submit();
-    // };
+    function submitFunc(){
+        $( "#group_create" ).submit();
+    };
 </script>
 
 {%endblock content%}

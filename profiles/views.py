@@ -62,8 +62,8 @@ def add_group_master(request, groupid, userid):
     return HttpResponseRedirect(reverse('profiles:group_detail', kwargs={'pk' : groupid}))
 
 def group_update(request, pk):
-    users = Profile.objects.filter(is_health_master=False)
     group = Group.objects.get(id=pk)
+    users = Profile.objects.filter(is_health_master=False).exclude(user__is_group=group)
     groupname = group.name
     groupid = pk
 
@@ -121,7 +121,7 @@ def group_exit(request, pk):
     return HttpResponseRedirect('/profiles/group/')
 
 def group_create(request):
-    users = Profile.objects.filter(is_health_master=False).all()
+    users = Profile.objects.filter(is_health_master=False).exclude(user=request.user).all()
     same_healthclub_users = users.filter(healthclub = request.user.profile.healthclub)
     healthclub = request.user.profile.healthclub
     context = {'users' : users, 'same_healthclub_users' : same_healthclub_users, 'healthclub' : healthclub}
