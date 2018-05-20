@@ -29,8 +29,8 @@ class Profile(models.Model):
     start_date       = models.DateTimeField(null=True)
     expire_date      = models.DateTimeField(null=True)
 
-    def __unicode__(self):
-        return self.user.username.encode('utf-8')
+    def __str__(self):
+        return self.user.username
         
 class Group(models.Model):
     name             = models.CharField(max_length = 120)
@@ -39,7 +39,7 @@ class Group(models.Model):
     public           = models.BooleanField(default = True)
 
     def __str__(self):
-        return self.name.encode('utf-8')
+        return self.name
         
 class GroupInvite(models.Model):
     inviter          = models.ForeignKey(User, related_name = 'inviter')
@@ -48,5 +48,5 @@ class GroupInvite(models.Model):
     confirmed        = models.BooleanField(default = False)
     
     def __str__(self):
-        return self.inviter.username.encode('utf-8') + self.new_member.username.encode('utf-8')
+        return self.group.name
         
