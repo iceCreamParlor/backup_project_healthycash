@@ -14,11 +14,9 @@ HealthyCash
             <div class="card horizontal" style="margin-top:20px">
               <div class="card-stacked">
                 <div class="card-content">
-                    {% if groups %}
                     {% for group in groups %}
                     <p><a href="/profiles/group/detail/{{group.id}}">{{group.name}}<i style="float:right" class="material-icons">near_me</i> </a></p>
                     {% endfor %}
-                    {% endif %}
                 </div>
               </div>
             </div>
@@ -35,7 +33,7 @@ HealthyCash
               <div class="collapsible-body">
                 {% if groupinvites %}
                     {% for groupinvite in groupinvites %}
-                    <p>{{ groupinvite.inviter }} 님이 {{ groupinvite.group.name }} 그룹에 초대하셨습니다.
+                    <p>{{ groupinvite.inviter }} invited you to {{ groupinvite.group.name }}.
                         <a href = "{% url 'profiles:group_invite_accept' groupinvite.id %}"><i class="material-icons">check</i></a> 
                         <a href = "{% url 'profiles:group_invite_decline' groupinvite.id %}"><i class="material-icons">clear</i></a>
                     </p>

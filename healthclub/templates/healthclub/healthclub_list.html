@@ -18,8 +18,8 @@ HealthyCash
       <form method="GET" action="/healthclub/list/" id="search">
           {% csrf_token %}
           <div class="row">
-            <div class="col s1 m1 m1"></div>
-            <div class="input-field col s8 m8 l8">
+            <div class="col s2 m2 l2"></div>
+            <div class="input-field col s7 m7 l7">
               <input type="text" name="search" id="autocomplete-input" class="autocomplete">
               <label for="autocomplete-input">헬스장 바로검색</label>
             </div>
@@ -30,16 +30,18 @@ HealthyCash
           </div>
       </form>
     </div>
-    <div class="col s12 m4">
-        <div class="row">
+    <div class="col s12 m4"></div>
+        
             {% for obj in object_list reversed%}
-            <div class="col s12 m4">
+          <div class="row">
+            <div class="col s1 m1 l1"></div>
+            <div class="col s10 m4 l4">
               <div class="card" >
                 <div class="card-image">
                   {% if obj.photo %}
-                  <img src="{{obj.photo.url}}" style="height:300px">
+                  <img src="{{obj.photo.url}}">
                   {%else%}
-                  <img src="{% static 'images/default_image.jpg' %}" style="height:300px">
+                  <img src="{% static 'images/default_image.jpg' %}">
                   {% endif %}
                 </div>
                 <div class="card-content"> 
@@ -51,9 +53,11 @@ HealthyCash
                 </div>
               </div>
             </div>
+            <div class="col s1"></div>
+          </div>
              {% endfor %}
-        </div>
-    </div>
+        
+    
 </div>
 <script>
     $(document).ready(function(){

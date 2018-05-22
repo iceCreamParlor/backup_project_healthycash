@@ -26,7 +26,7 @@ HealthyCash
                       <tr>
                           <th>이름</th>
                           <th>출석 일수</th>
-                          <th>적립금</th>
+                          <th>적립금(원)</th>
                           <th>권한</th>
                       </tr>
                     </thead>
@@ -36,7 +36,7 @@ HealthyCash
                       <tr>
                         <td>{{member.username}}</td>
                         <td>{{member.profile.exercised}}</td>
-                        <td>{{member.profile.cash}}  원 </td>
+                        <td>{{member.profile.cash}}</td>
                         {% if member in group_masters %}
                         <td>방장</td>
                         {% elif member.id != request.user.id %}
