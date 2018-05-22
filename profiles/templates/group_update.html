@@ -12,45 +12,26 @@ HealthyCash
     <div class="row" style="margin-top:30px">
         <div class="col s12 m3 l3"></div>
         <div class="col s12 m6 l6">
-            <form action="/profiles/group/create/confirm/" method="POST" id="group_create" >
+            <form action="{%url 'profiles:group_update_confirm' groupid %}" method="POST" id="group_update" >
                 {%csrf_token%}
                 <div class="input-field">
                     <input value="{{groupname}}" id="groupname" type="text" class="validate" name = "groupname">
                     <label for="groupname" style="color:black">그룹 이름 : </label>
                 </div>
-                <div class="input-field" id="search">
-                    <input type="text"  id="autocomplete-input" class="autocomplete">
-                    <label for="autocomplete-input">아이디 검색</label>
-                </div>
-                    <ul class="collapsible" data-collapsible="accordion">
-                        <li>
-                          <div class="collapsible-header">
-                            회원 목록 (전체)
-                          </div>
-                          <div class="collapsible-body">
-                            {%for user in users%}
-                            {%ifnotequal user.user.username request.user.username%}
-                            <p>
-                                <input type="checkbox" id="{{user.user.username}}" value="{{user.user.username}}" name="username" />
-                                <label for="{{user.user.username}}">{{user.user.username}}</label>
-                            </p>
-                            {%endifnotequal%}
-                            {%endfor%}
-                          </div>
-                        </li>
-                    </ul>
+                <div id="tag"></div>
+                <div class="chips chips-autocomplete"></div>
                     {% if healthclub %}
                     <ul class="collapsible" data-collapsible="accordion">
                         <li>
                           <div class="collapsible-header">
                             회원 목록 ({{healthclub.name}})
                           </div>
-                          <div class="collapsible-body">
+                          <div class="collapsible-body" id="invite_list">
                             {%for user in same_healthclub_users%}
                             {%ifnotequal user.user.username request.user.username%}
-                            <p>
-                                <input type="checkbox" id="{{user.user.username|add:'_same'}}" value="{{user.user.username}}" name="username" />
-                                <label for="{{user.user.username|add:'_same'}}">{{user.user.username}}</label>
+                            <p id="{{user.user.username|add:'_p'}}">
+                                <input type="checkbox" id="{{user.user.username|add:'_ckb'}}" value="{{user.user.username}}" name="username" />
+                                <label for="{{user.user.username|add:'_ckb'}}">{{user.user.username}}</label>
                             </p>
                             {%endifnotequal%}
                             {%endfor%}
@@ -66,7 +47,7 @@ HealthyCash
                 <label for="_private">비공개</label>
                 <br>
                 <br>
-                <button onclick="submitFunc()" class = "waves-effect waves-light btn" type="button">저</button>
+                <button onclick="submitFunc()" class = "waves-effect waves-light btn" type="button">저장</button>
             </form>
         </div>    
     </div>
@@ -75,66 +56,55 @@ HealthyCash
 
 <script>
     $(document).ready(function(){
-        $('input.autocomplete').autocomplete({
-        data: {
-          {% for user in users %}
-          "{{ user.user.username }}" : null,
-          {% endfor %}
-        },
-        limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-        onAutocomplete: function(val) {
-          // Callback function when value is autcompleted.
-          html = '<div class="chip">' + val + '<i class="close material-icons">close</i><div><input type="hidden" name="search_ids" value="' + val + '"></div></div>'
-          $('#search').after(html)
-          $('#autocomplete-input').val('')
-        },
-        minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-      });
-    })
+        var index = -1;
+        validChipsValues= [
+            {% for user in users %}
+            "{{ user.user.username }}",
+            {% endfor %}
+        ]
+        $('.chips').material_chip({
+            placeholder: '아이디 검색' 
+        }); 
+
+        $('.chips-autocomplete').material_chip({
+            autocompleteOptions: {
+                data: {
+                {% for user in users %}
+                "{{ user.user.username }}" : null,
+                {% endfor %}
+            },
+                limit: Infinity,
+                minLength: 1
+            }
+        });
+
+        $('.chips').on('chip.delete', function(e, chip){
+            $('#'+chip.tag+"_tag").remove();
+           console.log($('#'+chip.tag+'_p').prop('checked') ); 
+            $('#'+chip.tag+'_ckb').prop('checked', false);  
+            $('#'+chip.tag+'_p').show(); 
+        });
+        $('.chips').on('chip.add', function(e, chip){
+            // check if valid chip
+            index += 1;
+            if( validChipsValues.indexOf(chip.tag) == -1){
+                $('#autocomplete-input').val('')
+                alert('해당 유저를 찾을 수 없습니다.')
+                let target = $(e.target);
+                $('.chips').children()[index].remove();
+                index -= 1;
+                return;
+            }
+            
+            html='<input type="hidden" value=' + chip.tag+ ' id='  + chip.tag + "_tag"+ ' name= "search_ids">'
+            $('#tag').after(html)
+            $('#'+chip.tag+'_p').hide();
+        });
+    });
     function submitFunc(){
-        $( "#group_create" ).submit();
-    };
+            $( "#group_update" ).submit();
+        };
+
 </script>
 
 {%endblock content%}
-
-
-
-
-<!--<div class="container">-->
-<!--    <div class="row">-->
-<!--        <div class = "col s12 m3 l3"></div>-->
-<!--        <div class = "col s12 m6 l6" style="margin-top : 60px">-->
-<!--          <div class="card">-->
-<!--            <div class="card-content">-->
-<!--                <form action="{% url 'profiles:group_update_confirm' groupid %}" method = "POST">-->
-<!--                    {%csrf_token%}-->
-<!--                    <div class="row">-->
-<!--                        <div class="input-field col s6">-->
-<!--                        <input value="{{groupname}}" id="groupname" type="text" name= "groupname" class="validate">-->
-<!--                        <label class="active" for="groupname">그룹 이름</label>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <br>-->
-<!--                    <input name="public" type="radio" id="_public" value = "public" />-->
-<!--                    <label for="_public">공개</label>-->
-            
-<!--                    <input name="public" type="radio" id="_private" value = "private"/>-->
-<!--                    <label for="_private">비공개</label>-->
-<!--                    <br>-->
-                    
-<!--                    <div style="margin-top : 40px">-->
-<!--                        {%for member in members%}-->
-<!--                        <p>-->
-<!--                            <input type="checkbox" name = "username" id="{{member.user.username}}" value="{{member.user.username}}" />-->
-<!--                            <label for="{{member.user.username}}">{{member.user.username}}</label>-->
-<!--                        </p>-->
-<!--                        {%endfor%}-->
-<!--                    </div>-->
-<!--                    <button style="margin-top: 40px" class = "waves-effect waves-light btn" type="submit">수정</button>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->

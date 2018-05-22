@@ -64,14 +64,17 @@ def add_group_master(request, groupid, userid):
 def group_update(request, pk):
     group = Group.objects.get(id=pk)
     users = Profile.objects.filter(is_health_master=False).exclude(user__is_group=group)
+    healthclub = request.user.profile.healthclub
+    same_healthclub_users = users.filter(healthclub = request.user.profile.healthclub)
     groupname = group.name
     groupid = pk
+    print(same_healthclub_users)
 
     members=[]
     for user in users:
         if len(user.user.is_group.all().filter(id=pk)) == 0:
             members.append(user)
-    context = {'users' : users, 'groupname' : groupname, 'groupid' : groupid, 'members' : members}
+    context = {'same_healthclub_users':same_healthclub_users, 'healthclub':healthclub, 'users' : users, 'groupname' : groupname, 'groupid' : groupid, 'members' : members}
     return render(request, 'group_update.html', context)
 
 def group_register(request, pk):
@@ -85,9 +88,12 @@ def group_update_confirm(request, pk):
         group = Group.objects.get(id=pk)
         groupname = request.POST.get("groupname")
         username = request.POST.getlist("username")
+        search_ids = request.POST.getlist("search_ids")
         public = str(request.POST.get("public"))
+        for search_id in search_ids:
+            username.append(search_id)
         if public=="private":
-                group.public = False
+            group.public = False
 
         group.name = groupname
         for user in username:
@@ -106,6 +112,7 @@ def group_update_confirm(request, pk):
                     group = group,
                     confirmed = False
                 )
+                print(group_invite)
                 group_invite.save()
         group.save()
         return HttpResponseRedirect('/profiles/group/detail/{}/'.format(pk))
