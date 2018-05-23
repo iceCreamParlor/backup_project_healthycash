@@ -23,7 +23,7 @@ HealthyCash
               <p>헬스장 : {{object.name}}</p>
               <p>주소 : {{object.address}}</p>
               <p>점주명 : {{object.master.profile.real_name}}</p>
-              <p>상세 내용 : {{object.detail}}</p>
+              <p>상세 내용 : {{object.detail|linebreaks}}</p>
             </div>
             <form action="{% url 'healthclub:payment'%}" method="POST">
               {%csrf_token%}
