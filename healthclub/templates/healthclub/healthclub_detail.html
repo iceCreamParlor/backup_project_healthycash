@@ -61,7 +61,7 @@ HealthyCash
       {% for reply in replies  %}
       <ul class="collection">
         <li class="collection-item">
-          {{reply.user.username}} ({{reply.timestamp|date:'Y-m-d H:i'}})<br> {{reply.reply}} 
+          {{reply.user.profile.real_name}} ({{reply.timestamp|date:'Y-m-d H:i'}})<br> {{reply.reply}} 
         </li>
       </ul>
         

@@ -72,7 +72,8 @@ def healthclub_payment(request):
         context["message"] = "사용 가능한 이용권이 남아있습니다. 그래도 결제를 진행하시겠습니까?"
     return render(request, 'healthclub/payment.html', context)
 
-class HealthClubCreateView(TemplateView):
+
+class HealthClubCreateView(TemplateView, LoginRequiredMixin):
     template_name='healthclub/healthclub_create.html'
     
     def get_context_data(self, *args, **kwargs):
@@ -97,6 +98,7 @@ class HealthClubDetailView(DetailView):
         context['GOOGLE_MAP_API_KEY'] = settings.GOOGLE_MAP_API_KEY
         return context
      
+@login_required(login_url = "/login")
 def healthclub_detail_review_create(request, pk):
     context = {}
     if request.method == "POST":
@@ -143,7 +145,6 @@ class HealthClubListView(ListView):
             context['healthclubs'] = hkeywords
         return context
 
-@login_required(login_url = "/login")
 def healthclub_create(request):
     if (request.method=="POST"):
         form = HealthclubCreateForm(request.POST, request.FILES)
