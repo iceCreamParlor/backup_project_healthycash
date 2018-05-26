@@ -10,12 +10,12 @@
             <img src="{{qrcode_url}}" style="height:200px;width:200px;">
             {%endif%}
         </div>
-        <div class="col s12 m12 l4">
+        <div class="col s12 m12 l3">
             {%if healthdiary%}
             <p>지점 명 : {{healthclub.name}}</p>
             <p>고객 수 : {{healthclub.member}}  명</p>
         </div>
-        <div class="col s12 m12 l4">
+        <div class="col s12 m12 l5">
             <table>
                 <thead>
                   <tr>
@@ -27,7 +27,7 @@
                 <tbody>
                     {% for r in healthdiary reversed%}
                   <tr>
-                    <td>{{r.user.username}}</td>
+                    <td>{{r.user.profile.real_name}}</td>
                     <td>{{r.healthclub.name}}</td>
                     <td>{{r.timestamp}}</td>
                   </tr>

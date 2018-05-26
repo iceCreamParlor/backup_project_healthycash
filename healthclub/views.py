@@ -174,7 +174,7 @@ def healthclub_create(request):
             healthclub.address = address
             healthclub.initiated = True
             
-            url = 'https://healthycash-heejae-kim.c9users.io/healthclub/qrcode_check_save?healthclub_id='+str(healthclub.id)
+            url = 'https://healthycash-real-heejae-kim.c9users.io/healthclub/qrcode_check_save?healthclub_id='+str(healthclub.id)
             qrcode = pyqrcode.create(url)
             qrcode_name = 'media/qrcode/healthclub_qrcode_'+str(healthclub.id) + '.png'
             qrcode.png(qrcode_name, scale=4)
