@@ -33,7 +33,7 @@ HealthyCash
               <div class="collapsible-body">
                 {% if groupinvites %}
                     {% for groupinvite in groupinvites %}
-                    <p>{{ groupinvite.inviter }} invited you to {{ groupinvite.group.name }}.
+                    <p>{{ groupinvite.inviter }}({{groupinvite.inviter.profile.real_name}}) invited you to {{ groupinvite.group.name }}.
                         <a href = "{% url 'profiles:group_invite_accept' groupinvite.id %}"><i class="material-icons">check</i></a> 
                         <a href = "{% url 'profiles:group_invite_decline' groupinvite.id %}"><i class="material-icons">clear</i></a>
                     </p>
@@ -58,7 +58,7 @@ HealthyCash
                   {% if notgroups %}
                   {% for notgroup in notgroups %}
                   <p>
-                      <a href="/profiles/group/detail/{{notgroup.id}}">{{notgroup.name}}</a>
+                      <a href="/profiles/group/register/{{notgroup.id}}">{{notgroup.name}}</a>
                       <a style="margin-left:20px" href="/profiles/group/register/{{notgroup.id}}" class="waves-effect waves-teal btn-flat">
                           입장하기<i class="material-icons">near_me</i> 
                       </a>
