@@ -31,7 +31,7 @@ HealthyCash
       </form>
     </div>
     <div class="col s12 m4"></div>
-        
+        {% if object_list.all  %}
             {% for obj in object_list reversed%}
           <div class="row">
             <div class="col s1 m1 l1"></div>
@@ -54,7 +54,11 @@ HealthyCash
             </div>
             <div class="col s1"></div>
           </div>
-             {% endfor %}
+            {% endfor %}
+          {% else  %}
+          검색 결과가 없습니다. 다시 검색해 주세요
+          {% endif  %}
+             
         
     
 </div>
