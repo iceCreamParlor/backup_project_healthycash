@@ -16,10 +16,11 @@ import png
 from .models import(
     HealthClub,
     HealthDiary,
+    HealthClubDetailReply,
 )
 from profiles.models import Profile
 
-from .forms import HealthclubCreateForm
+from .forms import HealthclubCreateForm, HealthClubDetailReplyForm
 
 
 @login_required(login_url = "/login")
@@ -84,6 +85,23 @@ class HealthClubDetailView(DetailView):
         context['lng'] = lng
         return context
      
+def healthclub_detail_review_create(request, pk):
+    context = {}
+    if request.method == "POST":
+        form = HealthClubDetailReplyForm(request.POST)
+        if form.is_valid():
+            reply = form.cleaned_data.get('reply')
+            user = request.user
+            healthclub = HealthClub.objects.get(id = pk)
+            
+            new_reply = HealthClubDetailReply.objects.create(
+                user = user,
+                reply = reply,
+                healthclub = healthclub
+            )
+            new_reply.save()
+            return HttpResponseRedirect(reverse('healthclub:detail', kwargs={'pk':pk}))
+        
 class HealthClubListView(ListView):
     
     def get_queryset(self):
@@ -129,9 +147,6 @@ def healthclub_create(request):
             detail = form.cleaned_data.get("detail")
             geometry = request.POST.get("geometry", None)
             address = request.POST.get("address", None)
-            print(address)
-            print(geometry)
-            print(price12)
             
             healthclub = HealthClub.objects.get(master = request.user)
             healthclub.name = name

@@ -13,6 +13,7 @@ from .views import(
     healthclub_payment,
     healthclub_payment_confirm,
     mypage,
+    healthclub_detail_review_create,
 )
 
 urlpatterns = [
@@ -25,7 +26,7 @@ urlpatterns = [
     url(r'^detail/(?P<pk>\d+)/$', HealthClubDetailView.as_view(), name='detail'),
     url(r'^payment/$', healthclub_payment, name = 'payment'),
     url(r'^payment/confirm/(?P<pk>\d+)/(?P<healthclub_price>\d+)/(?P<month>\d+)/', healthclub_payment_confirm, name = 'payment_confirm'),
-
+    url(r'^healthclubdetail_reply/(?P<pk>\d+)/$', healthclub_detail_review_create, name = 'healthclub_detail_review_create'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -36,3 +36,11 @@ class HealthDiary(models.Model):
 
     def __unicode__(self):
         return "user : "+self.user.username+" | " + "healthclub :" + self.healthclub.name + " | " + "date : " +str(self.timestamp)
+
+class HealthClubDetailReply(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    healthclub = models.ForeignKey(HealthClub)
+    reply = models.CharField(max_length = 300)
+    
+    def __str__(self):
+        return '{}'.format(self.user.username + ' | ' +self.healthclub.name)
