@@ -41,6 +41,8 @@ class HealthClubDetailReply(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     healthclub = models.ForeignKey(HealthClub)
     reply = models.CharField(max_length = 300)
+    timestamp = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return '{}'.format(self.user.username + ' | ' +self.healthclub.name)

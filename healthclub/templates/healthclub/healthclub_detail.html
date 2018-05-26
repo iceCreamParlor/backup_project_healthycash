@@ -50,13 +50,22 @@ HealthyCash
       <form method="POST" action="{% url 'healthclub:healthclub_detail_review_create' object.id %} ">
           {% csrf_token %}
           <div class="row">
-            <div class="input-field col s8 m8 l8">
+            <div class="input-field col s12 m12 l12">
               <input id="reply" name="reply" type="text" class="validate">
               <label for="reply">댓글</label>
             </div>
           </div>
           <button class="waves-effect waves-light btn" type="submit">제출</button>
       </form>
+      <br>
+      {% for reply in replies  %}
+      <ul class="collection">
+        <li class="collection-item">
+          {{reply.user.username}} ({{reply.timestamp|date:'Y-m-d H:i'}})<br> {{reply.reply}} 
+        </li>
+      </ul>
+        
+      {% endfor  %}
     </div>
 </div>
 
@@ -75,5 +84,5 @@ HealthyCash
 		});
 });		
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDL1x0Sd17HgW_NQQV6PA8ZPzpBbaQdAc8"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAP_API_KEY }}"></script>
 {%endblock content%}

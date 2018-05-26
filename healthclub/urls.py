@@ -14,13 +14,14 @@ from .views import(
     healthclub_payment_confirm,
     mypage,
     healthclub_detail_review_create,
+    HealthClubCreateView,
 )
 
 urlpatterns = [
     url(r'^mypage/$', mypage),
     url(r'^qrcode_check/$', qrcode_check),
     url(r'^qrcode_check_save/$', qrcode_check_save),
-    url(r'^create/$', TemplateView.as_view(template_name='healthclub/healthclub_create.html')),
+    url(r'^create/$', HealthClubCreateView.as_view(), name='create'),
     url(r'^create/confirm/$', healthclub_create, name ='create_confirm'),
     url(r'^list/$', HealthClubListView.as_view(), name='list'),
     url(r'^detail/(?P<pk>\d+)/$', HealthClubDetailView.as_view(), name='detail'),

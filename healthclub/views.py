@@ -2,11 +2,13 @@
 from __future__ import unicode_literals
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q 
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+from django.views.generic import TemplateView
 from django.views.generic import DetailView, View, CreateView, UpdateView, ListView
 from django.urls import reverse
 import pyqrcode
@@ -70,6 +72,15 @@ def healthclub_payment(request):
         context["message"] = "사용 가능한 이용권이 남아있습니다. 그래도 결제를 진행하시겠습니까?"
     return render(request, 'healthclub/payment.html', context)
 
+class HealthClubCreateView(TemplateView):
+    template_name='healthclub/healthclub_create.html'
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(HealthClubCreateView, self).get_context_data(*args, **kwargs)
+        context['GOOGLE_MAP_API_KEY'] = settings.GOOGLE_MAP_API_KEY
+        print(settings.GOOGLE_MAP_API_KEY)
+        return context
+
 class HealthClubDetailView(DetailView):
     model = HealthClub
     
@@ -79,10 +90,11 @@ class HealthClubDetailView(DetailView):
         address_list = healthclub.geometry.split(',')
         lat = address_list[0]
         lng = address_list[1]
-        print(address_list)
-        print(lat, lng)
+        replies = HealthClubDetailReply.objects.filter(healthclub = healthclub).order_by('-timestamp')
+        context['replies'] = replies
         context['lat'] = lat
         context['lng'] = lng
+        context['GOOGLE_MAP_API_KEY'] = settings.GOOGLE_MAP_API_KEY
         return context
      
 def healthclub_detail_review_create(request, pk):
