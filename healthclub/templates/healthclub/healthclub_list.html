@@ -23,8 +23,8 @@ HealthyCash
               <input type="text" name="search" id="autocomplete-input" class="autocomplete">
               <label for="autocomplete-input">헬스장 바로검색</label>
             </div>
-            <div class="col s1 m1 l1">
-                <i style="font-size:40px" class="material-icons prefix" onclick="submitFunc()">search</i>
+            <div class="col s1 m1 l1" style="font-size:40px;height:40px;text-align:center;">
+                <i class="material-icons prefix" onclick="submitFunc()">search</i>
             </div>
             <div class="col s3 m3 l3"></div>
           </div>
@@ -56,7 +56,8 @@ HealthyCash
           </div>
             {% endfor %}
           {% else  %}
-          검색 결과가 없습니다. 다시 검색해 주세요
+          
+          <p style="text-align:center">검색 결과가 없습니다. 다시 검색해 주세요</p>
           {% endif  %}
              
         
