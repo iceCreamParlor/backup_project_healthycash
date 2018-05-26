@@ -71,6 +71,18 @@ def healthclub_payment(request):
 
 class HealthClubDetailView(DetailView):
     model = HealthClub
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        healthclub = HealthClub.objects.get(id = self.object.id)
+        address_list = healthclub.geometry.split(',')
+        lat = address_list[0]
+        lng = address_list[1]
+        print(address_list)
+        print(lat, lng)
+        context['lat'] = lat
+        context['lng'] = lng
+        return context
      
 class HealthClubListView(ListView):
     
@@ -87,6 +99,7 @@ class HealthClubListView(ListView):
         healthclubs = HealthClub.objects.filter(initiated=True)
         hkeywords = set()
         keywords = set()
+        
         for healthclub in healthclubs:
             address_short = healthclub.address
             if len(healthclub.address) >= 12:
