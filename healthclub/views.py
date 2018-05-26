@@ -122,8 +122,9 @@ class HealthClubListView(ListView):
         search = self.request.GET.get('search')
         
         if search:
+            print(search)
             search = search.split("(")[0]
-            return HealthClub.objects.filter(Q(initiated=True) | Q(name__icontains=search) | Q(address__icontains=search) | Q(detail__icontains=search)).order_by('updated')
+            return HealthClub.objects.filter(Q(initiated=True) & Q(name__icontains=search) | Q(address__icontains=search) | Q(detail__icontains=search)).order_by('updated')
         return HealthClub.objects.filter(initiated=True).order_by('updated')
     
     def get_context_data(self, *args, **kwargs):

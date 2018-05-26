@@ -47,15 +47,17 @@ HealthyCash
             <a href="{% url 'healthclub:list' %}"><button type = "button" class="btn waves-effect waves-light">이전으로</button></a>
         </div>
       </div>
-      <form method="POST" action="{% url 'healthclub:healthclub_detail_review_create' object.id %} ">
+      <form method="POST"  id="myForm" action="{% url 'healthclub:healthclub_detail_review_create' object.id %} ">
           {% csrf_token %}
-          <div class="row">
-            <div class="input-field col s12 m12 l12">
+          <div class="row" style="margin-top:10px">
+            <div class="input-field col s9 m9 l9">
               <input id="reply" name="reply" type="text" class="validate">
               <label for="reply">댓글</label>
             </div>
+            <div class= "col s1 m2 l2" style="font-size:35px;height:40px;text-align:center;">
+              <i class="material-icons" id="submit_button">add_circle</i>
+            </div>
           </div>
-          <button class="waves-effect waves-light btn" type="submit">제출</button>
       </form>
       <br>
       {% for reply in replies  %}
@@ -82,6 +84,10 @@ HealthyCash
 			map : map,
 			position : center
 		});
+		
+	  $('#submit_button').on('click', function(){
+	    $('#myForm').submit();
+	  })
 });		
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAP_API_KEY }}"></script>
