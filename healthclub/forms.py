@@ -13,4 +13,5 @@ class HealthclubCreateForm(forms.Form):
     price12   = forms.IntegerField(label='Price', required=False)
     photo     = forms.ImageField(required=False)
     detail    = forms.CharField(label='Detail', widget = forms.Textarea)
+    address   =  forms.CharField(label='address')
 

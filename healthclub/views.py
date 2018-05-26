@@ -88,6 +88,7 @@ class HealthClubListView(ListView):
         hkeywords = set()
         keywords = set()
         for healthclub in healthclubs:
+            address_short = healthclub.address
             if len(healthclub.address) >= 12:
                 address_short = healthclub.address[0:12] + ".."
             temp = healthclub.name + "(" + address_short + ")"
