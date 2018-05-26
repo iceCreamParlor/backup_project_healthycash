@@ -36,22 +36,21 @@ HealthyCash
           <div class="row">
             <div class="col s1 m1 l1"></div>
             <div class="col s10 m4 l4">
-              <div class="card" >
-                <div class="card-image">
-                  {% if obj.photo %}
-                  <img src="{{obj.photo.url}}">
-                  {%else%}
-                  <img src="{% static 'images/default_image.jpg' %}">
-                  {% endif %}
+              <a href="{% url 'healthclub:detail' pk=obj.id %}">
+                <div class="card" >
+                  <div class="card-image">
+                    {% if obj.photo %}
+                    <img src="{{obj.photo.url}}">
+                    {%else%}
+                    <img src="{% static 'images/default_image.jpg' %}">
+                    {% endif %}
+                  </div>
+                  <div class="card-content"> 
+                    <p>{{obj.name}}</p>
+                    <p class="truncate">주소 : {{obj.address}}</p>
+                  </div>
                 </div>
-                <div class="card-content"> 
-                  <p>헬스장 : {{obj.name}}</p>
-                  <p class="truncate">주소 : {{obj.address}}</p>
-                </div>
-                <div class="card-action">
-                  <a href="{% url 'healthclub:detail' pk=obj.id %}">상세내역</a>
-                </div>
-              </div>
+              </a>
             </div>
             <div class="col s1"></div>
           </div>
