@@ -79,12 +79,12 @@ class HealthClubListView(ListView):
         
         if search:
             search = search.split("(")[0]
-            return HealthClub.objects.filter(Q(name__icontains=search) | Q(address__icontains=search) | Q(detail__icontains=search)).order_by('updated')
-        return HealthClub.objects.all().order_by('updated')
+            return HealthClub.objects.filter(Q(initiated=True) | Q(name__icontains=search) | Q(address__icontains=search) | Q(detail__icontains=search)).order_by('updated')
+        return HealthClub.objects.filter(initiated=True).order_by('updated')
     
     def get_context_data(self, *args, **kwargs):
         context = super(HealthClubListView, self).get_context_data(**kwargs)
-        healthclubs = HealthClub.objects.all()
+        healthclubs = HealthClub.objects.filter(initiated=True)
         hkeywords = set()
         keywords = set()
         for healthclub in healthclubs:
@@ -105,6 +105,7 @@ def healthclub_create(request):
         form = HealthclubCreateForm(request.POST, request.FILES)
         if form.is_valid():
             user  = request.user
+            name   = request.POST.get("name")
             price1 = form.cleaned_data.get("price1")
             price2 = form.cleaned_data.get("price2")
             price3 = form.cleaned_data.get("price3")
@@ -112,8 +113,14 @@ def healthclub_create(request):
             price12 = form.cleaned_data.get("price12")
             photo  = form.cleaned_data.get("photo")
             detail = form.cleaned_data.get("detail")
+            geometry = request.POST.get("geometry", None)
+            address = request.POST.get("address", None)
+            print(address)
+            print(geometry)
+            print(price12)
             
             healthclub = HealthClub.objects.get(master = request.user)
+            healthclub.name = name
             healthclub.price1 = price1
             healthclub.price2 = price2
             healthclub.price3 = price3
@@ -121,6 +128,9 @@ def healthclub_create(request):
             healthclub.price12 = price12
             healthclub.photo = photo
             healthclub.detail = detail
+            healthclub.geometry = geometry
+            healthclub.address = address
+            healthclub.initiated = True
             
             url = 'https://healthycash-heejae-kim.c9users.io/healthclub/qrcode_check_save?healthclub_id='+str(healthclub.id)
             qrcode = pyqrcode.create(url)

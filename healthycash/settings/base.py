@@ -145,3 +145,5 @@ LOGOUT_REDIRECT_URL = '/'
 
 MEDIA_URL = '/media/' 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+GOOGLE_MAP_API_KEY = 'AIzaSyDL1x0Sd17HgW_NQQV6PA8ZPzpBbaQdAc8'

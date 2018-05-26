@@ -9,23 +9,25 @@ User = settings.AUTH_USER_MODEL
 # Create your models here
         
 class HealthClub(models.Model):
+    initiated = models.BooleanField(default=False)
     name      = models.CharField(max_length = 120)
-    address   = models.CharField(max_length = 200)
+    address   = models.CharField(max_length = 200, blank=True)
     master    = models.ForeignKey(User)
+    geometry  = models.CharField(max_length = 200, blank=True)
     photo     = models.ImageField(blank=True)
     qrcode    = models.ImageField(blank=True)
     member    = models.IntegerField(default = 0)
-    price1    = models.IntegerField(default = 0, blank = True)
-    price2    = models.IntegerField(default = 0, blank = True)
-    price3    = models.IntegerField(default = 0, blank = True)
-    price6    = models.IntegerField(default = 0, blank = True)
-    price12   = models.IntegerField(default = 0, blank = True)
+    price1    = models.IntegerField(blank = True)
+    price2    = models.IntegerField(blank = True)
+    price3    = models.IntegerField(blank = True)
+    price6    = models.IntegerField(blank = True)
+    price12   = models.IntegerField(blank = True)
     detail   = models.CharField(max_length = 1000, blank = True)
     timestamp = models.DateTimeField(auto_now=True)
     updated = models.DateTimeField(auto_now_add=True)
     
-    def __unicode__(self):
-        return self.name
+    def __str__(self):
+        return '{}'.format(self.name)
 
 class HealthDiary(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
