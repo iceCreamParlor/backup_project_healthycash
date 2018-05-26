@@ -73,7 +73,7 @@ class HealthClubDetailView(DetailView):
     model = HealthClub
     
     def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
+        context = super(HealthClubDetailView, self).get_context_data(*args, **kwargs)
         healthclub = HealthClub.objects.get(id = self.object.id)
         address_list = healthclub.geometry.split(',')
         lat = address_list[0]
