@@ -69,12 +69,10 @@ class RegisterMasterForm(forms.ModelForm):
     real_name = forms.CharField(max_length = 120)
     sex       = forms.CharField(max_length = 120)
     email      = forms.CharField(max_length = 120)
-    healthclub_name = forms.CharField(max_length = 120)
-    healthclub_address = forms.CharField(max_length = 200)
     
     class Meta:
         model = User
-        fields = ('username', 'sex', 'email', 'real_name', 'password1', 'password2', 'healthclub_name', 'healthclub_address')
+        fields = ('username', 'sex', 'email', 'real_name', 'password1', 'password2')
 
     def clean_email(self):
         global mail
@@ -112,8 +110,6 @@ class RegisterMasterForm(forms.ModelForm):
         
         healthclub = HealthClub.objects.create(
             master    = user,
-            name      = self.cleaned_data["healthclub_name"],
-            address   = self.cleaned_data["healthclub_address"],
             member    = 0,
         )
         healthclub.save()
