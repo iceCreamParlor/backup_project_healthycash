@@ -21,15 +21,24 @@
     body {
         background-color : #efefef;
     } 
-    label {
-      color: black;
+    
+    .nav-fixed {
+      position: fixed;
+      right: 0;
+      left: 0;
+      top: 0;
+      margin-bottom: 0px;
+      z-index: 997;
     }
   </style>
 </head>
 
 <body>
-    <nav role="navigation" style="background-color : #38cc82">
+  
+  <div class="navbar-fixed">
+    <nav style="background-color : #38cc82;">
     <div class="nav-wrapper container">
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
       <a id="logo-container" href="/" class="brand-logo" style="height:40px"> <img style="height:80%;position:relative;top:10%" src="{% static 'images/healthycash_korean_logo.png'  %}" /></a>
       
       <ul class="right hide-on-med-and-down">
@@ -57,9 +66,10 @@
         <li><a href="/logout">로그아웃</a></li>
         {% endif %}
       </ul>
-      
-
-      <ul id="nav-mobile" class="side-nav">
+    </div>
+  </nav>
+  </div>
+  <ul id="slide-out" class="side-nav">
         {% if request.user.is_anonymous %}
         <li><a href="/login">로그인<i class="material-icons">account_box</i></a></li>
         <li><a href="/register">회원 가입<i class="material-icons">border_color</i></a></li>
@@ -87,12 +97,14 @@
         <li><a href="/logout">로그아웃<i class="material-icons">launch</i></a></li>
         {% endif %}
       </ul>
-      
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
+  
+  <script>
+    $( document ).ready(function() {
+      $(".button-collapse").sideNav();
+    });
+  </script>
     {% block content %}{% endblock %}
-    
+  
 
 </body>
 </html>
