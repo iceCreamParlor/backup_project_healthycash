@@ -88,7 +88,7 @@ def group_update_confirm(request, pk):
         group = Group.objects.get(id=pk)
         groupname = request.POST.get("groupname")
         username = request.POST.getlist("username")
-        search_ids = request.POST.getlist("search_ids")
+        search_ids = request.POST.get("search_ids")
         public = str(request.POST.get("public"))
         for search_id in search_ids:
             username.append(search_id)
