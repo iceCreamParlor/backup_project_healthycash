@@ -27,7 +27,7 @@ HealthyCash
 				<div id="map"style="width:100%;height:100%;"></div>
 			  </div>
             </div>
-            <form action="{% url 'healthclub:payment'%}" method="POST">
+            <form action="{% url 'healthclub:payment' object.id %}" method="POST">
               {%csrf_token%}
               <div class="card-action">
               <input name="price" id="test1" type="radio"  value = "{{object.price1|multiply:100|add:'1'}}" />

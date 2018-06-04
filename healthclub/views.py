@@ -44,8 +44,9 @@ def healthclub_payment_confirm(request, pk=None, healthclub_price=None, month=No
     
 # 이미 가입된 헬스장 있으면 가입 거부
 @login_required(login_url = "/login")
-def healthclub_payment(request):
+def healthclub_payment(request, pk):
     context = {}
+    
     if request.method == 'POST':
         health_id = request.POST.get("health_id")
         price = request.POST.get("price")
@@ -70,7 +71,10 @@ def healthclub_payment(request):
         if expire_date==None or expire_date<datetime.now():
             return render(request, 'healthclub/payment.html', context)
         context["message"] = "사용 가능한 이용권이 남아있습니다. 그래도 결제를 진행하시겠습니까?"
-    return render(request, 'healthclub/payment.html', context)
+        return render(request, 'healthclub/payment.html', context)
+
+    else:
+        return HttpResponseRedirect(reverse('healthclub:detail', kwargs={'pk' : pk}))
 
 
 class HealthClubCreateView(TemplateView, LoginRequiredMixin):
@@ -100,7 +104,6 @@ class HealthClubDetailView(DetailView):
      
 @login_required(login_url = "/login")
 def healthclub_detail_review_create(request, pk):
-    context = {}
     if request.method == "POST":
         form = HealthClubDetailReplyForm(request.POST)
         if form.is_valid():
@@ -115,6 +118,8 @@ def healthclub_detail_review_create(request, pk):
             )
             new_reply.save()
             return HttpResponseRedirect(reverse('healthclub:detail', kwargs={'pk':pk}))
+    else:
+        return HttpResponseRedirect(reverse('healthclub:detail', kwargs={'pk' : pk}))
         
 class HealthClubListView(ListView):
     
