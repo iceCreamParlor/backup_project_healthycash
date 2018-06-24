@@ -118,6 +118,18 @@
            <label class="qrcode-text-btn"><input type="file" accept="image/*" capture="environment" onclick="return showQRIntro();" onchange="openQRCamera(this);" tabindex="-1"></label>
           </center>
 
+          
+          <center>
+            <div class="card-panel teal" style="width:80%">
+              <span class="text">
+                <p>적립금 : {{ request.user.profile.cash }} 원</p>
+                <p>출석 횟수 : {{ request.user.profile.exercised }} 일</p>
+              </span>
+            </div>
+        </center>
+         
+          
+
         <li><a href="/healthclub/list">헬스장 정보<i class="material-icons">face</i></a></li>
 
         <li><a href="/profiles/mypage">마이페이지<i class="material-icons">create</i></a></li>
