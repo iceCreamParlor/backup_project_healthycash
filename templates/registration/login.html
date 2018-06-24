@@ -35,7 +35,9 @@
                     <img style ="width:100%" src="{% static 'images/healthycash_logo.png' %}">
                 </center>
                 </div>
-                <div class="col s1 m12 l4"></div>
+                
+                <div class="col s12 m12 l4"></div>
+                <div class="col s1 m12 l12"></div>
                 <div class="col s10 m12 l4">
                     <form method="post" action="{% url 'login' %}">
                     {% csrf_token %}
@@ -54,14 +56,15 @@
                         <input type="hidden" name="next" value="{{ next }}" />
                         <br>
                         <center>
-                            <button   class="btn waves-effect waves-light" value = "login" type="submit" >로그인
+                            <button style="color:#4EC1E6 ;background-color:#F4FF69" class="btn waves-effect waves-light" value = "login" type="submit" >로그인
                             </button>
-                            <a href="/register"  style="margin-left : 20px" class="btn waves-effect waves-light" >회원가입
+                            <a href="/register"  style="margin-left : 20px;color:#4EC1E6 ;background-color:#F4FF69;" class="btn waves-effect waves-light" >회원가입
                             </a>
                         </center>
                     </form>
                 </div>
-                <div class="col s1 m12 l4"></div>
+                <div class="col s10 m12 l4"></div>
+                <div class="col s1 m12 l12"></div>
                 {# Assumes you setup the password_reset view in your URLconf #}
                 <!--<p><a href="{% url 'password_reset' %}">Lost password?</a></p>-->
             </div>

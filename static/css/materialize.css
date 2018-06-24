@@ -980,7 +980,7 @@
 }
 
 .teal {
-  background-color: #F4FF69 !important;
+  background-color: #fff !important;
 }
 
 .teal-text {
@@ -2557,7 +2557,7 @@ ul:not(.browser-default) > li {
 }
 
 a {
-  color: #F4FF69;
+  color: #4EC1E6;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -3324,7 +3324,7 @@ span.badge.new {
   font-weight: 300;
   font-size: 0.8rem;
   color: #fff;
-  background-color: #F4FF69;
+  background-color: #4EC1E6;
   border-radius: 2px;
 }
 
@@ -5206,8 +5206,8 @@ small {
 
 .btn, .btn-large {
   text-decoration: none;
-  color: #4EC1E6;
-  background-color: #F4FF69;
+  color: #F4FF69;
+  background-color: #4EC1E6;
   text-align: center;
   letter-spacing: .5px;
   -webkit-transition: .2s ease-out;
@@ -5474,7 +5474,7 @@ button.btn-floating {
 
 .dropdown-content li > a, .dropdown-content li > span {
   font-size: 16px;
-  color: #F4FF69;
+  color: #4EC1E6;
   display: block;
   line-height: 22px;
   padding: 14px 16px;
@@ -5818,7 +5818,7 @@ button.btn-floating {
   height: 32px;
   font-size: 13px;
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.6);
+  color: #4EC1E6;
   line-height: 32px;
   padding: 0 12px;
   border-radius: 16px;
@@ -6085,9 +6085,9 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #000000;
-  -webkit-box-shadow: 0 1px 0 0 #000000;
-          box-shadow: 0 1px 0 0 #000000;
+  border-bottom: 1px solid transparent;
+  -webkit-box-shadow: 0 1px 0 0 transparent;
+          box-shadow: 0 1px 0 0 transparent;
 }
 
 input:not([type]):focus:not([readonly]) + label,
@@ -6103,7 +6103,7 @@ input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
 input[type=number]:not(.browser-default):focus:not([readonly]) + label,
 input[type=search]:not(.browser-default):focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: #F4FF69;
+  color: #000;
 }
 
 input:not([type]).validate + label,
@@ -6391,7 +6391,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
 }
 
 .input-field .prefix.active {
-  color: #F4FF69;
+  color: #000;
 }
 
 .input-field .prefix ~ input,
@@ -6518,7 +6518,7 @@ textarea.materialize-textarea.validate + label:not(.label-icon).active {
 }
 
 .autocomplete-content li .highlight {
-  color: #444;
+  color: #000;
 }
 
 .autocomplete-content li img {
@@ -7191,7 +7191,7 @@ input[type=range] + .thumb {
   height: 0;
   width: 0;
   border-radius: 50%;
-  background-color: #F4FF69;
+  background-color: #000;
   margin-left: 7px;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
@@ -7203,7 +7203,7 @@ input[type=range] + .thumb .value {
   display: block;
   width: 30px;
   text-align: center;
-  color: #F4FF69;
+  color: #000;
   font-size: 0;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
@@ -7236,7 +7236,7 @@ input[type=range]::-webkit-slider-thumb {
   height: 14px;
   width: 14px;
   border-radius: 50%;
-  background-color: #F4FF69;
+  background-color: #000;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
   margin: -5px 0 0 0;
@@ -7265,7 +7265,7 @@ input[type=range]::-moz-range-thumb {
   height: 14px;
   width: 14px;
   border-radius: 50%;
-  background: #F4FF69;
+  background: #000;
   margin-top: -5px;
 }
 
@@ -7300,7 +7300,7 @@ input[type=range]::-ms-thumb {
   height: 14px;
   width: 14px;
   border-radius: 50%;
-  background: #F4FF69;
+  background: #000;
 }
 
 input[type=range]:focus::-ms-fill-lower {
@@ -7357,7 +7357,8 @@ input[type=range]:focus::-ms-fill-upper {
   height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
-  background-color: #fff;
+  /*background-color: #4EC1E6;*/
+  background: linear-gradient(#4EC1E6, #fff);
   z-index: 999;
   overflow-y: auto;
   will-change: transform;

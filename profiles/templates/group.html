@@ -58,10 +58,7 @@ HealthyCash
                   {% if notgroups %}
                   {% for notgroup in notgroups %}
                   <p>
-                      <a href="/profiles/group/register/{{notgroup.id}}">{{notgroup.name}}</a>
-                      <a style="margin-left:20px" href="/profiles/group/register/{{notgroup.id}}" class="waves-effect waves-teal btn-flat">
-                          입장하기<i class="material-icons">near_me</i> 
-                      </a>
+                      <a href="/profiles/group/register/{{notgroup.id}}"><p style="text-align:left; color:#4EC1E6;font-weight: bold;">{{notgroup.name}}</p></a>
                   </p>
                   {% endfor %}
                   {% endif %}

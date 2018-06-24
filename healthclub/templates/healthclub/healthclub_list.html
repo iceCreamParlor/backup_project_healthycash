@@ -13,21 +13,31 @@ HealthyCash
   alert('{{message}}');
 </script>
 {%endif%}
+<style>
+  .not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}
+</style>
 
-<div class="container" style="margin-top:30px">
-    <div class="row">
+
+  
+    <div class="row" >
         <div class="carousel carousel-slider" data-indicators="true">
-            {% comment %} <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
-            <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
-            <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a> {% endcomment %}
-          </div>
+            <a class="carousel-item" href="/profiles/group"><img src="{% static 'images/advertise1.png'  %}"></a>
+            <a class="carousel-item" href="#two"><img  src="{% static 'images/advertise2.png'  %}"></a>
+            <a class="carousel-item" href="#three"><img  src="{% static 'images/advertise3.png'  %}"></a> 
+        </div>
     </div>
-    <div class="row">
+<div class="container" style="margin-top:30px">
+    <div class="row" style="margin-bottom:0px">
       <form method="GET" action="/healthclub/list/" id="search">
           {% csrf_token %}
           <div class="row">
-            <div class="col s2 m2 l2"></div>
-            <div class="input-field col s7 m7 l7">
+            <div class="col s1 m1 l1"></div>
+            <div class="input-field col s9 m9 l9">
               <input type="text" name="search" id="autocomplete-input" class="autocomplete">
               <label for="autocomplete-input">헬스장 바로검색</label>
             </div>
@@ -54,7 +64,8 @@ HealthyCash
         <div class="card-stacked">
           <div class="card-content" style="height:100px">
               <p>{{obj.name}}</p>
-              <p >{{obj.address}}</p>
+              <p style="display: inline-block; width: 148px; white-space: nowrap; overflow: hidden; ">{{obj.address}}</p>
+              <p style="display: inline-block; width: 148px; white-space: nowrap; overflow: hidden; ">{{obj.price1}} 원 ~ {{obj.price12}} 원</p>
           </div>
         </div>
       </div>
@@ -88,6 +99,16 @@ HealthyCash
     })
     function submitFunc(){
         $( "#search" ).submit();
+    };
+    function advertise1(){
+      window.location.href = '/profiles/group';
+      console.log('advertise1');
+    };
+    function advertise2(){
+      
+    };
+    function advertise3(){
+      
     };
 </script>
 {%endblock content%}

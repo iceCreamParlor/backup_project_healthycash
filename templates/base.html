@@ -34,7 +34,7 @@
     }
       input, label {vertical-align:middle}
       .qrcode-text {padding-right:1.7em; margin-right:0}
-      .qrcode-text-btn {margin-top:20px; display:inline-block; background:url({% static 'images/qrcode_button.png' %}) 50% 50% no-repeat; height:70px; width:270px; margin-left:-1.7em; cursor:pointer; }
+      .qrcode-text-btn { display:inline-block; background:url({% static 'images/qrcode_button.png' %}) 50% 50% no-repeat; height:40px; width:240px; margin-left:-1.7em; cursor:pointer; }
       .qrcode-text-btn > input[type=file] {position:absolute; overflow:hidden; width:1px; height:1px; opacity:0}
   </style>
   
@@ -66,10 +66,10 @@
     </script>
   
   <div class="navbar-fixed">
-    <nav style="background-color : #1E9BB5;">
+    <nav style="background-color : #4EC1E6;">
     <div class="nav-wrapper container">
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-      
+      <a href="/healthclub/list" class="brand-logo"><img src="{% static 'images/healthycash_string_logo.png'%}" style="height:35px;margin-top:10px;margin-left:8px;" ></a>
       
       <ul class="right hide-on-med-and-down">
         {% if request.user.is_anonymous %}
@@ -101,7 +101,7 @@
   </div>
   <ul id="slide-out" class="side-nav">
         {% if request.user.is_anonymous %}
-        <li><a href="/login">로그인<i class="material-icons">account_box</i></a></li>
+        <li><a href="/login"><p>로그인</p><i class="material-icons">account_box</i></a></li>
         <li><a href="/register">회원 가입<i class="material-icons">border_color</i></a></li>
         <li><a href="/healthclub/list">헬스장 정보<i class="material-icons">face</i></a></li>
         <li><a href="/aboutus/">About Us <i class="material-icons">folder_open</i></a></li>
@@ -112,15 +112,26 @@
         <li><a href="/healthclub/list">헬스장 정보</a></li>
         <li><a href="/logout">로그아웃</a></li>
         {% else %}
-        <li><a>{{request.user.profile.real_name}} 님 안녕하세요!</a></li>
-        
+        <li><p style="color:white;text-align:center;">{{request.user.profile.real_name}} 님 안녕하세요!</p></li>
           <center>
-           <label class="qrcode-text-btn"><input type="file" accept="image/*" capture="environment" onclick="return showQRIntro();" onchange="openQRCamera(this);" tabindex="-1"></label>
+           
+           <label style="margin-left:2px"  class="qrcode-text-btn"><input type="file" accept="image/*" capture="environment" onclick="return showQRIntro();" onchange="openQRCamera(this);" tabindex="-1"></label>
+           
+           </center>
+           <center>
+            <div class="card-panel teal" style="width:80%; border-radius:15px">
+              <span class="text">
+                <p style="text-align:left; color:#4EC1E6;font-weight: bold;">적립금 : {{ request.user.profile.cash }} 원</p>
+                <p style="text-align:left; color:#4EC1E6;font-weight: bold;">출석 횟수 : {{ request.user.profile.exercised }} 일</p>
+                <a href="/profiles/mypage"><center><img src="{% static 'images/mypage_button.png'%}" style="width:192px;"></center></a>
+              </span>
+            </div>
           </center>
+          
 
         <li><a href="/healthclub/list">헬스장 정보<i class="material-icons">face</i></a></li>
 
-        <li><a href="/profiles/mypage">마이페이지<i class="material-icons">create</i></a></li>
+        <!--<li><a href="/profiles/mypage">마이페이지<i class="material-icons">create</i></a></li>-->
         <li>
           <a href="/profiles/group">그룹<i class="material-icons">group</i>
             {% if request.user.new_member.all  %}

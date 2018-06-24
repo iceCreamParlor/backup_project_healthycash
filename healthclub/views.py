@@ -149,6 +149,7 @@ class HealthClubListView(ListView):
                 keywords.add(address)
             context['keywords'] = keywords
             context['healthclubs'] = hkeywords
+            context['address_short'] = address_short
         return context
 
 def healthclub_create(request):
@@ -187,7 +188,7 @@ def healthclub_create(request):
             healthclub.qrcode = qrcode_name
             healthclub.save()
             
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/healthclub/list")
     return HttpResponseRedirect("/healthclub/create")
 
 @login_required(login_url = "/login")
