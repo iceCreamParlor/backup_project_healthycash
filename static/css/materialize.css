@@ -2371,7 +2371,7 @@ input,
 optgroup,
 select,
 textarea {
-  color: inherit;
+  color: #000;
   /* 1 */
   font: inherit;
   /* 2 */
@@ -4794,7 +4794,7 @@ small {
 .card.horizontal .card-image img {
   border-radius: 2px 0 0 2px;
   max-width: 100%;
-  width: auto;
+  width: 120px;
 }
 
 .card.horizontal .card-stacked {
@@ -4855,13 +4855,13 @@ small {
 }
 
 .card .card-content {
-  padding: 24px;
+  padding: 10px;
   border-radius: 0 0 2px 2px;
 }
 
 .card .card-content p {
   margin: 0;
-  color: inherit;
+  color: #000;
 }
 
 .card .card-content .card-title {
@@ -6085,9 +6085,9 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #F4FF69;
-  -webkit-box-shadow: 0 1px 0 0 #F4FF69;
-          box-shadow: 0 1px 0 0 #F4FF69;
+  border-bottom: 1px solid #000000;
+  -webkit-box-shadow: 0 1px 0 0 #000000;
+          box-shadow: 0 1px 0 0 #000000;
 }
 
 input:not([type]):focus:not([readonly]) + label,

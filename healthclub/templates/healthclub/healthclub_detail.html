@@ -42,9 +42,11 @@ HealthyCash
               <label for="test12">1 년 : {{object.price12}} 원</label>
               <input type="hidden" name="health_id" value={{object.id}} />
               <br><br>
+              <center>
               <button class="btn waves-effect waves-light">결제하기</button>
             </form>
-            <a href="{% url 'healthclub:list' %}"><button type = "button" class="btn waves-effect waves-light">이전으로</button></a>
+            <a href="{% url 'healthclub:list' %}"><button type = "button" class="btn waves-effect waves-light" style="margin-left:10px">이전으로</button></a>
+            </center>
         </div>
       </div>
       <form method="POST"  id="myForm" action="{% url 'healthclub:healthclub_detail_review_create' object.id %} ">
