@@ -13,7 +13,16 @@ HealthyCash
   alert('{{message}}');
 </script>
 {%endif%}
+
 <div class="container" style="margin-top:30px">
+    <div class="row">
+        <div class="carousel carousel-slider" data-indicators="true">
+            <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
+            <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
+            <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
+            <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
+          </div>
+    </div>
     <div class="row">
       <form method="GET" action="/healthclub/list/" id="search">
           {% csrf_token %}
@@ -65,6 +74,7 @@ HealthyCash
 </div>
 <script>
     $(document).ready(function(){
+        $('.carousel.carousel-slider').carousel({fullWidth: true});
         $('input.autocomplete').autocomplete({
         data: {
           {% for keyword in keywords %}

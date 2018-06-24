@@ -2,9 +2,10 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q 
 from django.urls import reverse
-
+from django.contrib.auth.decorators import login_required
 from healthclub.models import HealthClub
 
+@login_required(login_url = "/login")
 def home(request):
     healthclubs = HealthClub.objects.all()
     keywords = set()
