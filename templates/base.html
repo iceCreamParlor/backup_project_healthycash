@@ -6,7 +6,9 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="{% static 'js/init.js' %}"></script>
   <script src="{% static 'js/materialize.js' %}"></script>
-  
+
+  <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
   <title>{% block title %}{% endblock %}</title>
@@ -30,12 +32,10 @@
       margin-bottom: 0px;
       z-index: 997;
     }
-  
       input, label {vertical-align:middle}
       .qrcode-text {padding-right:1.7em; margin-right:0}
-      .qrcode-text-btn {margin-top:20px; display:inline-block; background:url({% static 'images/default_image.jpg' %}) 50% 50% no-repeat; height:80px; width:80px; margin-left:-1.7em; cursor:pointer; }
+      .qrcode-text-btn {margin-top:20px; display:inline-block; background:url({% static 'images/qrcode_button.png' %}) 50% 50% no-repeat; height:70px; width:270px; margin-left:-1.7em; cursor:pointer; }
       .qrcode-text-btn > input[type=file] {position:absolute; overflow:hidden; width:1px; height:1px; opacity:0}
-  
   </style>
   
 </head>
@@ -62,9 +62,7 @@
         function showQRIntro() {
           return confirm("QR코드를 인식하기 위해 카메라를 사용합니다.");
         }
-        if(showQRIntro()){
-          openQRCamera(this);
-        }
+        
     </script>
   
   <div class="navbar-fixed">
