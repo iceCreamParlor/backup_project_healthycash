@@ -30,6 +30,12 @@
       margin-bottom: 0px;
       z-index: 997;
     }
+  
+      input, label {vertical-align:middle}
+      .qrcode-text {padding-right:1.7em; margin-right:0}
+      .qrcode-text-btn {margin-top:20px; display:inline-block; background:url({% static 'images/default_image.jpg' %}) 50% 50% no-repeat; height:80px; width:80px; margin-left:-1.7em; cursor:pointer; }
+      .qrcode-text-btn > input[type=file] {position:absolute; overflow:hidden; width:1px; height:1px; opacity:0}
+  
   </style>
   
 </head>
@@ -39,7 +45,7 @@
     <nav style="background-color : #1E9BB5;">
     <div class="nav-wrapper container">
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-      <a id="logo-container" href="/" class="brand-logo" style="height:40px"> <img style="height:80%;position:relative;top:10%" src="{% static 'images/healthycash_korean_logo.png'  %}" /></a>
+      <a id="logo-container" href="/" class="brand-logo" style="height:37px"> <img style="height:90%;position:relative;top:10%" src="{% static 'images/healthycash_string_logo.png'  %}" /></a>
       
       <ul class="right hide-on-med-and-down">
         {% if request.user.is_anonymous %}
@@ -83,8 +89,11 @@
         <li><a href="/logout">로그아웃</a></li>
         {% else %}
         <li><a>{{request.user.profile.real_name}} 님 안녕하세요!</a></li>
+          <center>
+           <label class="qrcode-text-btn"><input type="file" accept="image/*" capture="environment" onclick="return showQRIntro();" onchange="openQRCamera(this);" tabindex="-1"></label>
+          </center>
         <li><a href="/healthclub/list">헬스장 정보<i class="material-icons">face</i></a></li>
-        <li><a href="/healthclub/qrcode_check">출석체크<i class="material-icons">check</i></a></li>
+
         <li><a href="/profiles/mypage">마이페이지<i class="material-icons">create</i></a></li>
         <li>
           <a href="/profiles/group">그룹<i class="material-icons">group</i>
@@ -94,14 +103,17 @@
           </a>
         </li>
         <li><a href="/aboutus/">About Us <i class="material-icons">folder_open</i></a></li>
-        <li><a href="/logout">로그아웃<i class="material-icons">launch</i></a></li>
+        <li><a href="/logout/">로그아웃<i class="material-icons">launch</i></a></li>
         {% endif %}
       </ul>
   
   <script>
     $( document ).ready(function() {
       $(".button-collapse").sideNav();
-    });
+
+          /* global qrcode */
+      
+      });
   </script>
     {% block content %}{% endblock %}
   
