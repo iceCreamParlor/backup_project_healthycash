@@ -40,6 +40,32 @@
   
 </head>
 <body>
+    <script>
+        /* global qrcode */
+        function openQRCamera(node) {
+          var reader = new FileReader();
+          reader.onload = function() {
+            node.value = "";
+            qrcode.callback = function(res) {
+              if(res instanceof Error) {
+                alert("QR코드가 발견되지 않았습니다. 다시 한번 QR코드를 입력해 주세요.");
+              } else {
+                window.location.replace(res);  // 링크로 REDIRECT
+                node.parentNode.previousElementSibling.value = res;
+              }
+            };
+            qrcode.decode(reader.result);
+          };
+          reader.readAsDataURL(node.files[0]);
+         }
+        
+        function showQRIntro() {
+          return confirm("QR코드를 인식하기 위해 카메라를 사용합니다.");
+        }
+        if(showQRIntro()){
+          openQRCamera(this);
+        }
+    </script>
   
   <div class="navbar-fixed">
     <nav style="background-color : #1E9BB5;">
@@ -93,6 +119,7 @@
           <center>
            <label class="qrcode-text-btn"><input type="file" accept="image/*" capture="environment" onclick="return showQRIntro();" onchange="openQRCamera(this);" tabindex="-1"></label>
           </center>
+
         <li><a href="/healthclub/list">헬스장 정보<i class="material-icons">face</i></a></li>
 
         <li><a href="/profiles/mypage">마이페이지<i class="material-icons">create</i></a></li>
