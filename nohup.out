@@ -1,0 +1,1332 @@
+[25/Jun/2018 13:05:51] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:05:57] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:06:43] "POST /healthclub/create/confirm/ HTTP/1.1" 302 0
+[25/Jun/2018 13:06:43] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:06:43] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:06:43] "GET /healthclub/list/ HTTP/1.1" 200 8270
+[25/Jun/2018 13:06:43] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:06:44] "GET /media/master3_healthclub.png HTTP/1.1" 200 716548
+[25/Jun/2018 13:07:02] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 13:07:02] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 13:07:02] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:07:06] "GET /register HTTP/1.1" 301 0
+[25/Jun/2018 13:07:06] "GET /register/ HTTP/1.1" 200 5102
+[25/Jun/2018 13:07:08] "GET /register_master/ HTTP/1.1" 200 6782
+[25/Jun/2018 13:07:11] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:07:28] "POST /register_master/ HTTP/1.1" 302 0
+[25/Jun/2018 13:07:29] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 13:07:35] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:07:35] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:07:35] "GET /healthclub/list/ HTTP/1.1" 200 8273
+[25/Jun/2018 13:07:35] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:07:35] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:07:40] "GET /healthclub/create/ HTTP/1.1" 200 11230
+Internal Server Error: /healthclub/create/confirm/
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: healthclub_healthclub.price12
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/healthycash_real/healthclub/views.py", line 218, in healthclub_create
+    healthclub.save()
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/base.py", line 808, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/base.py", line 838, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/base.py", line 905, in _save_table
+    forced_update)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/base.py", line 955, in _do_update
+    return filtered._update(values) > 0
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/query.py", line 664, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1204, in execute_sql
+    cursor = super(SQLUpdateCompiler, self).execute_sql(result_type)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 899, in execute_sql
+    raise original_exception
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 889, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/utils/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: healthclub_healthclub.price12
+[25/Jun/2018 13:09:05] "POST /healthclub/create/confirm/ HTTP/1.1" 500 197140
+[25/Jun/2018 13:09:33] "POST /healthclub/create/confirm/ HTTP/1.1" 302 0
+[25/Jun/2018 13:09:33] "GET /healthclub/create HTTP/1.1" 301 0
+[25/Jun/2018 13:09:33] "GET /healthclub/create/ HTTP/1.1" 200 11230
+[25/Jun/2018 13:09:33] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 13:09:33] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 13:09:33] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 13:09:33] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:09:33] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 13:09:34] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:09:34] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:09:34] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:09:46] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:09:46] "GET /login?next=/ HTTP/1.1" 301 0
+[25/Jun/2018 13:09:46] "GET /login/?next=/ HTTP/1.1" 200 3383
+[25/Jun/2018 13:09:47] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:09:49] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:09:49] "GET /login?next=/ HTTP/1.1" 301 0
+[25/Jun/2018 13:09:49] "GET /login/?next=/ HTTP/1.1" 200 3383
+[25/Jun/2018 13:09:50] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:09:50] "GET /login?next=/ HTTP/1.1" 301 0
+[25/Jun/2018 13:09:50] "GET /login/?next=/ HTTP/1.1" 200 3383
+[25/Jun/2018 13:09:50] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:10:00] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:10:00] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:10:00] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:10:00] "GET /healthclub/list/ HTTP/1.1" 200 9469
+[25/Jun/2018 13:10:00] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:10:00] "GET /static/images/mypage_button.png HTTP/1.1" 200 2471
+[25/Jun/2018 13:10:00] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 13:10:00] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 13:10:00] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 13:10:00] "GET /static/images/qrcode_button.png HTTP/1.1" 200 2164
+[25/Jun/2018 13:10:00] "GET /media/master3_healthclub.png HTTP/1.1" 200 716548
+[25/Jun/2018 13:10:00] "GET /media/master2_healthclub.png HTTP/1.1" 200 821321
+[25/Jun/2018 13:10:08] "GET /healthclub/list/ HTTP/1.1" 200 8273
+[25/Jun/2018 13:10:08] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 13:10:08] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 13:10:08] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 13:10:08] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:10:08] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:10:13] "GET /healthclub/create/ HTTP/1.1" 200 11230
+[25/Jun/2018 13:11:06] "POST /healthclub/create/confirm/ HTTP/1.1" 302 0
+[25/Jun/2018 13:11:06] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:11:06] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:11:06] "GET /healthclub/list/ HTTP/1.1" 200 9295
+[25/Jun/2018 13:11:06] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:11:06] "GET /media/master4_healthclub.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 13:11:06] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:11:09] "GET /healthclub/list/ HTTP/1.1" 200 10491
+[25/Jun/2018 13:11:10] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:11:10] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:11:10] "GET /media/master4_healthclub.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 13:11:44] "GET /healthclub/list/ HTTP/1.1" 200 9327
+[25/Jun/2018 13:11:45] "GET /static/js/init.js HTTP/1.1" 200 177
+[25/Jun/2018 13:11:45] "GET /static/css/style.css HTTP/1.1" 200 896
+[25/Jun/2018 13:11:45] "GET /static/css/materialize.css HTTP/1.1" 200 191989
+[25/Jun/2018 13:11:45] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 200 9070
+[25/Jun/2018 13:11:45] "GET /static/js/materialize.js HTTP/1.1" 200 377257
+[25/Jun/2018 13:11:45] "GET /static/images/advertise2.png HTTP/1.1" 200 312184
+[25/Jun/2018 13:11:45] "GET /media/master4_healthclub.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 13:11:45] "GET /static/images/advertise3.png HTTP/1.1" 200 461769
+[25/Jun/2018 13:11:45] "GET /static/images/advertise1.png HTTP/1.1" 200 1526785
+[25/Jun/2018 13:11:45] "GET /media/master3_healthclub.png HTTP/1.1" 200 716548
+[25/Jun/2018 13:11:45] "GET /media/master2_healthclub.png HTTP/1.1" 200 821321
+[25/Jun/2018 13:11:46] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 200 65412
+[25/Jun/2018 13:11:46] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 200 64832
+[25/Jun/2018 13:11:46] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 200 64268
+[25/Jun/2018 13:11:46] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 200 63056
+[25/Jun/2018 13:11:46] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 200 64800
+[25/Jun/2018 13:11:51] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:11:51] "GET /healthclub/list/ HTTP/1.1" 200 9327
+[25/Jun/2018 13:11:52] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 13:12:01] "GET /login HTTP/1.1" 301 0
+[25/Jun/2018 13:12:01] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 13:12:01] "GET /static/images/healthycash_logo.png HTTP/1.1" 200 50781
+[25/Jun/2018 13:12:09] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:12:09] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:12:09] "GET /healthclub/list/ HTTP/1.1" 200 10491
+[25/Jun/2018 13:12:09] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 13:12:09] "GET /static/images/mypage_button.png HTTP/1.1" 200 2471
+[25/Jun/2018 13:12:09] "GET /static/images/qrcode_button.png HTTP/1.1" 200 2164
+[25/Jun/2018 13:12:13] "GET /healthclub/detail/4/ HTTP/1.1" 200 9625
+[25/Jun/2018 13:12:22] "GET /healthclub/mypage HTTP/1.1" 301 0
+[25/Jun/2018 13:12:22] "GET /healthclub/mypage/ HTTP/1.1" 200 4540
+[25/Jun/2018 13:12:22] "GET /media/qrcode/healthclub_qrcode_4.png HTTP/1.1" 200 668
+[25/Jun/2018 13:12:27] "POST /healthclub/payment/4/ HTTP/1.1" 200 6404
+[25/Jun/2018 13:13:01] "GET /healthclub/payment/confirm/4/220000/3/?imp_uid=imp_769948072081&merchant_uid=merchant_1529899947774&imp_success=true HTTP/1.1" 302 0
+[25/Jun/2018 13:13:01] "GET /login?next=/healthclub/payment/confirm/4/220000/3/%3Fimp_uid%3Dimp_769948072081%26merchant_uid%3Dmerchant_1529899947774%26imp_success%3Dtrue HTTP/1.1" 301 0
+[25/Jun/2018 13:13:01] "GET /login/?next=/healthclub/payment/confirm/4/220000/3/%3Fimp_uid%3Dimp_769948072081%26merchant_uid%3Dmerchant_1529899947774%26imp_success%3Dtrue HTTP/1.1" 200 3507
+[25/Jun/2018 13:13:01] "GET /static/js/init.js HTTP/1.1" 200 177
+[25/Jun/2018 13:13:01] "GET /static/css/style.css HTTP/1.1" 200 896
+[25/Jun/2018 13:13:01] "GET /static/images/healthycash_logo.png HTTP/1.1" 200 50781
+[25/Jun/2018 13:13:01] "GET /static/css/materialize.css HTTP/1.1" 200 191989
+[25/Jun/2018 13:13:01] "GET /static/js/materialize.js HTTP/1.1" 200 377257
+[25/Jun/2018 13:13:02] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 200 64800
+[25/Jun/2018 13:13:02] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 200 64832
+[25/Jun/2018 13:13:02] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 200 65412
+[25/Jun/2018 13:13:02] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 200 64268
+Not Found: /favicon.ico
+[25/Jun/2018 13:13:02] "GET /favicon.ico HTTP/1.1" 404 3348
+[25/Jun/2018 13:13:02] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 200 63056
+[25/Jun/2018 13:13:13] "GET /healthclub/list/ HTTP/1.1" 200 9327
+[25/Jun/2018 13:13:13] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 200 9070
+[25/Jun/2018 13:13:13] "GET /media/master4_healthclub.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 13:13:13] "GET /static/images/advertise2.png HTTP/1.1" 200 312184
+[25/Jun/2018 13:13:13] "GET /static/images/advertise3.png HTTP/1.1" 200 461769
+[25/Jun/2018 13:13:14] "GET /media/master3_healthclub.png HTTP/1.1" 200 716548
+[25/Jun/2018 13:13:14] "GET /media/master2_healthclub.png HTTP/1.1" 200 821321
+[25/Jun/2018 13:13:14] "GET /static/images/advertise1.png HTTP/1.1" 200 1526785
+[25/Jun/2018 13:13:16] "GET /login HTTP/1.1" 301 0
+[25/Jun/2018 13:13:16] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 13:13:23] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:13:23] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:13:23] "GET /healthclub/list/ HTTP/1.1" 200 10491
+[25/Jun/2018 13:13:23] "GET /static/images/mypage_button.png HTTP/1.1" 200 2471
+[25/Jun/2018 13:13:23] "GET /static/images/qrcode_button.png HTTP/1.1" 200 2164
+[25/Jun/2018 13:13:26] "GET /profiles/mypage HTTP/1.1" 301 0
+[25/Jun/2018 13:13:26] "GET /profiles/mypage/ HTTP/1.1" 200 6780
+[25/Jun/2018 13:13:32] "GET /healthclub/list_notad HTTP/1.1" 301 0
+[25/Jun/2018 13:13:32] "GET /healthclub/list_notad/ HTTP/1.1" 200 8386
+[25/Jun/2018 13:13:32] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 13:13:33] "GET /healthclub/detail/4/ HTTP/1.1" 200 9625
+[25/Jun/2018 13:13:37] "POST /healthclub/payment/4/ HTTP/1.1" 200 6404
+[25/Jun/2018 13:14:04] "GET /healthclub/payment/confirm/4/140000/2/?imp_uid=imp_661017927936&merchant_uid=merchant_1529900017660&imp_success=true HTTP/1.1" 302 0
+[25/Jun/2018 13:14:04] "GET /profiles/mypage/ HTTP/1.1" 200 6818
+[25/Jun/2018 13:14:19] "GET /profiles/mypage/ HTTP/1.1" 200 6818
+[25/Jun/2018 13:14:34] "GET /healthclub/qrcode_check_save?healthclub_id=4 HTTP/1.1" 301 0
+[25/Jun/2018 13:14:34] "GET /healthclub/qrcode_check_save/?healthclub_id=4 HTTP/1.1" 302 0
+[25/Jun/2018 13:14:34] "GET /profiles/mypage/ HTTP/1.1" 200 6989
+[25/Jun/2018 13:16:34] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:16:34] "GET /login?next=/ HTTP/1.1" 301 0
+[25/Jun/2018 13:16:34] "GET /login/?next=/ HTTP/1.1" 200 3383
+[25/Jun/2018 13:16:35] "GET /static/images/healthycash_logo.png HTTP/1.1" 200 50781
+[25/Jun/2018 13:16:46] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:16:46] "GET /login?next=/ HTTP/1.1" 301 0
+[25/Jun/2018 13:16:46] "GET /login/?next=/ HTTP/1.1" 200 3383
+[25/Jun/2018 13:16:46] "GET /static/images/healthycash_logo.png HTTP/1.1" 200 50781
+[25/Jun/2018 13:16:46] "GET /static/js/init.js HTTP/1.1" 200 177
+[25/Jun/2018 13:16:46] "GET /static/css/style.css HTTP/1.1" 200 896
+[25/Jun/2018 13:16:46] "GET /static/css/materialize.css HTTP/1.1" 200 191989
+[25/Jun/2018 13:16:47] "GET /static/js/materialize.js HTTP/1.1" 200 377257
+[25/Jun/2018 13:16:47] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 200 64832
+[25/Jun/2018 13:16:47] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 200 64800
+[25/Jun/2018 13:16:47] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 200 65412
+[25/Jun/2018 13:16:47] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 200 64268
+[25/Jun/2018 13:16:47] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 200 63056
+[25/Jun/2018 13:16:48] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:16:48] "GET /login?next=/ HTTP/1.1" 301 0
+[25/Jun/2018 13:16:48] "GET /login/?next=/ HTTP/1.1" 200 3383
+[25/Jun/2018 13:16:48] "GET /static/js/init.js HTTP/1.1" 200 177
+[25/Jun/2018 13:16:48] "GET /static/css/style.css HTTP/1.1" 200 896
+[25/Jun/2018 13:16:48] "GET /static/css/materialize.css HTTP/1.1" 200 191989
+[25/Jun/2018 13:16:48] "GET /static/images/healthycash_logo.png HTTP/1.1" 200 50781
+[25/Jun/2018 13:16:48] "GET /static/js/materialize.js HTTP/1.1" 200 377257
+[25/Jun/2018 13:16:50] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 200 64800
+[25/Jun/2018 13:16:50] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 200 64832
+[25/Jun/2018 13:16:50] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 200 65412
+[25/Jun/2018 13:16:50] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 200 64268
+[25/Jun/2018 13:16:50] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 200 63056
+[25/Jun/2018 13:16:56] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:16:56] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:16:56] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:16:56] "GET /healthclub/list/ HTTP/1.1" 200 10494
+[25/Jun/2018 13:16:57] "GET /static/images/mypage_button.png HTTP/1.1" 200 2471
+[25/Jun/2018 13:16:57] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 200 9070
+[25/Jun/2018 13:16:57] "GET /media/master4_healthclub.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 13:16:57] "GET /static/images/advertise2.png HTTP/1.1" 200 312184
+[25/Jun/2018 13:16:57] "GET /static/images/advertise3.png HTTP/1.1" 200 461769
+[25/Jun/2018 13:16:57] "GET /media/master3_healthclub.png HTTP/1.1" 200 716548
+[25/Jun/2018 13:16:57] "GET /static/images/qrcode_button.png HTTP/1.1" 200 2164
+[25/Jun/2018 13:16:57] "GET /media/master2_healthclub.png HTTP/1.1" 200 821321
+[25/Jun/2018 13:16:57] "GET /static/images/advertise1.png HTTP/1.1" 200 1526785
+[25/Jun/2018 13:17:14] "GET /healthclub/list_notad HTTP/1.1" 301 0
+[25/Jun/2018 13:17:14] "GET /healthclub/list_notad/ HTTP/1.1" 200 8389
+[25/Jun/2018 13:17:18] "GET /healthclub/detail/4/ HTTP/1.1" 200 9628
+[25/Jun/2018 13:17:21] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:17:22] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:17:22] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:17:22] "GET /healthclub/list/ HTTP/1.1" 200 10487
+[25/Jun/2018 13:17:22] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 200 9070
+[25/Jun/2018 13:17:22] "GET /static/images/mypage_button.png HTTP/1.1" 200 2471
+[25/Jun/2018 13:17:22] "GET /static/images/advertise2.png HTTP/1.1" 200 312184
+[25/Jun/2018 13:17:22] "GET /media/master4_healthclub.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 13:17:22] "GET /static/images/advertise3.png HTTP/1.1" 200 461769
+[25/Jun/2018 13:17:22] "GET /media/master3_healthclub.png HTTP/1.1" 200 716548
+[25/Jun/2018 13:17:22] "GET /media/master2_healthclub.png HTTP/1.1" 200 821321
+[25/Jun/2018 13:17:23] "GET /static/images/advertise1.png HTTP/1.1" 200 1526785
+[25/Jun/2018 13:17:23] "GET /static/images/qrcode_button.png HTTP/1.1" 200 2164
+[25/Jun/2018 13:17:33] "GET /healthclub/list_notad HTTP/1.1" 301 0
+[25/Jun/2018 13:17:33] "GET /healthclub/list_notad/ HTTP/1.1" 200 8382
+[25/Jun/2018 13:17:47] "POST /healthclub/healthclubdetail_reply/4/ HTTP/1.1" 302 0
+[25/Jun/2018 13:17:47] "GET /healthclub/detail/4/ HTTP/1.1" 200 9799
+[25/Jun/2018 13:17:48] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 13:17:54] "GET /healthclub/list_notad/ HTTP/1.1" 200 8382
+[25/Jun/2018 13:18:02] "GET /healthclub/list_notad/ HTTP/1.1" 200 8389
+[25/Jun/2018 13:18:02] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:18:12] "GET /profiles/group HTTP/1.1" 301 0
+[25/Jun/2018 13:18:12] "GET /profiles/group/ HTTP/1.1" 200 7199
+[25/Jun/2018 13:18:20] "GET /profiles/group/detail/56 HTTP/1.1" 301 0
+[25/Jun/2018 13:18:20] "GET /profiles/group/detail/56/ HTTP/1.1" 200 7514
+[25/Jun/2018 13:18:46] "GET /profiles/group/register/54 HTTP/1.1" 301 0
+[25/Jun/2018 13:18:46] "GET /profiles/group/register/54/ HTTP/1.1" 302 0
+[25/Jun/2018 13:18:46] "GET /profiles/group/detail/54/ HTTP/1.1" 200 6965
+[25/Jun/2018 13:18:51] "GET /profiles/group/exit/54 HTTP/1.1" 301 0
+[25/Jun/2018 13:18:52] "GET /profiles/group/exit/54/ HTTP/1.1" 302 0
+[25/Jun/2018 13:18:52] "GET /profiles/group/ HTTP/1.1" 200 7199
+[25/Jun/2018 13:18:56] "GET /profiles/group/create/ HTTP/1.1" 200 9659
+[25/Jun/2018 13:19:33] "HEAD / HTTP/1.0" 302 0
+[25/Jun/2018 13:19:35] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:19:35] "GET /login?next=/ HTTP/1.1" 301 0
+[25/Jun/2018 13:19:35] "GET /login/?next=/ HTTP/1.1" 200 3383
+[25/Jun/2018 13:19:36] "GET /static/images/healthycash_logo.png HTTP/1.1" 200 50781
+[25/Jun/2018 13:19:46] "GET /profiles/mypage/ HTTP/1.1" 200 6989
+[25/Jun/2018 13:19:46] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 13:19:46] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 13:19:46] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 13:19:46] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 13:19:46] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:19:46] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:19:46] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:19:46] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:19:46] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:19:46] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:19:46] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:19:47] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:20:14] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 13:20:14] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 13:20:14] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 13:20:14] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 13:20:14] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 13:20:14] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:20:14] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 13:20:14] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:20:14] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:20:19] "POST /login/ HTTP/1.1" 200 3406
+[25/Jun/2018 13:20:21] "GET /register/ HTTP/1.1" 200 5102
+[25/Jun/2018 13:20:21] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:20:21] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:20:22] "GET /register_normal/ HTTP/1.1" 200 7743
+[25/Jun/2018 13:20:23] "HEAD / HTTP/1.0" 302 0
+[25/Jun/2018 13:20:38] "HEAD / HTTP/1.0" 302 0
+[25/Jun/2018 13:20:43] "POST /register_normal/ HTTP/1.1" 302 0
+[25/Jun/2018 13:20:44] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 13:20:48] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:20:49] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:20:49] "GET /healthclub/list/ HTTP/1.1" 200 10498
+[25/Jun/2018 13:20:49] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:20:49] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 13:20:49] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 13:20:49] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 13:20:49] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 13:20:49] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:20:49] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:20:49] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:20:53] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 13:20:53] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 13:20:57] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:20:57] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:20:57] "GET /healthclub/list/ HTTP/1.1" 200 9295
+[25/Jun/2018 13:21:01] "GET /healthclub/mypage/ HTTP/1.1" 200 5192
+[25/Jun/2018 13:21:01] "GET /media/qrcode/healthclub_qrcode_2.png HTTP/1.1" 200 677
+[25/Jun/2018 13:21:05] "HEAD / HTTP/1.0" 302 0
+[25/Jun/2018 13:21:06] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 13:21:07] "GET /login HTTP/1.1" 301 0
+[25/Jun/2018 13:21:07] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 13:21:07] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:21:12] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:21:12] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:21:12] "GET /healthclub/list/ HTTP/1.1" 200 10498
+[25/Jun/2018 13:21:13] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 13:21:13] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:21:13] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 13:21:13] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 13:21:13] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 13:21:13] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:21:16] "GET /healthclub/list_notad/ HTTP/1.1" 200 8393
+[25/Jun/2018 13:21:17] "GET /healthclub/detail/3/ HTTP/1.1" 200 9745
+[25/Jun/2018 13:21:21] "POST /healthclub/payment/3/ HTTP/1.1" 200 6430
+[25/Jun/2018 13:21:44] "GET /healthclub/payment/confirm/3/300000/3/?imp_uid=imp_694481488104&merchant_uid=merchant_1529900481231&imp_success=true HTTP/1.1" 302 0
+[25/Jun/2018 13:21:44] "GET /profiles/mypage/ HTTP/1.1" 200 6828
+[25/Jun/2018 13:22:35] "GET /healthclub/qrcode_check_save?healthclub_id=2 HTTP/1.1" 301 0
+[25/Jun/2018 13:22:35] "GET /healthclub/qrcode_check_save/?healthclub_id=2 HTTP/1.1" 200 6460
+[25/Jun/2018 13:22:43] "GET /profiles/mypage/ HTTP/1.1" 200 6828
+[25/Jun/2018 13:22:48] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 13:22:49] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 13:22:52] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:22:52] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:22:53] "GET /healthclub/list/ HTTP/1.1" 200 9292
+[25/Jun/2018 13:22:53] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 13:22:53] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:22:53] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:22:55] "GET /healthclub/mypage/ HTTP/1.1" 200 4540
+[25/Jun/2018 13:22:55] "GET /media/qrcode/healthclub_qrcode_3.png HTTP/1.1" 200 668
+[25/Jun/2018 13:23:08] "GET /healthclub/qrcode_check_save?healthclub_id=3 HTTP/1.1" 301 0
+[25/Jun/2018 13:23:09] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 302 0
+[25/Jun/2018 13:23:09] "GET /profiles/mypage/ HTTP/1.1" 200 7002
+[25/Jun/2018 13:23:47] "GET /profiles/mypage/ HTTP/1.1" 200 7002
+[25/Jun/2018 13:24:02] "GET /profiles/group HTTP/1.1" 301 0
+[25/Jun/2018 13:24:02] "GET /profiles/group/ HTTP/1.1" 200 7101
+[25/Jun/2018 13:24:07] "GET /aboutus/ HTTP/1.1" 200 5765
+[25/Jun/2018 13:24:07] "GET /static/images/healthycash_korean_logo.png HTTP/1.1" 404 1715
+[25/Jun/2018 13:24:07] "GET /static/images/healthycash_korean_logo.png HTTP/1.1" 404 1715
+[25/Jun/2018 13:24:23] "GET /profiles/group/ HTTP/1.1" 200 7101
+[25/Jun/2018 13:24:24] "GET /profiles/group/create/ HTTP/1.1" 200 9407
+[25/Jun/2018 13:24:56] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 13:24:56] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 13:25:04] "GET /admin HTTP/1.1" 301 0
+[25/Jun/2018 13:25:04] "GET /admin/ HTTP/1.1" 302 0
+[25/Jun/2018 13:25:04] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1654
+[25/Jun/2018 13:25:04] "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+[25/Jun/2018 13:25:04] "GET /static/admin/css/base.css HTTP/1.1" 200 16066
+[25/Jun/2018 13:25:04] "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+[25/Jun/2018 13:25:04] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+[25/Jun/2018 13:25:04] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+[25/Jun/2018 13:25:11] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[25/Jun/2018 13:25:11] "GET /admin/ HTTP/1.1" 200 8741
+[25/Jun/2018 13:25:11] "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+[25/Jun/2018 13:25:11] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+[25/Jun/2018 13:25:11] "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+[25/Jun/2018 13:25:11] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+[25/Jun/2018 13:25:11] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+[25/Jun/2018 13:25:14] "GET /admin/auth/user/ HTTP/1.1" 200 14462
+[25/Jun/2018 13:25:14] "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+[25/Jun/2018 13:25:14] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[25/Jun/2018 13:25:14] "GET /static/admin/js/core.js HTTP/1.1" 200 7976
+[25/Jun/2018 13:25:14] "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+[25/Jun/2018 13:25:14] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6591
+[25/Jun/2018 13:25:14] "GET /static/admin/js/actions.js HTTP/1.1" 200 6501
+[25/Jun/2018 13:25:14] "GET /static/admin/js/urlify.js HTTP/1.1" 200 8186
+[25/Jun/2018 13:25:14] "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1538
+[25/Jun/2018 13:25:14] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 258648
+[25/Jun/2018 13:25:14] "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+[25/Jun/2018 13:25:14] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+[25/Jun/2018 13:25:14] "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+[25/Jun/2018 13:25:14] "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+[25/Jun/2018 13:25:14] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+[25/Jun/2018 13:25:14] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+[25/Jun/2018 13:25:22] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:25:22] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:25:23] "GET /healthclub/list/ HTTP/1.1" 200 10487
+[25/Jun/2018 13:25:23] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:25:23] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:25:26] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 13:25:26] "GET /login HTTP/1.1" 301 0
+[25/Jun/2018 13:25:26] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 13:25:26] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:25:33] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:25:33] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:25:33] "GET /healthclub/list/ HTTP/1.1" 200 10500
+[25/Jun/2018 13:26:00] "GET /profiles/group HTTP/1.1" 301 0
+[25/Jun/2018 13:26:00] "GET /profiles/group/ HTTP/1.1" 200 7101
+[25/Jun/2018 13:26:03] "GET / HTTP/1.0" 302 0
+[25/Jun/2018 13:26:08] "POST /profiles/group/create/confirm/ HTTP/1.1" 302 0
+[25/Jun/2018 13:26:08] "GET /profiles/group/ HTTP/1.1" 200 7260
+[25/Jun/2018 13:26:08] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 13:26:08] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 13:26:08] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 13:26:08] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 13:26:08] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:26:08] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:26:08] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:26:08] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:26:08] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:26:08] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:26:08] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:26:08] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:26:10] "GET /profiles/group/detail/57 HTTP/1.1" 301 0
+[25/Jun/2018 13:26:10] "GET /profiles/group/detail/57/ HTTP/1.1" 200 6655
+[25/Jun/2018 13:26:18] "GET /profiles/group/update/57 HTTP/1.1" 301 0
+[25/Jun/2018 13:26:18] "GET /profiles/group/update/57/ HTTP/1.1" 200 9459
+[25/Jun/2018 13:26:20] "GET /profiles/mypage HTTP/1.1" 301 0
+[25/Jun/2018 13:26:20] "GET /profiles/mypage/ HTTP/1.1" 200 7002
+Internal Server Error: /profiles/group/update/confirm/57/
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/healthycash_real/profiles/views.py", line 102, in group_update_confirm
+    new_user = User.objects.get(username = user)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/query.py", line 380, in get
+    self.model._meta.object_name
+django.contrib.auth.models.DoesNotExist: User matching query does not exist.
+[25/Jun/2018 13:26:26] "POST /profiles/group/update/confirm/57/ HTTP/1.1" 500 78789
+Internal Server Error: /profiles/group/update/confirm/57/
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/healthycash_real/profiles/views.py", line 102, in group_update_confirm
+    new_user = User.objects.get(username = user)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/query.py", line 380, in get
+    self.model._meta.object_name
+django.contrib.auth.models.DoesNotExist: User matching query does not exist.
+[25/Jun/2018 13:26:46] "POST /profiles/group/update/confirm/57/ HTTP/1.1" 500 78669
+[25/Jun/2018 13:26:47] "GET /healthclub/list/ HTTP/1.1" 200 10500
+Internal Server Error: /profiles/group/update/confirm/57/
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/healthycash_real/profiles/views.py", line 102, in group_update_confirm
+    new_user = User.objects.get(username = user)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/query.py", line 380, in get
+    self.model._meta.object_name
+django.contrib.auth.models.DoesNotExist: User matching query does not exist.
+[25/Jun/2018 13:27:16] "POST /profiles/group/update/confirm/57/ HTTP/1.1" 500 78654
+[25/Jun/2018 13:28:50] "GET /admin/logout/ HTTP/1.1" 302 0
+[25/Jun/2018 13:28:50] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 13:28:50] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 13:28:50] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 13:28:50] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 13:28:50] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 13:28:50] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:28:50] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:28:50] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:28:55] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:28:55] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:28:55] "GET /healthclub/list/ HTTP/1.1" 200 10493
+[25/Jun/2018 13:28:55] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:28:55] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:28:56] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 13:28:56] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 13:28:56] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 13:28:56] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 13:28:56] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:28:56] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:28:56] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:28:56] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:28:57] "GET /login/ HTTP/1.1" 200 3323
+Internal Server Error: /profiles/group/update/confirm/57/
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/healthycash_real/profiles/views.py", line 102, in group_update_confirm
+    new_user = User.objects.get(username = user)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/query.py", line 380, in get
+    self.model._meta.object_name
+django.contrib.auth.models.DoesNotExist: User matching query does not exist.
+[25/Jun/2018 13:29:23] "POST /profiles/group/update/confirm/57/ HTTP/1.1" 500 78654
+[25/Jun/2018 13:43:51] "HEAD / HTTP/1.0" 302 0
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 25, 2018 - 13:04:52
+Django version 1.11.13, using settings 'healthycash.settings'
+Starting development server at http://0.0.0.0:80/
+Quit the server with CONTROL-C.
+AIzaSyB05EHWiMzinEs11lNGvVFxt1TdtJ-nJsE
+AIzaSyB05EHWiMzinEs11lNGvVFxt1TdtJ-nJsE
+AIzaSyB05EHWiMzinEs11lNGvVFxt1TdtJ-nJsE
+1
+2018-08-25 13:14:04.038027
+1
+2018-09-25 13:21:44.467252
+<QuerySet []>
+[25/Jun/2018 13:44:06] "GET /healthclub/list/ HTTP/1.1" 200 10500
+[25/Jun/2018 13:44:06] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:44:06] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:44:07] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:44:07] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:44:09] "GET /profiles/group/ HTTP/1.1" 200 7260
+[25/Jun/2018 13:44:12] "GET /profiles/group/detail/57/ HTTP/1.1" 200 6655
+[25/Jun/2018 13:44:13] "GET /profiles/group/update/57/ HTTP/1.1" 200 9459
+[25/Jun/2018 13:45:06] "POST /profiles/group/update/confirm/57/ HTTP/1.1" 302 0
+[25/Jun/2018 13:45:06] "GET /profiles/group/detail/57/ HTTP/1.1" 200 6655
+[25/Jun/2018 13:45:38] "HEAD / HTTP/1.0" 302 0
+[25/Jun/2018 13:45:48] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:45:48] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:45:48] "GET /healthclub/list/ HTTP/1.1" 200 10494
+[25/Jun/2018 13:45:48] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:45:48] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:45:49] "GET /profiles/mypage HTTP/1.1" 301 0
+[25/Jun/2018 13:45:49] "GET /profiles/mypage/ HTTP/1.1" 200 7176
+[25/Jun/2018 13:46:18] "GET /profiles/mypage/ HTTP/1.1" 200 7176
+[25/Jun/2018 13:46:20] "GET /profiles/mypage/ HTTP/1.1" 200 7176
+[25/Jun/2018 13:48:28] "GET /profiles/mypage/ HTTP/1.1" 200 7218
+[25/Jun/2018 13:48:59] "GET /profiles/mypage/ HTTP/1.1" 200 7218
+[25/Jun/2018 13:50:01] "GET /profiles/mypage/ HTTP/1.1" 200 7222
+[25/Jun/2018 13:50:06] "GET /profiles/group HTTP/1.1" 301 0
+[25/Jun/2018 13:50:06] "GET /profiles/group/ HTTP/1.1" 200 7405
+[25/Jun/2018 13:50:07] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 200 64268
+[25/Jun/2018 13:50:08] "GET /aboutus/ HTTP/1.1" 200 5759
+[25/Jun/2018 13:50:08] "GET /static/images/healthycash_korean_logo.png HTTP/1.1" 404 1711
+[25/Jun/2018 13:50:10] "GET /healthclub/list_notad HTTP/1.1" 301 0
+[25/Jun/2018 13:50:10] "GET /healthclub/list_notad/ HTTP/1.1" 200 8389
+[25/Jun/2018 13:50:10] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 13:50:10] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:50:10] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:50:29] "GET /profiles/group/ HTTP/1.1" 200 7260
+[25/Jun/2018 13:50:56] "GET /profiles/mypage/ HTTP/1.1" 200 7048
+[25/Jun/2018 13:51:12] "GET /aboutus/ HTTP/1.1" 200 5765
+[25/Jun/2018 13:51:12] "GET /static/images/healthycash_korean_logo.png HTTP/1.1" 404 1715
+[25/Jun/2018 13:56:23] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:56:49] "GET /profiles/mypage/ HTTP/1.1" 200 7048
+[25/Jun/2018 13:56:49] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 13:56:49] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 13:56:49] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 13:56:49] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 13:56:49] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:56:49] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:56:49] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:56:49] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:56:49] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:56:49] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:56:51] "GET /profiles/mypage/ HTTP/1.1" 200 7048
+[25/Jun/2018 13:56:51] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:56:51] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:56:51] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:56:51] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:56:52] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 13:56:53] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:56:53] "GET /healthclub/list/ HTTP/1.1" 200 10500
+[25/Jun/2018 13:56:53] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:56:53] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:56:54] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:56:54] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 13:56:59] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 13:57:00] "GET /login HTTP/1.1" 301 0
+[25/Jun/2018 13:57:00] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 13:57:00] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 13:57:10] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 13:57:10] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 13:57:10] "GET /healthclub/list/ HTTP/1.1" 200 10500
+Internal Server Error: /healthclub/list/
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/views/generic/list.py", line 160, in get
+    self.object_list = self.get_queryset()
+  File "/home/ubuntu/healthycash_real/healthclub/views.py", line 130, in get_queryset
+    print(search)
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-2: ordinal not in range(128)
+[25/Jun/2018 13:57:30] "GET /healthclub/list/?csrfmiddlewaretoken=WjxqtWwb7aQEwe5byR0NwiW8cbNSA6DBDRBwQkbmkO5XkKogZjG980m9uvticy3p&search=%EB%A7%88%ED%8F%AC%EA%B5%AC HTTP/1.1" 500 82871
+Internal Server Error: /healthclub/list/
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/views/generic/list.py", line 160, in get
+    self.object_list = self.get_queryset()
+  File "/home/ubuntu/healthycash_real/healthclub/views.py", line 130, in get_queryset
+    print(search)
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-2: ordinal not in range(128)
+[25/Jun/2018 13:57:40] "GET /healthclub/list/?csrfmiddlewaretoken=WjxqtWwb7aQEwe5byR0NwiW8cbNSA6DBDRBwQkbmkO5XkKogZjG980m9uvticy3p&search=%EB%A7%88%ED%8F%AC%EA%B5%AC HTTP/1.1" 500 82871
+[25/Jun/2018 14:01:44] "HEAD / HTTP/1.0" 302 0
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 25, 2018 - 13:43:59
+Django version 1.11.13, using settings 'healthycash.settings'
+Starting development server at http://0.0.0.0:80/
+Quit the server with CONTROL-C.
+<QuerySet []>
+[25/Jun/2018 14:02:56] "GET /healthclub/list/?csrfmiddlewaretoken=WjxqtWwb7aQEwe5byR0NwiW8cbNSA6DBDRBwQkbmkO5XkKogZjG980m9uvticy3p&search=%ED%95%98%EC%9D%B4%ED%8C%8C%EC%9D%B4%EB%B8%8C%EC%A7%90%28%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD+%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%B6%81..%29 HTTP/1.1" 200 8943
+[25/Jun/2018 14:02:56] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 14:03:02] "GET /healthclub/list/?csrfmiddlewaretoken=4LXNJtYSybn0DQYVxWKUTFDTmFwYaoj4Lj1T6RD3LPCjrmh0Yoqgvn3UEZcoMQJS&search=%EB%AF%B8%EC%A7%80 HTTP/1.1" 200 8950
+[25/Jun/2018 14:03:02] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 14:03:04] "GET /healthclub/list/ HTTP/1.1" 200 10500
+[25/Jun/2018 14:03:04] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 14:03:14] "GET /healthclub/detail/3/ HTTP/1.1" 200 9747
+[25/Jun/2018 14:03:31] "POST /healthclub/healthclubdetail_reply/3/ HTTP/1.1" 302 0
+[25/Jun/2018 14:03:31] "GET /healthclub/detail/3/ HTTP/1.1" 200 9938
+[25/Jun/2018 14:03:35] "POST /healthclub/payment/3/ HTTP/1.1" 200 6625
+[25/Jun/2018 14:04:15] "GET /healthclub/payment/confirm/3/200000/2/?imp_uid=imp_601021955538&merchant_uid=merchant_1529903021693&imp_success=true HTTP/1.1" 302 0
+[25/Jun/2018 14:04:15] "GET /profiles/mypage/ HTTP/1.1" 200 7048
+[25/Jun/2018 14:04:31] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 14:04:31] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 14:04:31] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 14:04:31] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 14:04:31] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 14:04:31] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 14:04:31] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 14:04:31] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:04:31] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:04:37] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 14:04:37] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 14:04:37] "GET /healthclub/list/ HTTP/1.1" 200 9292
+[25/Jun/2018 14:04:37] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 14:04:37] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 14:04:37] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 14:04:37] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 14:04:37] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 14:04:37] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 14:04:37] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 14:04:37] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:04:39] "GET /healthclub/mypage/ HTTP/1.1" 200 4761
+[25/Jun/2018 14:04:39] "GET /media/qrcode/healthclub_qrcode_3.png HTTP/1.1" 304 0
+[25/Jun/2018 14:04:47] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 14:04:47] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 14:05:02] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 14:05:02] "GET /login?next=/ HTTP/1.1" 301 0
+[25/Jun/2018 14:05:02] "GET /login/?next=/ HTTP/1.1" 200 3383
+Not Found: /favicon.ico
+[25/Jun/2018 14:05:03] "GET /favicon.ico HTTP/1.1" 404 3344
+[25/Jun/2018 14:05:03] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 14:05:03] "GET /login?next=/ HTTP/1.1" 301 0
+[25/Jun/2018 14:05:04] "GET /login/?next=/ HTTP/1.1" 200 3383
+[25/Jun/2018 14:05:04] "GET /login/?next=/ HTTP/1.1" 200 3383
+[25/Jun/2018 14:05:04] "GET /static/images/healthycash_logo.png HTTP/1.1" 200 50781
+[25/Jun/2018 14:05:04] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 200 64800
+Not Found: /favicon.ico
+[25/Jun/2018 14:05:04] "GET /favicon.ico HTTP/1.1" 404 3344
+[25/Jun/2018 14:05:09] "GET /login/?next=/ HTTP/1.1" 200 3383
+[25/Jun/2018 14:05:09] "GET /static/js/init.js HTTP/1.1" 200 177
+[25/Jun/2018 14:05:09] "GET /static/css/style.css HTTP/1.1" 200 896
+[25/Jun/2018 14:05:09] "GET /static/images/healthycash_logo.png HTTP/1.1" 200 50781
+[25/Jun/2018 14:05:09] "GET /static/css/materialize.css HTTP/1.1" 200 191989
+[25/Jun/2018 14:05:09] "GET /static/js/materialize.js HTTP/1.1" 200 377257
+[25/Jun/2018 14:05:09] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 200 64832
+[25/Jun/2018 14:05:09] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 200 64800
+Not Found: /favicon.ico
+[25/Jun/2018 14:05:10] "GET /favicon.ico HTTP/1.1" 404 3344
+[25/Jun/2018 14:05:17] "POST /login/ HTTP/1.1" 302 0
+Forbidden (CSRF token missing or incorrect.): /login/
+[25/Jun/2018 14:05:24] "POST /login/ HTTP/1.1" 403 2502
+[25/Jun/2018 14:05:25] "GET /login/?next=/ HTTP/1.1" 200 3465
+[25/Jun/2018 14:05:29] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 14:05:29] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 14:05:29] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 14:05:29] "GET /healthclub/list/ HTTP/1.1" 200 9292
+[25/Jun/2018 14:05:29] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 200 9070
+[25/Jun/2018 14:05:29] "GET /static/images/advertise2.png HTTP/1.1" 200 312184
+[25/Jun/2018 14:05:29] "GET /media/master4_healthclub.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 14:05:29] "GET /static/images/advertise3.png HTTP/1.1" 200 461769
+[25/Jun/2018 14:05:29] "GET /media/master3_healthclub.png HTTP/1.1" 200 716548
+[25/Jun/2018 14:05:30] "GET /media/master2_healthclub.png HTTP/1.1" 200 821321
+[25/Jun/2018 14:05:30] "GET /static/images/advertise1.png HTTP/1.1" 200 1526785
+[25/Jun/2018 14:05:34] "GET /healthclub/mypage HTTP/1.1" 301 0
+[25/Jun/2018 14:05:34] "GET /healthclub/mypage/ HTTP/1.1" 200 4761
+[25/Jun/2018 14:05:34] "GET /media/qrcode/healthclub_qrcode_3.png HTTP/1.1" 200 668
+[25/Jun/2018 14:05:48] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 200 6453
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 25, 2018 - 14:02:47
+Django version 1.11.13, using settings 'healthycash.settings'
+Starting development server at http://0.0.0.0:80/
+Quit the server with CONTROL-C.
+2
+2018-08-25 14:04:15.500846
+[25/Jun/2018 14:08:08] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 200 6453
+[25/Jun/2018 14:08:08] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 14:08:08] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 14:08:08] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 14:08:08] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 14:08:08] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 14:08:08] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 14:08:08] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 14:08:09] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:08:09] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:08:09] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:08:09] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:08:09] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 304 0
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 25, 2018 - 14:07:58
+Django version 1.11.13, using settings 'healthycash.settings'
+Starting development server at http://0.0.0.0:80/
+Quit the server with CONTROL-C.
+[25/Jun/2018 14:08:39] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 200 6453
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 25, 2018 - 14:08:29
+Django version 1.11.13, using settings 'healthycash.settings'
+Starting development server at http://0.0.0.0:80/
+Quit the server with CONTROL-C.
+[25/Jun/2018 14:09:42] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 200 6453
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 25, 2018 - 14:09:34
+Django version 1.11.13, using settings 'healthycash.settings'
+Starting development server at http://0.0.0.0:80/
+Quit the server with CONTROL-C.
+Internal Server Error: /healthclub/qrcode_check_save/
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/urls/base.py", line 77, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'healthcluh'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/ubuntu/healthycash_real/healthclub/views.py", line 257, in qrcode_check_save
+    return HttpResponseRedirect(reverse('healthcluh:list'))
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/urls/base.py", line 87, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'healthcluh' is not a registered namespace
+[25/Jun/2018 14:10:33] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 500 86890
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 25, 2018 - 14:10:25
+Django version 1.11.13, using settings 'healthycash.settings'
+Starting development server at http://0.0.0.0:80/
+Quit the server with CONTROL-C.
+[25/Jun/2018 14:10:41] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 302 0
+[25/Jun/2018 14:10:41] "GET /healthclub/list/ HTTP/1.1" 200 10500
+[25/Jun/2018 14:10:41] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 14:10:41] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 14:10:41] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 14:10:41] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 14:10:42] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 14:10:42] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 14:10:48] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 302 0
+[25/Jun/2018 14:10:48] "GET /healthclub/list/ HTTP/1.1" 200 10500
+[25/Jun/2018 14:25:22] "GET / HTTP/1.0" 302 0
+[25/Jun/2018 14:32:36] "GET /healthclub/qrcode_check_save?healthclub_id=3 HTTP/1.1" 301 0
+[25/Jun/2018 14:32:36] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 302 0
+[25/Jun/2018 14:32:36] "GET /healthclub/list/ HTTP/1.1" 200 10494
+[25/Jun/2018 14:32:36] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 14:32:36] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 14:32:36] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 14:32:36] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 14:32:36] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 14:32:36] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 14:32:36] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 14:32:36] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 14:32:36] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 14:32:36] "GET /media/master4_healthclub.jpg HTTP/1.1" 304 0
+[25/Jun/2018 14:32:36] "GET /media/master2_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 14:32:36] "GET /media/master3_healthclub.png HTTP/1.1" 304 0
+[25/Jun/2018 14:32:37] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 14:32:37] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:32:37] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:32:37] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:32:37] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:32:37] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:33:03] "GET /profiles/mypage HTTP/1.1" 301 0
+[25/Jun/2018 14:33:03] "GET /profiles/mypage/ HTTP/1.1" 200 7222
+[25/Jun/2018 14:33:10] "GET /profiles/mypage/ HTTP/1.1" 200 7222
+[25/Jun/2018 14:33:16] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 302 0
+[25/Jun/2018 14:33:16] "GET /healthclub/list/ HTTP/1.1" 200 10494
+[25/Jun/2018 14:34:12] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 302 0
+[25/Jun/2018 14:34:12] "GET /healthclub/list/ HTTP/1.1" 200 10494
+[25/Jun/2018 14:35:34] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 302 0
+[25/Jun/2018 14:35:34] "GET /healthclub/list/ HTTP/1.1" 200 10494
+[25/Jun/2018 14:35:50] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 302 0
+[25/Jun/2018 14:35:50] "GET /healthclub/list/ HTTP/1.1" 200 10494
+[25/Jun/2018 14:36:05] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 302 0
+[25/Jun/2018 14:36:05] "GET /healthclub/list/ HTTP/1.1" 200 10494
+[25/Jun/2018 14:36:25] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 302 0
+[25/Jun/2018 14:36:25] "GET /healthclub/list/ HTTP/1.1" 200 10494
+[25/Jun/2018 14:37:35] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 302 0
+[25/Jun/2018 14:37:35] "GET /healthclub/list/ HTTP/1.1" 200 10494
+[25/Jun/2018 14:39:51] "GET /healthclub/list/ HTTP/1.1" 200 10494
+[25/Jun/2018 14:40:01] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 302 0
+[25/Jun/2018 14:40:01] "GET /healthclub/list/ HTTP/1.1" 200 10494
+[25/Jun/2018 14:40:21] "GET /healthclub/qrcode_check_save/?healthclub_id=3 HTTP/1.1" 302 0
+[25/Jun/2018 14:40:21] "GET /healthclub/list/ HTTP/1.1" 200 10494
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 25, 2018 - 14:10:41
+Django version 1.11.13, using settings 'healthycash.settings'
+Starting development server at http://0.0.0.0:80/
+Quit the server with CONTROL-C.
+[25/Jun/2018 14:44:35] "POST /login/ HTTP/1.1" 200 3406
+[25/Jun/2018 14:44:36] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 14:44:36] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 14:44:36] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 14:44:36] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 14:44:36] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 14:44:36] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:44:36] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:44:40] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 14:44:40] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 14:44:40] "GET /healthclub/list/ HTTP/1.1" 200 9646
+[25/Jun/2018 14:44:40] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 14:44:40] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 14:44:40] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:44:40] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 14:44:40] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 14:44:40] "GET /static/images/default_image.jpg HTTP/1.1" 304 0
+[25/Jun/2018 14:44:40] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+Internal Server Error: /media/\u1109\u1173\u110f\u1173\u1105\u1175\u11ab\u1109\u1163\u11ba_2018-05-26_16.17.43.png
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/views/static.py", line 41, in serve
+    if os.path.isdir(fullpath):
+  File "/usr/lib/python3.5/genericpath.py", line 42, in isdir
+    st = os.stat(s)
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 36-45: ordinal not in range(128)
+[25/Jun/2018 14:44:41] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 14:44:41] "GET /media/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2018-05-26_16.17.43.png HTTP/1.1" 500 73343
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 25, 2018 - 14:44:27
+Django version 1.11.13, using settings 'healthycash.settings'
+Starting development server at http://0.0.0.0:80/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 25, 2018 - 14:49:39
+Django version 1.11.13, using settings 'healthycash.settings'
+Starting development server at http://0.0.0.0:80/
+Quit the server with CONTROL-C.
+[25/Jun/2018 14:50:04] "GET /healthclub/list/ HTTP/1.1" 200 8479
+Internal Server Error: /media/\u1109\u1173\u110f\u1173\u1105\u1175\u11ab\u1109\u1163\u11ba_2018-05-26_16.17.43.png
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/views/static.py", line 41, in serve
+    if os.path.isdir(fullpath):
+  File "/usr/lib/python3.5/genericpath.py", line 42, in isdir
+    st = os.stat(s)
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 36-45: ordinal not in range(128)
+[25/Jun/2018 14:50:04] "GET /media/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2018-05-26_16.17.43.png HTTP/1.1" 500 73132
+[25/Jun/2018 14:51:10] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 14:51:14] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 14:51:14] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 14:51:14] "GET /healthclub/list/ HTTP/1.1" 200 8447
+Internal Server Error: /media/\u1109\u1173\u110f\u1173\u1105\u1175\u11ab\u1109\u1163\u11ba_2018-05-26_16.17.43.png
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/views/static.py", line 41, in serve
+    if os.path.isdir(fullpath):
+  File "/usr/lib/python3.5/genericpath.py", line 42, in isdir
+    st = os.stat(s)
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 36-45: ordinal not in range(128)
+[25/Jun/2018 14:51:14] "GET /media/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2018-05-26_16.17.43.png HTTP/1.1" 500 73343
+[25/Jun/2018 14:51:16] "GET /healthclub/create/ HTTP/1.1" 200 11230
+[25/Jun/2018 14:54:04] "GET /healthclub/create/ HTTP/1.1" 200 11268
+[25/Jun/2018 14:54:41] "POST /healthclub/create/confirm/ HTTP/1.1" 302 0
+[25/Jun/2018 14:54:41] "GET /healthclub/create HTTP/1.1" 301 0
+[25/Jun/2018 14:54:41] "GET /healthclub/create/ HTTP/1.1" 200 11268
+Internal Server Error: /healthclub/create/confirm/
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/healthycash_real/healthclub/views.py", line 201, in healthclub_create
+    healthclub = HealthClub.objects.get(master = request.user)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1179, in build_filter
+    self.check_related_objects(field, value, opts)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1078, in check_related_objects
+    for v in value:
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/utils/functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+TypeError: 'AnonymousUser' object is not iterable
+[25/Jun/2018 14:55:13] "POST /healthclub/create/confirm/ HTTP/1.1" 500 117763
+[25/Jun/2018 14:55:18] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 14:55:24] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 14:55:24] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 14:55:24] "GET /healthclub/list/ HTTP/1.1" 200 8447
+Internal Server Error: /media/\u1109\u1173\u110f\u1173\u1105\u1175\u11ab\u1109\u1163\u11ba_2018-05-26_16.17.43.png
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/.local/lib/python3.5/site-packages/django/views/static.py", line 41, in serve
+    if os.path.isdir(fullpath):
+  File "/usr/lib/python3.5/genericpath.py", line 42, in isdir
+    st = os.stat(s)
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 36-45: ordinal not in range(128)
+[25/Jun/2018 14:55:24] "GET /media/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2018-05-26_16.17.43.png HTTP/1.1" 500 73343
+[25/Jun/2018 14:55:26] "GET /healthclub/create/ HTTP/1.1" 200 11236
+[25/Jun/2018 14:55:57] "POST /healthclub/create/confirm/ HTTP/1.1" 302 0
+[25/Jun/2018 14:55:57] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 14:55:57] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 14:55:57] "GET /healthclub/list/ HTTP/1.1" 200 8362
+[25/Jun/2018 14:55:58] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 200 821321
+[25/Jun/2018 14:56:00] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 14:56:00] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 14:56:06] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 14:56:06] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 14:56:06] "GET /healthclub/list/ HTTP/1.1" 200 8359
+[25/Jun/2018 14:56:06] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 304 0
+[25/Jun/2018 14:56:09] "GET /healthclub/create/ HTTP/1.1" 200 11233
+[25/Jun/2018 14:57:26] "POST /healthclub/create/confirm/ HTTP/1.1" 302 0
+[25/Jun/2018 14:57:26] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 14:57:26] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 14:57:26] "GET /healthclub/list/ HTTP/1.1" 200 8250
+[25/Jun/2018 14:57:27] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 304 0
+[25/Jun/2018 14:57:27] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 200 716548
+[25/Jun/2018 14:57:51] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 14:57:51] "GET /login?next=/ HTTP/1.1" 301 0
+[25/Jun/2018 14:57:51] "GET /login/?next=/ HTTP/1.1" 200 3383
+[25/Jun/2018 14:57:53] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 14:57:53] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 14:58:02] "POST /login/ HTTP/1.1" 200 3406
+[25/Jun/2018 14:58:03] "GET /register/ HTTP/1.1" 200 5102
+[25/Jun/2018 14:58:04] "GET /register_master/ HTTP/1.1" 200 6782
+[25/Jun/2018 14:58:22] "POST /register_master/ HTTP/1.1" 302 0
+[25/Jun/2018 14:58:22] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 14:58:22] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 14:58:22] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 14:58:22] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 14:58:22] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 14:58:22] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 14:58:22] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:58:22] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:58:32] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 14:58:32] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 14:58:32] "GET /healthclub/list/ HTTP/1.1" 200 8253
+[25/Jun/2018 14:58:32] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 14:58:32] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 14:58:32] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 14:58:32] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 14:58:32] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 304 0
+[25/Jun/2018 14:58:32] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 304 0
+[25/Jun/2018 14:58:32] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 14:58:34] "GET /healthclub/create/ HTTP/1.1" 200 11236
+[25/Jun/2018 14:59:36] "POST /healthclub/create/confirm/ HTTP/1.1" 302 0
+[25/Jun/2018 14:59:37] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 14:59:37] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 14:59:37] "GET /healthclub/list/ HTTP/1.1" 200 9333
+[25/Jun/2018 14:59:37] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 304 0
+[25/Jun/2018 14:59:37] "GET /media/master4_healthclub_OarFGum.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 14:59:37] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 304 0
+[25/Jun/2018 14:59:45] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 14:59:45] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 14:59:51] "POST /login/ HTTP/1.1" 200 3406
+[25/Jun/2018 14:59:53] "GET /register/ HTTP/1.1" 200 5102
+[25/Jun/2018 14:59:54] "GET /register_normal/ HTTP/1.1" 200 7743
+[25/Jun/2018 15:00:06] "POST /register_normal/ HTTP/1.1" 302 0
+[25/Jun/2018 15:00:06] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 15:00:12] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 15:00:13] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 15:00:13] "GET /healthclub/list/ HTTP/1.1" 200 10536
+[25/Jun/2018 15:00:13] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 15:00:13] "GET /media/master4_healthclub_OarFGum.jpg HTTP/1.1" 304 0
+[25/Jun/2018 15:00:13] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 304 0
+[25/Jun/2018 15:00:13] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 304 0
+[25/Jun/2018 15:00:13] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 15:00:14] "GET /healthclub/list_notad/ HTTP/1.1" 200 8409
+[25/Jun/2018 15:00:16] "GET /healthclub/detail/4/ HTTP/1.1" 200 9749
+[25/Jun/2018 15:00:16] "GET /media/master4_healthclub_OarFGum.jpg HTTP/1.1" 304 0
+[25/Jun/2018 15:00:24] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 15:00:24] "GET /login HTTP/1.1" 301 0
+[25/Jun/2018 15:00:24] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 15:00:24] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 15:00:24] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 15:00:24] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 15:00:24] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 15:00:24] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 15:00:24] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:00:24] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:00:25] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:00:25] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:00:25] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:00:30] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 15:00:30] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 15:00:31] "GET /healthclub/list/ HTTP/1.1" 200 10536
+[25/Jun/2018 15:00:31] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 15:00:31] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 15:00:31] "GET /media/master4_healthclub_OarFGum.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 15:00:31] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 15:00:31] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 15:00:31] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 15:00:31] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 15:00:31] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 200 716548
+[25/Jun/2018 15:00:31] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 200 821321
+[25/Jun/2018 15:00:35] "GET /healthclub/detail/4/ HTTP/1.1" 200 9749
+[25/Jun/2018 15:00:48] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 15:00:48] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 15:00:53] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 15:00:53] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 15:00:53] "GET /healthclub/list/ HTTP/1.1" 200 9333
+[25/Jun/2018 15:00:53] "GET /media/master4_healthclub_OarFGum.jpg HTTP/1.1" 304 0
+[25/Jun/2018 15:00:53] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 304 0
+[25/Jun/2018 15:00:53] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 304 0
+[25/Jun/2018 15:00:54] "GET /healthclub/create/ HTTP/1.1" 200 11236
+[25/Jun/2018 15:01:45] "POST /healthclub/create/confirm/ HTTP/1.1" 302 0
+[25/Jun/2018 15:01:45] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 15:01:45] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 15:01:45] "GET /healthclub/list/ HTTP/1.1" 200 9326
+[25/Jun/2018 15:01:45] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 304 0
+[25/Jun/2018 15:01:45] "GET /media/master4_healthclub_mM5DYxB.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 15:01:46] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 304 0
+[25/Jun/2018 15:01:49] "GET /healthclub/detail/4/ HTTP/1.1" 200 9883
+[25/Jun/2018 15:01:49] "GET /media/master4_healthclub_mM5DYxB.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 15:01:57] "POST /healthclub/payment/4/ HTTP/1.1" 200 6421
+[25/Jun/2018 15:02:24] "GET /healthclub/payment/confirm/4/160000/2/?imp_uid=imp_468518841910&merchant_uid=merchant_1529906518536&imp_success=true HTTP/1.1" 302 0
+[25/Jun/2018 15:02:24] "GET /profiles/mypage/ HTTP/1.1" 200 6887
+[25/Jun/2018 15:02:33] "GET /logout HTTP/1.1" 301 0
+[25/Jun/2018 15:02:34] "GET /logout/ HTTP/1.1" 302 0
+[25/Jun/2018 15:02:34] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 15:02:34] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 15:02:34] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 15:02:34] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 15:02:34] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 15:02:34] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 15:02:34] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:02:34] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:02:38] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 15:02:38] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 15:02:38] "GET /healthclub/list/ HTTP/1.1" 200 9326
+[25/Jun/2018 15:02:38] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 15:02:38] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 15:02:38] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 15:02:38] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 15:02:38] "GET /media/master4_healthclub_mM5DYxB.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 15:02:38] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 200 716548
+[25/Jun/2018 15:02:38] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 200 821321
+[25/Jun/2018 15:02:41] "GET /healthclub/mypage/ HTTP/1.1" 200 4544
+[25/Jun/2018 15:02:41] "GET /media/qrcode/healthclub_qrcode_4.png HTTP/1.1" 200 668
+[25/Jun/2018 15:02:50] "GET /healthclub/qrcode_check_save?healthclub_id=4 HTTP/1.1" 301 0
+[25/Jun/2018 15:02:50] "GET /healthclub/qrcode_check_save/?healthclub_id=4 HTTP/1.1" 302 0
+[25/Jun/2018 15:02:50] "GET /profiles/mypage/ HTTP/1.1" 200 7062
+[25/Jun/2018 15:02:53] "GET /healthclub/list/ HTTP/1.1" 200 10531
+[25/Jun/2018 15:02:53] "GET /media/master4_healthclub_mM5DYxB.jpg HTTP/1.1" 304 0
+[25/Jun/2018 15:02:53] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 304 0
+[25/Jun/2018 15:02:53] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 304 0
+[25/Jun/2018 15:07:09] "GET /login/?next=/ HTTP/1.1" 200 3383
+[25/Jun/2018 15:07:16] "GET /healthclub/list/ HTTP/1.1" 200 9358
+[25/Jun/2018 15:07:17] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 200 9070
+[25/Jun/2018 15:07:17] "GET /static/images/advertise3.png HTTP/1.1" 200 461769
+[25/Jun/2018 15:07:17] "GET /static/images/advertise2.png HTTP/1.1" 200 312184
+[25/Jun/2018 15:07:17] "GET /media/master4_healthclub_mM5DYxB.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 15:07:17] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 200 716548
+[25/Jun/2018 15:07:17] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 200 821321
+[25/Jun/2018 15:07:18] "GET /static/images/advertise1.png HTTP/1.1" 200 1526785
+[25/Jun/2018 15:07:45] "GET /healthclub/detail/4/ HTTP/1.1" 200 8712
+[25/Jun/2018 15:08:40] "GET /healthclub/list/ HTTP/1.1" 200 9358
+[25/Jun/2018 15:08:40] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 15:08:40] "GET /media/master4_healthclub_mM5DYxB.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 15:08:40] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 15:08:40] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 15:08:40] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 15:08:40] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 15:08:40] "GET /static/images/advertise3.png HTTP/1.1" 304 0
+[25/Jun/2018 15:08:40] "GET /static/images/advertise1.png HTTP/1.1" 304 0
+[25/Jun/2018 15:08:40] "GET /static/images/advertise2.png HTTP/1.1" 304 0
+[25/Jun/2018 15:08:40] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 200 716548
+[25/Jun/2018 15:08:40] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:08:40] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:08:40] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 200 821321
+[25/Jun/2018 15:08:40] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:08:41] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:08:41] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:08:48] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 15:08:48] "GET /login?next=/ HTTP/1.1" 301 0
+[25/Jun/2018 15:08:48] "GET /login/?next=/ HTTP/1.1" 200 3383
+[25/Jun/2018 15:08:49] "GET /static/images/healthycash_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 15:08:57] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 15:08:57] "GET / HTTP/1.1" 302 0
+[25/Jun/2018 15:08:57] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 15:08:57] "GET /healthclub/list/ HTTP/1.1" 200 10525
+[25/Jun/2018 15:08:57] "GET /static/images/mypage_button.png HTTP/1.1" 304 0
+[25/Jun/2018 15:08:57] "GET /static/images/qrcode_button.png HTTP/1.1" 304 0
+[25/Jun/2018 15:09:19] "GET /healthclub/list/ HTTP/1.1" 200 9358
+[25/Jun/2018 15:09:19] "GET /static/js/init.js HTTP/1.1" 200 177
+[25/Jun/2018 15:09:19] "GET /static/css/style.css HTTP/1.1" 200 896
+[25/Jun/2018 15:09:19] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 200 9070
+[25/Jun/2018 15:09:19] "GET /static/css/materialize.css HTTP/1.1" 200 191989
+[25/Jun/2018 15:09:19] "GET /static/js/materialize.js HTTP/1.1" 200 377257
+[25/Jun/2018 15:09:19] "GET /static/images/advertise2.png HTTP/1.1" 200 312184
+[25/Jun/2018 15:09:19] "GET /static/images/advertise3.png HTTP/1.1" 200 461769
+[25/Jun/2018 15:09:19] "GET /media/master4_healthclub_mM5DYxB.jpg HTTP/1.1" 200 212970
+[25/Jun/2018 15:09:20] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 200 821321
+[25/Jun/2018 15:09:20] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 200 716548
+[25/Jun/2018 15:09:20] "GET /static/images/advertise1.png HTTP/1.1" 200 1526785
+[25/Jun/2018 15:09:20] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 200 64832
+[25/Jun/2018 15:09:20] "GET /static/fonts/roboto/Roboto-Medium.woff2 HTTP/1.1" 200 65412
+[25/Jun/2018 15:09:20] "GET /static/fonts/roboto/Roboto-Light.woff2 HTTP/1.1" 200 64268
+[25/Jun/2018 15:09:20] "GET /static/fonts/roboto/Roboto-Thin.woff2 HTTP/1.1" 200 63056
+[25/Jun/2018 15:09:21] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 200 64800
+[25/Jun/2018 15:09:23] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 15:09:23] "GET /healthclub/list/ HTTP/1.1" 200 9358
+[25/Jun/2018 15:09:36] "GET /healthclub/list/ HTTP/1.1" 200 9326
+[25/Jun/2018 15:09:37] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 304 0
+[25/Jun/2018 15:09:37] "GET /media/master4_healthclub_mM5DYxB.jpg HTTP/1.1" 304 0
+[25/Jun/2018 15:09:37] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 304 0
+[25/Jun/2018 15:09:47] "GET /healthclub/detail/3/ HTTP/1.1" 200 8792
+[25/Jun/2018 15:09:56] "GET /healthclub/detail/4/ HTTP/1.1" 200 8712
+[25/Jun/2018 15:10:15] "GET /login HTTP/1.1" 301 0
+[25/Jun/2018 15:10:15] "GET /login/ HTTP/1.1" 200 3323
+[25/Jun/2018 15:10:15] "GET /static/images/healthycash_logo.png HTTP/1.1" 200 50781
+[25/Jun/2018 15:10:31] "POST /login/ HTTP/1.1" 200 3406
+[25/Jun/2018 15:10:38] "POST /login/ HTTP/1.1" 302 0
+[25/Jun/2018 15:10:38] "GET /healthclub/list HTTP/1.1" 301 0
+[25/Jun/2018 15:10:38] "GET /healthclub/list/ HTTP/1.1" 200 10531
+[25/Jun/2018 15:10:38] "GET /static/images/mypage_button.png HTTP/1.1" 200 2471
+[25/Jun/2018 15:10:38] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 304 0
+[25/Jun/2018 15:10:38] "GET /media/master4_healthclub_mM5DYxB.jpg HTTP/1.1" 304 0
+[25/Jun/2018 15:10:38] "GET /static/images/qrcode_button.png HTTP/1.1" 200 2164
+[25/Jun/2018 15:10:53] "GET /profiles/group HTTP/1.1" 301 0
+[25/Jun/2018 15:10:54] "GET /profiles/group/ HTTP/1.1" 200 7101
+[25/Jun/2018 15:11:28] "GET /healthclub/list/ HTTP/1.1" 200 9326
+[25/Jun/2018 15:11:28] "GET /media/master4_healthclub_mM5DYxB.jpg HTTP/1.1" 304 0
+[25/Jun/2018 15:11:28] "GET /media/master3_healthclub_whiZUal.png HTTP/1.1" 304 0
+[25/Jun/2018 15:11:28] "GET /media/master2_healthclub_fXKFnWj.png HTTP/1.1" 304 0
+[25/Jun/2018 15:21:43] "HEAD / HTTP/1.0" 302 0
+[25/Jun/2018 15:23:27] "GET /healthclub/mypage/ HTTP/1.1" 200 4766
+[25/Jun/2018 15:23:27] "GET /static/css/materialize.css HTTP/1.1" 304 0
+[25/Jun/2018 15:23:27] "GET /static/css/style.css HTTP/1.1" 304 0
+[25/Jun/2018 15:23:27] "GET /static/js/init.js HTTP/1.1" 304 0
+[25/Jun/2018 15:23:27] "GET /static/js/materialize.js HTTP/1.1" 304 0
+[25/Jun/2018 15:23:27] "GET /static/images/healthycash_string_logo.png HTTP/1.1" 304 0
+[25/Jun/2018 15:23:27] "GET /media/qrcode/healthclub_qrcode_4.png HTTP/1.1" 304 0
+[25/Jun/2018 15:23:27] "GET /static/fonts/roboto/Roboto-Regular.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:23:27] "GET /static/fonts/roboto/Roboto-Bold.woff2 HTTP/1.1" 304 0
+[25/Jun/2018 15:23:29] "GET /healthclub/create HTTP/1.1" 301 0
+[25/Jun/2018 15:23:30] "GET /healthclub/create/ HTTP/1.1" 200 11236
