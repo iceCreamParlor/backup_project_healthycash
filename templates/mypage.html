@@ -8,9 +8,6 @@ HealthyCash
 {% endblock head %}
 {%block content%}
 <style>
-  body{
-    background-color:white;
-  }
   span{
     font-weight: bold;
   }
@@ -35,7 +32,7 @@ HealthyCash
               <span>적립금</span>
               <span style="float:right">{{profile.cash}} 원 </span>
             </li>
-            <li style="margin-left : 20px;font-weight: bold;">이용권 정보<li>
+            <li  style="margin-left : 20px;font-weight: bold;">이용권 정보<li>
             <li class="collection-item">
               <span>등록일</span>
               <span style="float:right">{{profile.start_date|date:"M d D"}}  </span>
@@ -43,9 +40,9 @@ HealthyCash
               <span>만료일</span>
               <span style="float:right">{{profile.expire_date|date:"M d D"}} </span>
             </li>
+            <li  style="margin-left : 20px;font-weight: bold;">이번달 출석 현황</li>
             <li class="collection-item">
-              <span>이번달 출석 현황</span>
-              <span style="float:right">{{profile.exercised}} 회  </span>
+              <span style="float:right">출석 횟수 : {{profile.exercised}} 회  </span>
               <br>
               <br>
               <table>

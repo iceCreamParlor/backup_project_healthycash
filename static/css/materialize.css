@@ -5729,11 +5729,11 @@ button.btn-floating {
   display: -ms-flexbox;
   display: flex;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: #FFFFFF;
   line-height: 1.5;
   padding: 1rem;
-  background-color: transparent;
-  border-bottom: 1px solid #ddd;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #FFFFFF;
 }
 
 .collapsible-header i {
@@ -5746,7 +5746,7 @@ button.btn-floating {
 
 .collapsible-body {
   display: none;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #FFFFFF;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 2rem;
@@ -6596,12 +6596,12 @@ textarea.materialize-textarea.validate + label:not(.label-icon).active {
 [type="radio"]:checked + label:after,
 [type="radio"].with-gap:checked + label:before,
 [type="radio"].with-gap:checked + label:after {
-  border: 2px solid #F4FF69;
+  border: 2px solid #4EC1E6;
 }
 
 [type="radio"]:checked + label:after,
 [type="radio"].with-gap:checked + label:after {
-  background-color: #F4FF69;
+  background-color: #4EC1E6;
 }
 
 [type="radio"]:checked + label:after {
@@ -6733,8 +6733,8 @@ form p:last-child {
   height: 22px;
   border-top: 2px solid transparent;
   border-left: 2px solid transparent;
-  border-right: 2px solid #F4FF69;
-  border-bottom: 2px solid #F4FF69;
+  border-right: 2px solid #4EC1E6;
+  border-bottom: 2px solid #4EC1E6;
   -webkit-transform: rotate(40deg);
           transform: rotate(40deg);
   -webkit-backface-visibility: hidden;
