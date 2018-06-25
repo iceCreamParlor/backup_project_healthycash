@@ -7,18 +7,19 @@ from healthclub.models import HealthClub
 
 @login_required(login_url = "/login")
 def home(request):
-    healthclubs = HealthClub.objects.all()
-    keywords = set()
-    hkeywords = set()
-    for healthclub in healthclubs:
-        if len(healthclub.address) >= 12:
-            address_short = healthclub.address[0:12] + ".."
-        temp = healthclub.name + "(" + address_short + ")"
-        hkeywords.add(temp)
-        addresses = healthclub.address.split(' ')
-        for address in addresses:
-            keywords.add(address)
+    return HttpResponseRedirect("/healthclub/list")
+    # healthclubs = HealthClub.objects.all()
+    # keywords = set()
+    # hkeywords = set()
+    # for healthclub in healthclubs:
+    #     if len(healthclub.address) >= 12:
+    #         address_short = healthclub.address[0:12] + ".."
+    #     temp = healthclub.name + "(" + address_short + ")"
+    #     hkeywords.add(temp)
+    #     addresses = healthclub.address.split(' ')
+    #     for address in addresses:
+    #         keywords.add(address)
 
-    context = {'keywords' : keywords, 'healthclubs' : hkeywords}
+    # context = {'keywords' : keywords, 'healthclubs' : hkeywords}
     
-    return render(request, 'home.html', context)
+    # return render(request, 'home.html', context)

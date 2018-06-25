@@ -15,6 +15,7 @@ from .views import(
     mypage,
     healthclub_detail_review_create,
     HealthClubCreateView,
+    HealthClubListNotAdView,
 )
 
 urlpatterns = [
@@ -24,6 +25,7 @@ urlpatterns = [
     url(r'^create/$', HealthClubCreateView.as_view(), name='create'),
     url(r'^create/confirm/$', healthclub_create, name ='create_confirm'),
     url(r'^list/$', HealthClubListView.as_view(), name='list'),
+    url(r'^list_notad/$', HealthClubListNotAdView.as_view(), name='list_notad'),
     url(r'^detail/(?P<pk>\d+)/$', HealthClubDetailView.as_view(), name='detail'),
     url(r'^payment/(?P<pk>\d+)/$', healthclub_payment, name = 'payment'),
     url(r'^payment/confirm/(?P<pk>\d+)/(?P<healthclub_price>\d+)/(?P<month>\d+)/', healthclub_payment_confirm, name = 'payment_confirm'),

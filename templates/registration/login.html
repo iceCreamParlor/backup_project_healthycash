@@ -17,6 +17,11 @@
         
       </head>
 <body style="background-color:#4EC1E6">
+    <style>
+        button, a, p{
+          font-weight: bold;
+        }
+    </style>
 <div class="row" style="margin-bottom:0px">
     <div class="col s12 m12 l4" ></div>
     <center>
@@ -35,9 +40,9 @@
                     <img style ="width:100%" src="{% static 'images/healthycash_logo.png' %}">
                 </center>
                 </div>
+                <div class="col s12 m12 l12" ></div>
+                <div class="col s1 m4 l4"></div>
                 
-                <div class="col s12 m12 l4"></div>
-                <div class="col s1 m12 l12"></div>
                 <div class="col s10 m12 l4">
                     <form method="post" action="{% url 'login' %}">
                     {% csrf_token %}
@@ -73,7 +78,7 @@
 </div> 
 
 <div class="col l12 s12" >
-    <a href="{% url 'healthclub:list' %}"  style="margin-left : 20px"><center><p>둘러보기</p></center></a>
+    <a href="{% url 'healthclub:list' %}"  style="margin-left : 20px"><center><p style="color:#F4FF69">둘러보기</p></center></a>
 </div>
 
           

@@ -5,6 +5,7 @@ from django.views.generic import DetailView, View, CreateView
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponseRedirect
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.contrib.auth import get_user_model
 from .models import Profile, Group, GroupInvite
@@ -13,6 +14,7 @@ from .forms import RegisterNormalForm, RegisterMasterForm
 
 User = get_user_model()
 
+@login_required(login_url = "/login")
 def group(request):
     user = request.user
     groups = user.is_group.all()

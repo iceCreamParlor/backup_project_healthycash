@@ -7,63 +7,69 @@ HealthyCash
 {% block head %}
 {% endblock head %}
 {%block content%}
+<style>
+  body{
+    background-color:white;
+  }
+  span{
+    font-weight: bold;
+  }
+</style>
 <div class="container">
-    <div class="row" style="margin-top:40px">
-      <h4>마이페이지<a href="{% url 'home' %}"><button style="margin-left:30px" type = "button" class="btn waves-effect waves-light">메인으로</button></a>
-      </h4>
+    <div class="row" style="padding-top:20px">
+      <p class="header" style="font-size:20px;color:#4EC1E6;font-weight: bold;"> 마이페이지 </p>
+     
+       <center>
+        <i style="font-size:150px"  class="large material-icons">account_circle</i>
+      </center>
         <div class="col s12 m6 l6">
-          <ul class="collection" style="margin-top:30px">
-              <li class="collection-item avatar">
-                <center>
-                  <i class="large material-icons">account_circle</i>
-                  <p>{{real_name}} 님 안녕하세요!</p>
-                </center>
-              </li>
-              <li class="collection-item avatar">
-                <i class="material-icons circle">folder</i>
-                <span class="title">등록된 헬스장</span>
-                <p>{{profile.healthclub.name}} <br>
-                   {{profile.healthclub.address}}
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-              </li>
-              <li class="collection-item avatar">
-                <i class="material-icons circle green">insert_chart</i>
-                <span class="title">적립금 내역</span>
-                <p>{{profile.cash}} 원</p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-              </li>
-              <li class="collection-item avatar">
-                <i class="material-icons circle red">play_arrow</i>
-                <span class="title">이용권 정보</span>
-                <p> 등록일 : {{profile.start_date|date:"Y M d D"}} 
-                <br>
-                    만료일 : {{profile.expire_date|date:"Y M d D"}}
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-              </li>
-          </ul>
-      </div>
-      <div class="col s12 m1 l1"></div>
-      <div class="col s12 m5 l5">
-      <p>{{real_name}} 님의 출석 현황</p>
-      <table>
-          <thead>
-            <tr>
-                <th>지점</th>
-                <th>출석일</th>
-            </tr>
-          </thead>
           
-          <tbody>
-              {% for r in record%}
-            <tr>
-              <td>{{r.healthclub.name}}</td>
-              <td>{{r.timestamp}}</td>
-            </tr>
-               {% endfor %}
-          </tbody>
-      </table>
+          <ul class="collection" style="margin-top:30px">
+            <li class="collection-item">
+              <span>등록된 헬스장</span>
+              <span style="float:right">{{profile.healthclub.name}} </span>
+            </li>
+            
+            <li class="collection-item">
+              <span>적립금</span>
+              <span style="float:right">{{profile.cash}} 원 </span>
+            </li>
+            <li style="margin-left : 20px;font-weight: bold;">이용권 정보<li>
+            <li class="collection-item">
+              <span>등록일</span>
+              <span style="float:right">{{profile.start_date|date:"M d D"}}  </span>
+              <br>
+              <span>만료일</span>
+              <span style="float:right">{{profile.expire_date|date:"M d D"}} </span>
+            </li>
+            <li class="collection-item">
+              <span>이번달 출석 현황</span>
+              <span style="float:right">{{profile.exercised}} 회  </span>
+              <br>
+              <br>
+              <table>
+                  <thead>
+                    <tr>
+                        <th>지점</th>
+                        <th>출석일</th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+                      {% for r in record%}
+                    <tr>
+                      <td>{{r.healthclub.name}}</td>
+                      <td>{{r.timestamp|date:"M d D"}}</td>
+                    </tr>
+                       {% endfor %}
+                  </tbody>
+              </table>
+            </li>
+          </ul>
+          <center>
+            <button  type = "button" class="btn waves-effect waves-light">뒤로가기</button>
+          </center>
+    
       </div>
     </div>
 </div>

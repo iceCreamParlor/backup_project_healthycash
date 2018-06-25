@@ -36,6 +36,10 @@
       .qrcode-text {padding-right:1.7em; margin-right:0}
       .qrcode-text-btn { display:inline-block; background:url({% static 'images/qrcode_button.png' %}) 50% 50% no-repeat; height:40px; width:240px; margin-left:-1.7em; cursor:pointer; }
       .qrcode-text-btn > input[type=file] {position:absolute; overflow:hidden; width:1px; height:1px; opacity:0}
+      
+    button{
+      font-weight: bold;
+    }
   </style>
   
 </head>
@@ -75,15 +79,15 @@
         {% if request.user.is_anonymous %}
         <li><a href="/login">로그인</a></li>
         <li><a href="/register">회원 가입</a></li>
-        <li><a href="/healthclub/list">헬스장 정보</a></li>
+        <li><a href="/healthclub/list_notad">헬스장 정보</a></li>
         <li><a href="/aboutus/">About Us</a></li>
         {% elif request.user.profile.is_health_master %}
         <li><a href="/healthclub/mypage">지점 현황</a></li>
         <li><a href="/healthclub/create">지점 정보 설정</a></li>
-        <li><a href="/healthclub/list">헬스장 정보</a></li>
+        <li><a href="/healthclub/list_notad">헬스장 정보</a></li>
         <li><a href="/logout">로그아웃</a></li>
         {% else %}
-        <li><a href="/healthclub/list">헬스장 정보</a></li>
+        <li><a href="/healthclub/list_notad">헬스장 정보</a></li>
         <li><a href="/profiles/mypage">마이페이지</a></li>
         <li>
           <a href="/profiles/group">그룹
@@ -101,15 +105,15 @@
   </div>
   <ul id="slide-out" class="side-nav">
         {% if request.user.is_anonymous %}
-        <li><a href="/login"><p>로그인</p><i class="material-icons">account_box</i></a></li>
+        <li><a href="/login">로그인<i class="material-icons">account_box</i></a></li>
         <li><a href="/register">회원 가입<i class="material-icons">border_color</i></a></li>
-        <li><a href="/healthclub/list">헬스장 정보<i class="material-icons">face</i></a></li>
+        <li><a href="/healthclub/list_notad">헬스장 정보<i class="material-icons">face</i></a></li>
         <li><a href="/aboutus/">About Us <i class="material-icons">folder_open</i></a></li>
         {% elif request.user.profile.is_health_master %}
         <li><a>{{request.user.profile.real_name}} 님 안녕하세요!</a></li>
         <li><a href="/healthclub/mypage">지점 현황</a></li>
         <li><a href="/healthclub/create">지점 정보 설정</a></li>
-        <li><a href="/healthclub/list">헬스장 정보</a></li>
+        <li><a href="/healthclub/list_notad">헬스장 정보</a></li>
         <li><a href="/logout">로그아웃</a></li>
         {% else %}
         <li><p style="color:white;text-align:center;">{{request.user.profile.real_name}} 님 안녕하세요!</p></li>
@@ -129,7 +133,7 @@
           </center>
           
 
-        <li><a href="/healthclub/list">헬스장 정보<i class="material-icons">face</i></a></li>
+        <li><a href="/healthclub/list_notad">헬스장 정보<i class="material-icons">face</i></a></li>
 
         <!--<li><a href="/profiles/mypage">마이페이지<i class="material-icons">create</i></a></li>-->
         <li>

@@ -149,7 +149,36 @@ class HealthClubListView(ListView):
                 keywords.add(address)
             context['keywords'] = keywords
             context['healthclubs'] = hkeywords
-            context['address_short'] = address_short
+        return context
+        
+class HealthClubListNotAdView(ListView):
+    template_name = "healthclub/healthclub_list_notad.html"
+    def get_queryset(self):
+        search = self.request.GET.get('search')
+        
+        if search:
+            print(search)
+            search = search.split("(")[0]
+            return HealthClub.objects.filter(Q(initiated=True) & Q(name__icontains=search) | Q(address__icontains=search) | Q(detail__icontains=search)).order_by('updated')
+        return HealthClub.objects.filter(initiated=True).order_by('updated')
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(HealthClubListNotAdView, self).get_context_data(**kwargs)
+        healthclubs = HealthClub.objects.filter(initiated=True)
+        hkeywords = set()
+        keywords = set()
+        
+        for healthclub in healthclubs:
+            address_short = healthclub.address
+            if len(healthclub.address) >= 12:
+                address_short = healthclub.address[0:12] + ".."
+            temp = healthclub.name + "(" + address_short + ")"
+            hkeywords.add(temp)
+            addresses = healthclub.address.split(' ')
+            for address in addresses:
+                keywords.add(address)
+            context['keywords'] = keywords
+            context['healthclubs'] = hkeywords
         return context
 
 def healthclub_create(request):
@@ -188,7 +217,7 @@ def healthclub_create(request):
             healthclub.qrcode = qrcode_name
             healthclub.save()
             
-            return HttpResponseRedirect("/healthclub/list")
+            return HttpResponseRedirect("/")
     return HttpResponseRedirect("/healthclub/create")
 
 @login_required(login_url = "/login")

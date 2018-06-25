@@ -22,13 +22,6 @@ HealthyCash
 }
 </style>
 
-<center>
-  <div class="carousel carousel-slider" >
-      <a class="carousel-item" href="/profiles/group"><img src="{% static 'images/advertise1.png' %}"></a>
-      <a class="carousel-item" href="#two"><img  src="{% static 'images/advertise2.png'  %}"></a>
-      <a class="carousel-item" href="/aboutus"><img  src="{% static 'images/advertise3.png'  %}"></a> 
-  </div>
-</center>
 <div class="container" style="margin-top:30px">
     <div class="row" style="margin-bottom:0px">
       <form method="GET" action="/healthclub/list/" id="search">
@@ -77,41 +70,8 @@ HealthyCash
 </div>
 <script>
     $(document).ready(function(){
-        $('.carousel.carousel-slider').carousel({fullWidth: true});
-        setTimeout(autoplay, 4000);
-        function autoplay() {
-            $('.carousel').carousel('next');
-            setTimeout(autoplay, 4000);
-        }
-        $('input.autocomplete').autocomplete({
-        data: {
-          {% for keyword in keywords %}
-          "{{ keyword }}" : null,
-          {% endfor %}
-          
-          {% for healthclub in healthclubs %}
-          "{{ healthclub }}"  : null,
-          {% endfor %}
-        },
-        limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-        onAutocomplete: function(val) {
-          // Callback function when value is autcompleted.
-        },
-        minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-      });
+       
     })
-    function submitFunc(){
-        $( "#search" ).submit();
-    };
-    function advertise1(){
-      window.location.href = '/profiles/group';
-      console.log('advertise1');
-    };
-    function advertise2(){
-      
-    };
-    function advertise3(){
-      
-    };
+  
 </script>
 {%endblock content%}
