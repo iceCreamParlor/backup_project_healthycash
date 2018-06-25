@@ -18,8 +18,10 @@
   <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <!-- Materialize Icon -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   {%block head%}{%endblock head%}
   <style>
+  @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
     body {
         background-color : #efefef;
     } 
@@ -37,8 +39,8 @@
       .qrcode-text-btn { display:inline-block; background:url({% static 'images/qrcode_button.png' %}) 50% 50% no-repeat; height:40px; width:240px; margin-left:-1.7em; cursor:pointer; }
       .qrcode-text-btn > input[type=file] {position:absolute; overflow:hidden; width:1px; height:1px; opacity:0}
       
-    button{
-      font-weight: bold;
+    button, span, a, p, h1, h2, h3, h4, h5, label{
+      font-family: 'Jeju Gothic', sans-serif;
     }
   </style>
   
@@ -90,7 +92,7 @@
         <li><a href="/healthclub/list_notad">헬스장 정보</a></li>
         <li><a href="/profiles/mypage">마이페이지</a></li>
         <li>
-          <a href="/profiles/group">그룹
+          <a href="/profiles/group">커뮤니티
             {% if request.user.new_member.all  %}
             <span class="badge">{{request.user.new_member.all|length}}</span>
             {% endif  %}
@@ -110,13 +112,30 @@
         <li><a href="/healthclub/list_notad">헬스장 정보<i class="material-icons">face</i></a></li>
         <li><a href="/aboutus/">About Us <i class="material-icons">folder_open</i></a></li>
         {% elif request.user.profile.is_health_master %}
-        <li><a>{{request.user.profile.real_name}} 님 안녕하세요!</a></li>
-        <li><a href="/healthclub/mypage">지점 현황</a></li>
-        <li><a href="/healthclub/create">지점 정보 설정</a></li>
-        <li><a href="/healthclub/list_notad">헬스장 정보</a></li>
-        <li><a href="/logout">로그아웃</a></li>
+        
+        <center>
+          <i style="font-size:130px;color:white;"  class="large material-icons">account_circle</i>
+        </center>
+        <li><p style="color:white;text-align:center;margin-top:0px;">{{request.user.profile.real_name}} 님 안녕하세요!</p></li>
+        
+        
+        
+        <li>
+          <a href="/profiles/group">커뮤니티<i class="material-icons">group</i>
+            {% if request.user.new_member.all  %}
+            <span class="badge">{{request.user.new_member.all|length}}</span>
+            {% endif  %}
+          </a>
+        </li>
+        <li><a href="/healthclub/mypage">지점 현황<i class="material-icons">group</i></a></li>
+        <li><a href="/healthclub/create">지점 정보 설정<i class="material-icons">group</i></a></li>
+        <li><a href="/healthclub/list_notad">헬스장 정보<i class="material-icons">group</i></a></li>
+        <li><a href="/logout">로그아웃<i class="material-icons">group</i></a></li>
         {% else %}
-        <li><p style="color:white;text-align:center;">{{request.user.profile.real_name}} 님 안녕하세요!</p></li>
+        <center>
+          <i style="font-size:130px;color:white;"  class="large material-icons">account_circle</i>
+        </center>
+        <li><p style="color:white;text-align:center;margin-top:0px;">{{request.user.profile.real_name}} 님 안녕하세요!</p></li>
           <center>
            
            <label style="margin-left:2px"  class="qrcode-text-btn"><input type="file" accept="image/*" capture="environment" onclick="return showQRIntro();" onchange="openQRCamera(this);" tabindex="-1"></label>
@@ -125,8 +144,8 @@
            <center>
             <div class="card-panel teal" style="width:80%; border-radius:15px">
               <span class="text">
-                <p style="text-align:left; color:#4EC1E6;font-weight: bold;">적립금 : {{ request.user.profile.cash }} 원</p>
-                <p style="text-align:left; color:#4EC1E6;font-weight: bold;">출석 횟수 : {{ request.user.profile.exercised }} 일</p>
+                <p style="text-align:left; color:#4EC1E6;">적립금 : {{ request.user.profile.cash }} 원</p>
+                <p style="text-align:left; color:#4EC1E6;">출석 횟수 : {{ request.user.profile.exercised }} 일</p>
                 <a href="/profiles/mypage"><center><img src="{% static 'images/mypage_button.png'%}" style="width:192px;"></center></a>
               </span>
             </div>
@@ -134,10 +153,10 @@
           
 
         <li><a href="/healthclub/list_notad">헬스장 정보<i class="material-icons">face</i></a></li>
+        <li><a href="#">고객센터<i class="material-icons">face</i></a></li>
 
-        <!--<li><a href="/profiles/mypage">마이페이지<i class="material-icons">create</i></a></li>-->
         <li>
-          <a href="/profiles/group">그룹<i class="material-icons">group</i>
+          <a href="/profiles/group">커뮤니티<i class="material-icons">group</i>
             {% if request.user.new_member.all  %}
             <span class="badge">{{request.user.new_member.all|length}}</span>
             {% endif  %}
@@ -149,12 +168,14 @@
       </ul>
   
   <script>
+
     $( document ).ready(function() {
       $(".button-collapse").sideNav();
           /* global qrcode */
       
       });
   </script>
+  
     {% block content %}{% endblock %}
   
 

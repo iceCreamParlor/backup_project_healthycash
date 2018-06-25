@@ -7,25 +7,16 @@ HealthyCash
 {% block head %}
 {%endblock head%}
 {%block content%}
+<style>
+ 
+</style>
 <div class="container">
     <div class="row" style="margin-top:30px">
-         <!--<div class="col s12 m4">-->
-          <!--  <h4 class="header">내 그룹    <a style="float:right;margin-right:10px;" href="/profiles/group/create/" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a></h4>-->
-          <!--  {% for group in groups %}-->
-          <!--  <div class="card horizontal" style="margin-top:20px">-->
-          <!--    <div class="card-stacked">-->
-          <!--      <div class="card-content">-->
-          <!--          <p><a href="/profiles/group/detail/{{group.id}}">{{group.name}}<i style="float:right" class="material-icons">near_me</i> </a></p>-->
-          <!--      </div>-->
-          <!--    </div>-->
-          <!--  </div>-->
-          <!--  {% endfor %}-->
-          <!--</div>-->
-         
-         <!--<div class="col s12 m4">-->
+            <h5 style="color:#4EC1E6; margin-left:15px;">커뮤니티 <a style="float:right;margin-right:20px;" href="/profiles/group/create/" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a></h5>
+          
            <ul class="collapsible popout" data-collapsible="accordion">
             <li>
-              <div class="collapsible-header">
+              <div class="collapsible-header" style="margin-top:30px">
                 <i class="material-icons">group</i>
                   내 그룹
                 <span class="badge">{{ groups | length  }}</span>
@@ -33,7 +24,7 @@ HealthyCash
               <div class="collapsible-body" style="background-color:#FFFFFF">
                 
                 {% for group in groups %}
-                  <a href="/profiles/group/detail/{{group.id}}">{{group.name}}<i style="float:right" class="material-icons">near_me</i></a>
+                  <p><a href="/profiles/group/detail/{{group.id}}">{{group.name}}</a></p>
                 {% endfor %}
                 
               </div>
@@ -47,9 +38,12 @@ HealthyCash
               <div class="collapsible-body" style="background-color:#FFFFFF">
                 {% if groupinvites %}
                     {% for groupinvite in groupinvites %}
-                    {{ groupinvite.inviter }}({{groupinvite.inviter.profile.real_name}}) invited you to {{ groupinvite.group.name }}.
-                        <a href = "{% url 'profiles:group_invite_accept' groupinvite.id %}"><i class="material-icons">check</i></a> 
-                        <a href = "{% url 'profiles:group_invite_decline' groupinvite.id %}"><i class="material-icons">clear</i></a>
+                    <div style="margin-top:15px;">
+                      <span style="color:#4EC1E6">{{groupinvite.inviter.profile.real_name}} 님의 초대 ({{ groupinvite.group.name }})</span>
+                      <a style="float:right" href = "{% url 'profiles:group_invite_decline' groupinvite.id %}"><i class="material-icons">clear</i></a>
+                      <a style="float:right;" href = "{% url 'profiles:group_invite_accept' groupinvite.id %}"><i class="material-icons">check</i></a>
+                    </div> 
+                    
                     {% endfor %}
                     {% else %}
                     <span>그룹 초대 내역이 없습니다.</span>
@@ -71,30 +65,5 @@ HealthyCash
                 </div>
               </li>
           </ul>
-          <!--</div>-->
-          
-          <!--<div class="col s12 m4">-->
-          <!--   <ul class="collapsible popout" data-collapsible="accordion">-->
-          <!--    <li>-->
-          <!--      <div class="collapsible-header">-->
-          <!--        <i class="material-icons">group</i>-->
-          <!--        오픈 그룹-->
-          <!--        <span class="new badge">{{notgroups|length}}</span>-->
-          <!--      </div>-->
-          <!--      <div class="collapsible-body" style="background-color:#FFFFFF">-->
-          <!--        {% if notgroups %}-->
-          <!--        {% for notgroup in notgroups %}-->
-          <!--        <p>-->
-          <!--            <a href="/profiles/group/register/{{notgroup.id}}"><p style="text-align:left; color:#4EC1E6;font-weight: bold;">{{notgroup.name}}</p></a>-->
-          <!--        </p>-->
-          <!--        {% endfor %}-->
-          <!--        {% endif %}-->
-          <!--      </div>-->
-          <!--    </li>-->
-          <!--  </ul>-->
-             <!--<span class="new badge" data-badge-caption="custom caption">4</span>-->
-          <!--</div>-->
-          
-          
 </div>
 {% endblock content %}

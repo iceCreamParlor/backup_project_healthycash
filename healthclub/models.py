@@ -12,7 +12,7 @@ class HealthClub(models.Model):
     initiated = models.BooleanField(default=False)
     name      = models.CharField(max_length = 120)
     address   = models.CharField(max_length = 200) 
-    master    = models.ForeignKey(User)
+    master    = models.ForeignKey(User, related_name='is_health_master')
     geometry  = models.CharField(max_length = 200, blank=True)
     photo     = models.ImageField(blank=True)
     qrcode    = models.ImageField(blank=True)

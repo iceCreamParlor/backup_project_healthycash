@@ -16,14 +16,7 @@
     alert("비밀번호가 일치하지 않습니다.")
 </script>
 {%endif%}
-<!--<nav>-->
-<!--<div class="nav-wrapper" style="background-color:white">-->
-<!--  <div class="col s12">-->
-<!--    <a href="#!"  style="margin-left : 30px" class="breadcrumb">계정 유형</a>-->
-<!--    <a href="#!" class="breadcrumb">정보 입력</a>-->
-<!--  </div>-->
-<!--</div>-->
-<!--</nav>-->
+
 <div class="container" style="margin-top:60px">
     <div class="col s12 m6 l3">
         <h4 class="header">회원가입(점주)</h4>
@@ -66,13 +59,15 @@
                             <td>{{ form.password2 }}</td>
                         </tr>
                     </table>
-                    <button class="btn waves-effect waves-light" type="submit" style="float:right; margin-right:30px" >제출
-                        <i class="material-icons right">send</i>
-                    </button>
+                    <center>
+                        <button class="btn waves-effect waves-light" type="submit"  >
+                            회원가입
+                        </button>
+                    </center>
                 </form>
             </div>
             <div class="card-action">
-                <p><a href="{%url 'login'%}">로그인</a>을 하실건가요?</p>
+                <p><a style="color:#4EC1E6;font-weight: bold;" href="{%url 'login'%}">로그인</a>을 하실건가요?</p>
             </div>
           </div>
         </div>

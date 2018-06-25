@@ -16,18 +16,20 @@ HealthyCash
             <form action="/profiles/group/create/confirm/" method="POST" id="group_create" >
                 {%csrf_token%}
                 <div class="input-field">
+                    <p>그룹 이름</p>
                     <input value="{{groupname}}" id="groupname" type="text" class="validate" name = "groupname">
-                    <label for="groupname" style="color:black">그룹 이름 : </label>
+                    <label for="groupname" style="color:black"></label>
                 </div>
                 <div id="tag"></div>
-                <div class="chips chips-autocomplete"></div>
+                <p>아이디 검색</p>
+                <div class="chips chips-autocomplete" style="background-color:white; border-radius:10px;"></div>
                     {% if healthclub %}
                     <ul class="collapsible" data-collapsible="accordion">
                         <li>
                           <div class="collapsible-header">
-                            회원 목록 ({{healthclub.name}})
+                            <span>회원 목록 ({{healthclub.name}})</span>
                           </div>
-                          <div class="collapsible-body" id="invite_list">
+                          <div class="collapsible-body" id="invite_list" style="background-color:white;">
                             {%for user in same_healthclub_users%}
                             {%ifnotequal user.user.username request.user.username%}
                             <p id="{{user.user.username|add:'_p'}}">
@@ -48,7 +50,9 @@ HealthyCash
                 <label for="_private">비공개</label>
                 <br>
                 <br>
-                <button onclick="submitFunc()" class = "waves-effect waves-light btn" type="button">저장</button>
+                <center>
+                    <button onclick="submitFunc()" class = "waves-effect waves-light btn" type="button">저장</button>
+                </center>
             </form>
         </div>    
     </div>

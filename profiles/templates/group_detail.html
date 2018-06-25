@@ -7,7 +7,15 @@ HealthyCash
 {% block head %}
 {%endblock head%}
 {%block content%}
-<div class="container" style="margin-top:20px">
+<style>
+    body{
+        background-color:white;
+    }
+    td{
+        font-weight: bold;
+    }
+</style>
+<div class="container" style="margin-top:20px;">
     <div class="row">
          <div class="col s12 m3 l2"></div>
          <div class="col s12 m6 l7">
@@ -17,7 +25,7 @@ HealthyCash
             {% endif %}
          </h4>
              
-         <div class="card horizontal" style="margin-top:20px;">
+         <div class="card horizontal" style="margin-top:20px;background-color:#efefef;border-radius:10px;">
           <div class="card-stacked">
             <div class="card-content">
                 {%if request.user in members%}
@@ -33,6 +41,7 @@ HealthyCash
             
                     <tbody>
                         {%for member in members%}
+                      <tr><td><br> </td><td> </td><td> </td><td> </td></tr>
                       <tr>
                         <td>{{member.profile.real_name}}</td>
                         <td>{{member.profile.exercised}}</td>
@@ -51,14 +60,13 @@ HealthyCash
                 {% endif %}
             </div>
             <div class="card-action">
-                <a href="{% url 'profiles:group' %}"><button style="margin-top:10px" type = "button" class="btn waves-effect waves-light">이전으로</button></a>
-                <a href="/profiles/group/exit/{{groupid}}" style="margin-top:10px" class="waves-effect waves-light btn">나가기</a>
-                
+                <center>
+                    <a href="/profiles/group/exit/{{groupid}}" style="margin-top:10px" class="waves-effect waves-light btn">나가기</a>
+                </center>
             </div>
           </div>
         </div>
       </div>
   </div>
  </div>
-
 {%endblock content%}

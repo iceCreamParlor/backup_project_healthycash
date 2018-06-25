@@ -3,33 +3,50 @@
 {% block head %}
 {%endblock head%}
 {% block content %}
-<!--<nav>-->
-<!--<div class="nav-wrapper" style="background-color:white">-->
-<!--  <div class="col s12 m6 l6">-->
-<!--    <a href="#!"  style="margin-left : 30px" class="breadcrumb">계정 유형</a>-->
-<!--  </div>-->
-<!--</div>-->
-<!--</nav>-->
+<style>
+    body{
+        background-color:white;
+    }
+</style>
+<div class="container">
 <div class="row" style="margin-top:30px">
-    <div class="col s12 m12 l2"></div>
-    <div class="col s4 m6 l1">
-        <i style = "margin-left:30px; margin-top:30px;" class="medium material-icons">people</i>
-    </div>
-    <div class="col s8 m6 l3">
-        <p style="text-align:center">일반 회원에 가입하고,</p> <p style="text-align:center"> 운동한 만큼 환급 받으세요 !</p>
-        <center>
-            <a href="/register_normal/"  class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>일반 회원</a>
-        </center>
-    </div>
-    <div class="col s12 m12 l2"></div>
-    <div class="col s4 m6 l1">
-        <i style = "margin-left:30px; margin-top:30px;" class="medium material-icons">account_circle</i>
-    </div>
-    <div class="col s8 m6 l3" >
-        <p style="text-align:center">HealthyCash에서 </p> <p style="text-align:center"> 고객 관리를 해보세요 !</p>
-        <center>
-            <a href="/register_master/"  class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>헬스장 점주</a>
-        </center>
+    <div class="col s12 m3 l3"></div>
+    <div class="col s12 m6 l6">
+        
+        <div class="row" style="margin-top:20%">
+            <div class="col s12 m6">
+              <div class="card horizontal" style="border-radius:10px; background-color:#efefef;">
+                <div class="card-image" style="width:100px; height:100px;display:flex;justify-content:center;align-items:center;">
+                  <img src="{% static 'images/dumbel.png' %}" style="margin-left:20px;" >
+                </div>
+                <div class="card-content">
+                  <p style="text-align:center;font-size:12px;">HealthyCash에서</p> <p style="text-align:center;font-size:12px;"> 운동하고 환급 받으세요!</p>
+                   
+                     <a href="/register_normal/"  style="width:133px;margin-left:20px;" class="waves-effect waves-light btn">일반  회원</a>
+                  
+                </div>
+              </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col s12 m6">
+              <div class="card horizontal"style="border-radius:10px; background-color:#efefef;">
+                <div class="card-image" style="width:100px; height:100px;display:flex;justify-content:center;align-items:center;">
+                  <img src="{% static 'images/people.png' %}" style="margin-left:20px;">
+                </div>
+                <div class="card-content">
+                  <p style="text-align:center;font-size:12px;">HealthyCash에서</p> <p style="text-align:center;font-size:12px;"> 고객 관리를 해 보세요!</p>
+                  <center>
+                     <a href="/register_master/" style="width:133px; margin-left:20px;" class="waves-effect waves-light btn">헬스장 점주</a>
+                  </center>
+                </div>
+              </div>
+            </div>
+        </div>
+          
+   
+        </div>
     </div>
 </div>
 {%endblock content%}
