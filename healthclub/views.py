@@ -127,8 +127,7 @@ class HealthClubListView(ListView):
         search = self.request.GET.get('search')
         
         if search:
-            print(search)
-            search = search.split("(")[0]
+            search = search.split("(")[0].encode('utf-8')
             return HealthClub.objects.filter(Q(initiated=True) & Q(name__icontains=search) | Q(address__icontains=search) | Q(detail__icontains=search)).order_by('updated')
         return HealthClub.objects.filter(initiated=True).order_by('updated')
     
@@ -210,7 +209,7 @@ def healthclub_create(request):
             healthclub.address = address
             healthclub.initiated = True
             
-            url = 'https://healthycash-real-heejae-kim.c9users.io/healthclub/qrcode_check_save?healthclub_id='+str(healthclub.id)
+            url = 'http://www.imheej.com/healthclub/qrcode_check_save?healthclub_id='+str(healthclub.id)
             qrcode = pyqrcode.create(url)
             qrcode_name = 'media/qrcode/healthclub_qrcode_'+str(healthclub.id) + '.png'
             qrcode.png(qrcode_name, scale=4)
@@ -255,7 +254,7 @@ def qrcode_check_save(request):
         
         if last_record==today:
             context = {'message' : '오늘 이미 출석체크를 하셨습니다. 욕심 ㄴㄴ'}
-            return render(request, 'healthclub/qrcode_check.html', context)
+            return HttpResponseRedirect(reverse('healthclub:list'))
         elif healthclub == healthclub_check:
             obj = HealthDiary.objects.create(
                 user = user,
@@ -270,7 +269,7 @@ def qrcode_check_save(request):
             return HttpResponseRedirect(reverse('profiles:mypage'))
         else:
             context = {'message' : '이 헬스장은 회원님의 계정과 연동되지 않았습니다.'}
-            return render(request, 'healthclub/qrcode_check.html', context)
+            return HttpResponseRedirect(reverse('healthclub:list'))
 
 @login_required(login_url = "/login")
 def qrcode_check(request):
