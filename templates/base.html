@@ -23,7 +23,7 @@
   <style>
   @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
     body {
-        background-color : #white;
+        background-color : white;
     } 
     
     .nav-fixed {
@@ -118,7 +118,7 @@
         <li><p style="color:white;text-align:center;margin-top:0px;">{{request.user.profile.real_name}} 님 안녕하세요!</p></li>
         
         
-        
+        <a href="/healthclub/create"><center><img src="{% static 'images/healthclubsetting.png'%}" style="width:236px;"></center></a>
         
         <li><a href="/healthclub/list_notad">헬스장 정보<i class="material-icons">face</i></a></li>
         <li>
@@ -129,7 +129,7 @@
           </a>
         </li>
         <li><a href="/healthclub/mypage">지점 현황<i class="material-icons">add_location</i></a></li>
-        <li><a href="/healthclub/create">지점 정보 설정<i class="material-icons">group</i></a></li>
+        <!--<li><a href="/healthclub/create">지점 정보 설정<i class="material-icons">group</i></a></li>-->
         <li><a href="/aboutus/">About Us <i class="material-icons">folder_open</i></a></li>
         <li><a href="#">고객센터<i class="material-icons">question_answer</i></a></li>
         <li><a href="/logout">로그아웃<i class="material-icons">launch</i></a></li>
@@ -155,8 +155,6 @@
           
 
         <li><a href="/healthclub/list_notad">헬스장 정보<i class="material-icons">face</i></a></li>
-        
-
         <li>
           <a href="/profiles/group">커뮤니티<i class="material-icons">group</i>
             {% if request.user.new_member.all  %}
