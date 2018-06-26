@@ -51,7 +51,7 @@ HealthyCash
     {% for obj in object_list reversed%}
     <div class="col s12 m12" >
       <a href="{% url 'healthclub:detail' pk=obj.id %}">
-      <div class="card horizontal" style="height:100px;margin:2px;border-radius:8px;">
+      <div class="card horizontal" style="height:100px;margin:5px;border-radius:8px;">
         <div class="card-image">
             {% if obj.photo %}
             <img  src="{{obj.photo.url}}" style="height:100px">

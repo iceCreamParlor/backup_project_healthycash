@@ -68,7 +68,6 @@
         function showQRIntro() {
           return confirm("QR코드를 인식하기 위해 카메라를 사용합니다.");
         }
-        
     </script>
   
   <div class="navbar-fixed">
@@ -130,6 +129,7 @@
         <li><a href="/healthclub/mypage">지점 현황<i class="material-icons">group</i></a></li>
         <li><a href="/healthclub/create">지점 정보 설정<i class="material-icons">group</i></a></li>
         <li><a href="/healthclub/list_notad">헬스장 정보<i class="material-icons">group</i></a></li>
+        <li><a href="/aboutus/">About Us <i class="material-icons">folder_open</i></a></li>
         <li><a href="/logout">로그아웃<i class="material-icons">group</i></a></li>
         {% else %}
         <center>
@@ -153,7 +153,7 @@
           
 
         <li><a href="/healthclub/list_notad">헬스장 정보<i class="material-icons">face</i></a></li>
-        <li><a href="#">고객센터<i class="material-icons">face</i></a></li>
+        
 
         <li>
           <a href="/profiles/group">커뮤니티<i class="material-icons">group</i>
@@ -163,6 +163,7 @@
           </a>
         </li>
         <li><a href="/aboutus/">About Us <i class="material-icons">folder_open</i></a></li>
+        <li><a href="#">고객센터<i class="material-icons">question_answer</i></a></li>
         <li><a href="/logout/">로그아웃<i class="material-icons">launch</i></a></li>
         {% endif %}
       </ul>
@@ -172,7 +173,6 @@
     $( document ).ready(function() {
       $(".button-collapse").sideNav();
           /* global qrcode */
-      
       });
   </script>
   
