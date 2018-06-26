@@ -3,8 +3,14 @@
 {% block head %}
 {%endblock head%}
 {% block content %}
+<style>
+    body{
+        background-color:white;
+    }
+</style>
 <div class="container">
-    <div class="row" style="margin-top:60px">
+    <p style="padding-top:10px;margin-left:15px;font-size:20px;color:#4EC1E6;font-weight: bold;">{{healthclub.name}}</p>
+    <div class="row">
         <div class="col s12 m12 l4" >
             {%if healthclub.qrcode%}
             <center>
@@ -13,8 +19,8 @@
             {%endif%}
         </div>
         <div class="col s12 m12 l3">
-            <p>지점 명 : {{healthclub.name}}</p>
-            <p>고객 수 : {{healthclub.member}}  명</p>
+            
+            <p>고객 수  :    <span style="color:#4EC1E6">{{healthclub.member}}</span>  명</p>
         </div>
         <div class="col s12 m12 l5">
             <table>
@@ -27,10 +33,11 @@
                 </thead>
                 <tbody>
                     {% for r in healthdiary reversed%}
+                  <tr><td><br> </td><td> </td><td> </td><td> </td></tr>
                   <tr>
                     <td>{{r.user.profile.real_name}}</td>
                     <td>{{r.healthclub.name}}</td>
-                    <td>{{r.timestamp}}</td>
+                    <td>{{r.timestamp|date:"M d D"}}</td>
                   </tr>
                      {% endfor %}
                 </tbody>

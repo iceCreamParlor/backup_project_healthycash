@@ -11,7 +11,7 @@ HealthyCash
 <div class="row" style="margin-top:30px">
   <div class="col s12 m12 l3"></div>
     <div class="col s12 m12 l6">
-      <div class="card">
+      <div class="card" style="background-color:#efefef;">
         <div class="card-image">
           {%if object.photo%}
           <img src="{{object.photo.url}}">
@@ -60,10 +60,10 @@ HealthyCash
             </div>
           </div>
       </form>
-      <br>
+      
       {% for reply in replies  %}
-      <ul class="collection">
-        <li class="collection-item">
+      <ul class="collection" style="background-color:#efefef; border-radius:12px;">
+        <li class="collection-item" style="background-color:#efefef; ">
           {{reply.user.profile.real_name}} ({{reply.timestamp|date:'Y-m-d H:i'}})<br> {{reply.reply}} 
         </li>
       </ul>

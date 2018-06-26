@@ -46,12 +46,12 @@ HealthyCash
           </div>
       </form>
     </div>
-    <p>헬스장 리스트</p>
+    <p class="header" style=" margin-left:15px;font-size:20px;color:#4EC1E6;"> 헬스장 정보</p>
     {% if object_list.all  %}
     {% for obj in object_list reversed%}
     <div class="col s12 m12" >
       <a href="{% url 'healthclub:detail' pk=obj.id %}">
-      <div class="card horizontal" style="height:100px;margin:5px;border-radius:8px;">
+      <div class="card horizontal" style="height:100px;margin:5px;border-radius:8px;background-color:#efefef">
         <div class="card-image">
             {% if obj.photo %}
             <img  src="{{obj.photo.url}}" style="height:100px">

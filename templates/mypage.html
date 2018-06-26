@@ -8,11 +8,16 @@ HealthyCash
 {% endblock head %}
 {%block content%}
 <style>
-
+  .highlight{
+    color:#4EC1E6;
+  }
+  .collection-item{
+    background-color:#efefef !important;
+  }
 </style>
 <div class="container">
     <div class="row" style="padding-top:20px">
-      <p class="header" style=" margin-left:15px;font-size:20px;color:#4EC1E6;font-weight: bold;"> 마이페이지 </p>
+      <p class="header" style="margin-left:15px;font-size:20px;color:#4EC1E6;"> 마이페이지 </p>
      
        <center>
         <i style="font-size:150px"  class="large material-icons">account_circle</i>
@@ -20,28 +25,31 @@ HealthyCash
         <div class="col s12 m3 l3"></div>
         <div class="col s12 m6 l6">
           
-          <ul class="collection" style="margin-top:30px">
+          <ul class="collection" style="margin-top:30px;">
             <li class="collection-item">
               <span>등록된 헬스장</span>
-              <span style="float:right">{{profile.healthclub.name}} </span>
+              <span class="highlight" style="float:right">{{profile.healthclub.name}} </span>
             </li>
             
             <li class="collection-item">
               <span>적립금</span>
-              <span style="float:right">{{profile.cash}} 원 </span>
+              <span class="highlight" style="float:right">{{profile.cash}} 원 </span>
             </li>
-            <li  style="margin-left : 20px;font-weight: bold;">이용권 정보<li>
+            
+            <li class="highlight" style="font-weight: bold; background-color:#efefef">이용권 정보<li>
+              <li style="background-color:#efefef"><br></li>
             <li class="collection-item">
               <span>등록일</span>
-              <span style="float:right">{{profile.start_date|date:"M d D"}}  </span>
+              <span class="highlight" style="float:right">{{profile.start_date|date:"M d D"}}  </span>
               <br>
               <span>만료일</span>
-              <span style="float:right">{{profile.expire_date|date:"M d D"}} </span>
+              <span class="highlight" style="float:right">{{profile.expire_date|date:"M d D"}} </span>
             </li>
-            <li  style="margin-left : 20px;font-weight: bold;">이번달 출석 현황</li>
+            
+            <li class="highlight" style="font-weight: bold; background-color:#efefef">이번달 출석 현황</li>
+            <span class="highlight" style="float:right; margin-right:15px;">출석 횟수 : {{profile.exercised}} 회  </span>
             <li class="collection-item">
-              <span style="float:right">출석 횟수 : {{profile.exercised}} 회  </span>
-              <br>
+              
               <br>
               <table>
                   <thead>
@@ -53,9 +61,10 @@ HealthyCash
                   
                   <tbody>
                       {% for r in record%}
+                      <tr><td><br></td><td><br></td></tr>
                     <tr>
-                      <td><span>{{r.healthclub.name}}</span></td>
-                      <td><span>{{r.timestamp|date:"M d D"}}</span></td>
+                      <td><span class="highlight">{{r.healthclub.name}}</span></td>
+                      <td><span class="highlight">{{r.timestamp|date:"M d D"}}</span></td>
                     </tr>
                        {% endfor %}
                   </tbody>
