@@ -51,7 +51,7 @@ HealthyCash
     {% for obj in object_list reversed%}
     <div class="col s12 m12" >
       <a href="{% url 'healthclub:detail' pk=obj.id %}">
-      <div class="card horizontal" style="height:100px;margin:5px;border-radius:8px;">
+      <div class="card horizontal" style="height:100px;margin:5px;border-radius:8px; background-color:#efefef">
         <div class="card-image">
             {% if obj.photo %}
             <img  src="{{obj.photo.url}}" style="height:100px">
@@ -61,7 +61,7 @@ HealthyCash
         </div>
         <div class="card-stacked">
           <div class="card-content" style="height:100px">
-              <p>{{obj.name}}</p>
+              <span>{{obj.name}}</span>
               <p style="display: inline-block; width: 148px; white-space: nowrap; overflow: hidden; ">{{obj.address}}</p>
               <p style="display: inline-block; width: 148px; white-space: nowrap; overflow: hidden; ">{{obj.price1}} 원 ~ {{obj.price12}} 원</p>
           </div>
