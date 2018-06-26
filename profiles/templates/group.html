@@ -12,16 +12,16 @@ HealthyCash
 </style>
 <div class="container">
     <div class="row" style="margin-top:30px">
-            <h5 style="color:#4EC1E6; margin-left:15px;font-size:20px;">커뮤니티</h5>
+            <h5 style="color:#4EC1E6; margin-left:15px;">커뮤니티 <a style="float:right;margin-right:20px;" href="/profiles/group/create/" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a></h5>
           
            <ul class="collapsible popout" data-collapsible="accordion">
             <li>
-              <div class="collapsible-header" style="margin-top:30px; background-color:#efefef">
+              <div class="collapsible-header" style="margin-top:30px">
                 <i class="material-icons">group</i>
-                  내 그룹
+                  <span>내 그룹</span>
                 <span class="badge">{{ groups | length  }}</span>
               </div>
-              <div class="collapsible-body" style="background-color:#efefef">
+              <div class="collapsible-body" style="background-color:#FFFFFF">
                 
                 {% for group in groups %}
                   <p><a href="/profiles/group/detail/{{group.id}}">{{group.name}}</a></p>
@@ -30,12 +30,12 @@ HealthyCash
               </div>
             </li>
             <li>
-              <div class="collapsible-header"  style="margin-top:15px; background-color:#efefef">
+              <div class="collapsible-header">
                 <i class="material-icons">chat_bubble_outline</i>
-                그룹 초대
+                  <span>그룹 초대</span>
                 <span class="badge">{{ groupinvites | length  }}</span>
               </div>
-              <div class="collapsible-body" style="background-color:#efefef">
+              <div class="collapsible-body" style="background-color:#FFFFFF">
                 {% if groupinvites %}
                     {% for groupinvite in groupinvites %}
                     <div style="margin-top:15px;">
@@ -51,12 +51,12 @@ HealthyCash
               </div>
             </li>
             <li>
-                <div class="collapsible-header" style="margin-top:15px;background-color:#efefef;">
+                <div class="collapsible-header">
                   <i class="material-icons">cached</i>
-                  오픈 그룹
+                    <span>오픈 그룹</span>
                   <span class="badge">{{notgroups|length}}</span>
                 </div>
-                <div class="collapsible-body" style="background-color:#efefef">
+                <div class="collapsible-body" style="background-color:#FFFFFF">
                   {% if notgroups %}
                   {% for notgroup in notgroups %}
                       <a href="/profiles/group/register/{{notgroup.id}}"><p style="text-align:left; color:#4EC1E6;font-weight: bold;">{{notgroup.name}}</p></a>
@@ -65,10 +65,5 @@ HealthyCash
                 </div>
               </li>
           </ul>
-          
-    </div>
 </div>
-<center>
-    <a href="/profiles/group/create/" class = "waves-effect waves-light btn">그룹 생성</a>
-</center>
 {% endblock content %}

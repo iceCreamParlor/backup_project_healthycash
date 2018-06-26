@@ -36,7 +36,7 @@ HealthyCash
               <span class="highlight" style="float:right">{{profile.cash}} 원 </span>
             </li>
             
-            <li class="highlight" style="font-weight: bold; background-color:#efefef">이용권 정보<li>
+            <li style="font-weight: bold; background-color:#efefef; margin-left:15px;">이용권 정보<li>
               <li style="background-color:#efefef"><br></li>
             <li class="collection-item">
               <span>등록일</span>
@@ -46,7 +46,7 @@ HealthyCash
               <span class="highlight" style="float:right">{{profile.expire_date|date:"M d D"}} </span>
             </li>
             
-            <li class="highlight" style="font-weight: bold; background-color:#efefef">이번달 출석 현황</li>
+            <li style="font-weight: bold; background-color:#efefef;margin-left:15px;">이번달 출석 현황</li>
             <span class="highlight" style="float:right; margin-right:15px;">출석 횟수 : {{profile.exercised}} 회  </span>
             <li class="collection-item">
               
@@ -60,7 +60,7 @@ HealthyCash
                   </thead>
                   
                   <tbody>
-                      {% for r in record%}
+                      {% for r in record reversed%}
                       <tr><td><br></td><td><br></td></tr>
                     <tr>
                       <td><span class="highlight">{{r.healthclub.name}}</span></td>
