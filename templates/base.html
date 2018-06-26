@@ -42,6 +42,9 @@
     button, span, a, p, h1, h2, h3, h4, h5, label, td, th, button{
       font-family: 'Jeju Gothic', sans-serif;
     }
+    li a{
+      color:#4EC1E6 !important;
+    }
   </style>
   
 </head>
@@ -106,10 +109,10 @@
   </div>
   <ul id="slide-out" class="side-nav">
         {% if request.user.is_anonymous %}
-        <li><a href="/login">로그인<i class="material-icons">account_box</i></a></li>
-        <li><a href="/register">회원 가입<i class="material-icons">border_color</i></a></li>
-        <li><a href="/healthclub/list_notad">헬스장 정보<i class="material-icons">face</i></a></li>
-        <li><a href="/aboutus/">About Us <i class="material-icons">folder_open</i></a></li>
+        <li><a style="color:white !important;" href="/login">로그인</a></li>
+        <li><a style="color:white !important;" href="/register">회원 가입</a></li>
+        <li><a style="color:white !important;" href="/healthclub/list_notad">헬스장 정보</a></li>
+        <li><a style="color:white !important;" href="/aboutus/">About Us</a></li>
         {% elif request.user.profile.is_health_master %}
         
         <center>
@@ -120,19 +123,20 @@
         
         <a href="/healthclub/create"><center><img src="{% static 'images/healthclubsetting.png'%}" style="width:236px;"></center></a>
         
-        <li><a href="/healthclub/list_notad">헬스장 정보<i class="material-icons">face</i></a></li>
+        <!--<li><a href="/healthclub/list_notad">헬스장 정보</a></li>-->
         <li>
-          <a href="/profiles/group">커뮤니티<i class="material-icons">group</i>
+          <a href="/profiles/group">커뮤니티
             {% if request.user.new_member.all  %}
             <span class="badge">{{request.user.new_member.all|length}}</span>
             {% endif  %}
           </a>
         </li>
-        <li><a href="/healthclub/mypage">지점 현황<i class="material-icons">add_location</i></a></li>
+        <li><a href="/healthclub/mypage">지점 관리</a></li>
+        <li><a href="#">헬시캐시 샵</a></li>
         <!--<li><a href="/healthclub/create">지점 정보 설정<i class="material-icons">group</i></a></li>-->
-        <li><a href="/aboutus/">About Us <i class="material-icons">folder_open</i></a></li>
-        <li><a href="#">고객센터<i class="material-icons">question_answer</i></a></li>
-        <li><a href="/logout">로그아웃<i class="material-icons">launch</i></a></li>
+        <li><a href="/aboutus/">About Us</a></li>
+        <li><a href="#">고객센터</a></li>
+        <li><a href="/logout">로그아웃</a></li>
         {% else %}
         <center>
           <i style="font-size:130px;color:white;"  class="large material-icons">account_circle</i>
@@ -156,17 +160,17 @@
           </center>
           
 
-        <li><a href="/healthclub/list_notad">헬스장 정보<i class="material-icons">face</i></a></li>
+        <li><a href="/healthclub/list_notad">헬스장 정보</a></li>
         <li>
-          <a href="/profiles/group">커뮤니티<i class="material-icons">group</i>
+          <a href="/profiles/group">커뮤니티
             {% if request.user.new_member.all  %}
             <span class="badge">{{request.user.new_member.all|length}}</span>
             {% endif  %}
           </a>
         </li>
-        <li><a href="/aboutus/">About Us <i class="material-icons">folder_open</i></a></li>
-        <li><a href="#">고객센터<i class="material-icons">question_answer</i></a></li>
-        <li><a href="/logout/">로그아웃<i class="material-icons">launch</i></a></li>
+        <li><a href="/aboutus/">About Us</a></li>
+        <li><a href="#">고객센터</a></li>
+        <li><a href="/logout/">로그아웃</a></li>
         {% endif %}
       </ul>
   

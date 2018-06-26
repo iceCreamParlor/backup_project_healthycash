@@ -10,9 +10,16 @@ HealthyCash
 <style>
   .highlight{
     color:#4EC1E6;
+    float:right;
   }
   .collection-item{
-    background-color:#efefef !important;
+    background-color:transparent !important;
+  }
+  td{
+    padding-top:20px;
+  }
+  .membership{
+    padding-top:8px !important;
   }
 </style>
 <div class="container">
@@ -22,61 +29,67 @@ HealthyCash
        <center>
         <i style="font-size:150px"  class="large material-icons">account_circle</i>
         </center>
-        <div class="col s12 m3 l3"></div>
-        <div class="col s12 m6 l6">
+        <div class="col s1 m3 l3"></div>
+        <div class="col s10 m6 l6">
           
-          <ul class="collection" style="margin-top:30px;">
-            <li class="collection-item">
-              <span>등록된 헬스장</span>
-              <span class="highlight" style="float:right">{{profile.healthclub.name}} </span>
-            </li>
-            
-            <li class="collection-item">
-              <span>적립금</span>
-              <span class="highlight" style="float:right">{{profile.cash}} 원 </span>
-            </li>
-            
-            <li style="font-weight: bold; background-color:#efefef;">&nbsp;&nbsp;&nbsp;이용권 정보<li>
-              <li style="background-color:#efefef"><br></li>
-            <li class="collection-item">
-              <span>등록일</span>
-              <span class="highlight" style="float:right">{{profile.start_date|date:"M d D"}}  </span>
-              <br>
-              <span>만료일</span>
-              <span class="highlight" style="float:right">{{profile.expire_date|date:"M d D"}} </span>
-            </li>
-            
-            <li style="font-weight: bold; background-color:#efefef;">&nbsp;&nbsp;&nbsp;이번달 출석 현황</li>
-            <span class="highlight" style="float:right; margin-right:15px;">출석 횟수 : {{profile.exercised}} 회  </span>
-            <li class="collection-item">
+          <table style="margin-top:20px;">
+              <thead>
+                <tr>
+                  <td><span>등록된 헬스장</span></td>
+                  <td><span class="highlight">{{profile.healthclub.name}}</span></td>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <td><span>출석 현황</span></td>
+                  <td><span class="highlight">{{profile.exercised}} 회</span></td>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <td><span>적립금</span></td>
+                  <td><span class="highlight">{{profile.cash}} 원</span></td>
+                </tr>
+              </thead>
               
-              <br>
-              <table>
-                  <thead>
-                    <tr>
-                        <th>지점</th>
-                        <th>출석일</th>
-                    </tr>
-                  </thead>
+              <thead>
+                <tr> 
+                  <td><span>이용권 정보</span></td>
+                  <td><span><br></span></td>
+                </tr>
+                <tr>
+                  <td class="membership"><span style="font-size:12px;">등록일</span></td>
+                  <td class="membership"><span style="font-size:12px;" class="highlight">{{profile.start_date|date:"M d D"}}</span></td>
+                </tr>
+                <tr>
+                  <td class="membership"><span style="font-size:12px;">만료일</span></td>
+                  <td class="membership"><span style="font-size:12px;" class="highlight">{{profile.expire_date|date:"M d D"}}</span></td>
+                </tr>
+              </thead>
+              
+          </table>
+
+              <!--<table>-->
+              <!--    <thead>-->
+              <!--      <tr>-->
+              <!--          <th>지점</th>-->
+              <!--          <th>출석일</th>-->
+              <!--      </tr>-->
+              <!--    </thead>-->
                   
-                  <tbody>
-                      {% for r in record reversed%}
-                      <tr><td><br></td><td><br></td></tr>
-                    <tr>
-                      <td><span class="highlight">{{r.healthclub.name}}</span></td>
-                      <td><span class="highlight">{{r.timestamp|date:"M d D"}}</span></td>
-                    </tr>
-                       {% endfor %}
-                  </tbody>
-              </table>
-            </li>
-          </ul>
-          <center>
-            <!--<button  type = "button" class="btn waves-effect waves-light">뒤로가기</button>-->
-          </center>
+              <!--    <tbody>-->
+              <!--        {% for r in record reversed%}-->
+              <!--        <tr><td><br></td><td><br></td></tr>-->
+              <!--      <tr>-->
+              <!--        <td><span class="highlight">{{r.healthclub.name}}</span></td>-->
+              <!--        <td><span class="highlight">{{r.timestamp|date:"M d D"}}</span></td>-->
+              <!--      </tr>-->
+              <!--         {% endfor %}-->
+              <!--    </tbody>-->
+              <!--</table>-->
     
       </div>
-      
+      <div class="col s1 m3 l3"></div>
     </div>
 </div>
 

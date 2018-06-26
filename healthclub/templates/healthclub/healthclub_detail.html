@@ -48,27 +48,31 @@ HealthyCash
             </center>
         </div>
       </div>
+      <p class="header" style="margin-top:40px;margin-left:15px;font-size:20px;color:#4EC1E6;"> 리뷰 </p>
       <form method="POST"  id="myForm" action="{% url 'healthclub:healthclub_detail_review_create' object.id %} ">
           {% csrf_token %}
-          <div class="row" style="margin-top:10px">
+          <div class="row" style="margin-top:10px;text-align:center;margin:auto;" >
             <div class="input-field col s9 m9 l9">
               <input id="reply" name="reply" type="text" class="validate">
               <label for="reply">댓글</label>
             </div>
-            <div class= "col s1 m2 l2" style="font-size:35px;height:40px;text-align:center;">
-              <i class="material-icons" id="submit_button">add_circle</i>
-            </div>
+            <!--<div class= "col s1 m2 l2" style="font-size:35px;height:40px;text-align:center;">-->
+            <!--  <i class="material-icons" id="submit_button">add_circle</i>-->
+            <!--</div>-->
+            <button class="btn waves-effect waves" style="padding:0 1rem;">저장</span></button>
           </div>
       </form>
-      
-      {% for reply in replies  %}
-      <ul class="collection" style="background-color:#efefef; border-radius:12px;">
-        <li class="collection-item" style="background-color:#efefef; ">
-          {{reply.user.profile.real_name}} ({{reply.timestamp|date:'Y-m-d H:i'}})<br> {{reply.reply}} 
-        </li>
-      </ul>
         
-      {% endfor  %}
+        {% for reply in replies  %}
+        <ul class="collection" style="background-color:#white; border-radius:12px; margin-bottom:1px;margin-top:3px;">
+          <li class="collection-item" style="background-color:#efefef; padding-top:5px;padding-bottom:5px;">
+            <span>{{reply.user.profile.real_name}}</span><span style="float:right;">{{reply.timestamp|date:'Y-m-d H:i'}}</span>
+            <br>
+            <span>{{reply.reply}} </span>
+          </li>
+        </ul>
+        {% endfor  %}
+        
     </div>
 </div>
 
