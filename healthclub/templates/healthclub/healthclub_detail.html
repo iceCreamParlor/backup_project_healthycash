@@ -30,16 +30,26 @@ HealthyCash
             <form action="{% url 'healthclub:payment' object.id %}" method="POST">
               {%csrf_token%}
               <div class="card-action">
-              <input name="price" id="test1" type="radio"  value = "{{object.price1|multiply:100|add:'1'}}" />
-              <label for="test1">1 개월 : {{object.price1}} 원</label>
-              <input name="price" id="test2" type="radio"  value = "{{object.price2|multiply:100|add:'2'}}"/>
-              <label for="test2">2 개월 : {{object.price2}} 원</label>
-              <input name="price" id="test3" type="radio" value = "{{object.price3|multiply:100|add:'3'}}"/>
-              <label for="test3">3 개월 : {{object.price3}} 원</label>
-              <input name="price" id="test6" type="radio"  value = "{{object.price6|multiply:100|add:'6'}}"/>
-              <label for="test6">6 개월 : {{object.price6}} 원</label>
-              <input name="price" id="test12" type="radio" value = "{{object.price12|multiply:100|add:'12'}}"/>
-              <label for="test12">1 년 : {{object.price12}} 원</label>
+                <div class="row" style="margin:5px;">
+                  <input name="price" id="test1" type="radio"  value = "{{object.price1|multiply:100|add:'1'}}" />
+                  <label for="test1">1 개월 </label><span style="float:right"> {{object.price1}} 원</span>
+                </div>
+                <div class="row" style="margin:5px;">
+                  <input name="price" id="test2" type="radio"  value = "{{object.price2|multiply:100|add:'2'}}"/>
+                  <label for="test2">2 개월  </label><span style="float:right"> {{object.price2}} 원</span>
+                </div>
+                <div class="row" style="margin:5px;">
+                  <input name="price" id="test3" type="radio" value = "{{object.price3|multiply:100|add:'3'}}"/>
+                  <label for="test3">3 개월  </label><span style="float:right"> {{object.price3}} 원</span>
+                </div>
+                <div class="row" style="margin:5px;">
+                  <input name="price" id="test6" type="radio"  value = "{{object.price6|multiply:100|add:'6'}}"/>
+                  <label for="test6">6 개월  </label><span style="float:right"> {{object.price6}} 원</span>
+                </div>
+                <div class="row" style="margin:5px;">
+                  <input name="price" id="test12" type="radio" value = "{{object.price12|multiply:100|add:'12'}}"/>
+                  <label for="test12">1 년   </label><span style="float:right"> {{object.price12}} 원</span>
+                </div>
               <input type="hidden" name="health_id" value={{object.id}} />
               <br><br>
               <center>
