@@ -116,7 +116,6 @@ def group_update_confirm(request, pk):
                     group = group,
                     confirmed = False
                 )
-                print(group_invite)
                 group_invite.save()
         group.save()
         return HttpResponseRedirect('/profiles/group/detail/{}/'.format(pk))
